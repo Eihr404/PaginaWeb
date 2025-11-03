@@ -1,0 +1,73 @@
+//IngresoSesion.js
+window.IngresoSesion = {
+    keySesion: "sesion_activa",
+    keyNombre: "nombre_usuario",
+    keyCorreo: "correo_usuario",
+
+    SesionIniciada() {
+        return localStorage.getItem(this.keySesion) === "true";
+    },
+
+    IniciarSesion(correo, nombre) {
+        localStorage.setItem(this.keySesion, "true");
+        localStorage.setItem(this.keyCorreo, correo);
+        localStorage.setItem(this.keyNombre, nombre);
+    },
+
+    CerrarSesion() {
+        localStorage.removeItem(this.keySesion);
+        localStorage.removeItem(this.keyCorreo);
+        localStorage.removeItem(this.keyNombre);
+    },
+
+    NombreUsuario() {
+        return localStorage.getItem(this.keyNombre) || "";
+    },
+
+    ActualizarDatos() {
+        const cuenta = document.querySelector("[data-cuenta]");
+        const btnLogin = document.querySelectorAll("[data-inicio-sesion]");
+        const btnLogout = document.querySelector("[data-salir-sesion]");
+
+        const nombre = this.NombreUsuario();
+
+        if (cuenta) {
+            if (this.SesionIniciada()) {
+                cuenta.textContent = "Hola, " + nombre;
+            } else {
+                cuenta.textContent = "Invitado";
+            }
+        }
+
+        btnLogin.forEach(b => {
+            if (this.SesionIniciada()) {
+                b.style.display = "none";
+            } else {
+                b.style.display = "flex";
+            }
+        });
+
+        if (btnLogout) {
+            if (this.SesionIniciada()) {
+                btnLogout.style.display = "flex";
+            } else {
+                btnLogout.style.display = "none";
+            }
+        }
+    }
+};
+
+// Botón para salir
+document.addEventListener("click", function (e) {
+    if (e.target.matches("[data-salir-sesion]")) {
+        e.preventDefault();
+        IngresoSesion.CerrarSesion();
+        IngresoSesion.ActualizarDatos();
+        alert("Sesión cerrada correctamente");
+    }
+});
+
+// Al cargar la página
+window.addEventListener("DOMContentLoaded", function () {
+    IngresoSesion.ActualizarDatos();
+});

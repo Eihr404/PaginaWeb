@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PasteleriaPro</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/funciones/Funciones.js"></script>
+</head>
+<body>
+<div class="contenedor">
+    <div class="Pagina">
+        <div id="Cabecera">
+            <div id="Cabecera-outer">
+                <div id="Cabecera-inner">
+                    <div id="Cabecera-gradiente"></div>
+                </div>
+            </div>
+            <img id="Cabecera-logo" src="assets/img/Logo.png" alt="Logo de Brulee">
+            <h1 class="Texto-cabecera" id="Texto-detalle"></h1>
+        </div>
+        <br>
+        <div class="Productos">
+            <img id="Imagen-detalle" src="assets/img/gatoGordo.jpg" alt="Producto seleccionado">
+            <div>
+                <h2> Descripción </h2>
+                <p id="Texto-detalle-producto"></p>
+            </div>
+        </div>
+
+        <h2 class="Titulo-producto" id="titulo-producto"></h2>
+
+        <div class="Descripcion-producto">
+            <ul class="Productos-nombre" id="lista-nombres"></ul>
+            <ul class="Productos-precio" id="lista-precios"></ul>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalCompra" tabindex="-1" aria-labelledby="modalCompraLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalCompraLabel">Modal title</h1>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formCompra">
+                            <div class="mb-3">
+                                <label for="selectProducto" class="form-label">Producto</label>
+                                <select id="selectProducto" class="form-select" required>
+                                    <option value="Macarrones 1">Macarrón de fresa</option>
+                                    <option value="Macarrones 2">Macarrón de chocolate</option>
+                                    <option value="Macarrones 3">Macarrón de maracuyá</option>
+                                    <option value="Macarrones 4">Macarrón de lavanda</option>
+                                    <option value="Macarrones 5">Macarrón de vainilla</option>
+                                    <option value="Macarrones 6">Macarrón de expreso</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 d-flex align-items-center justify-content-center gap-3">
+                                <button type="button" class="btn btn-outline-secondary" id="btn-restar">−</button>
+                                <input type="number" id="cantidad" class="form-control text-center" style="width: 80px;" value="1" min="1"> </input>
+                                <button type="button" class="btn btn-outline-secondary" id="btn-sumar">+</button>
+                            </div>
+                        </form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" id="btn-confirmar">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="Regreso">
+            <button class="btn" id="btn-comprar" data-bs-toggle="modal" data-bs-target="#modalCompra">
+                Comprar
+            </button>
+            <button class="btn">
+                <a href="productos.html">
+                    Regresar
+                </a>
+            </button>
+        </div>
+        <br>
+
+    </div>
+    <footer id="contacto">
+        <br>
+        <h2 class="Texto-Footer">Términos y condiciones</h2>
+        <p> Nuestros valores incluyen envío dentro del perímetro (Calderón, Carapungo y Carcelén)</p>
+        <p> El servicio a domicilio comienza desde las 9am hasta las 6pm</p>
+        <p> Número de contacto 0998539244/0998308707/0996916918</p>
+        <p> Calderón; calle carapungo oe3-183 y Serange</p>
+        <br>
+        © <span id="y"></span> Brúlée Catering & Event Desing — Pedido y retiro en tienda.
+    </footer>
+
+</div>
+
+<script>
+    //carrito
+    let carrito = [];
+
+    const carritoGuardado = localStorage.getItem("carrito");
+    if (carritoGuardado) {
+        carrito = JSON.parse(carritoGuardado);
+    }
+
+
+    // Controles de cantidad
+    const inputCantidad = document.getElementById("cantidad");
+    document.getElementById("btn-sumar").addEventListener("click", () => {
+        inputCantidad.value = parseInt(inputCantidad.value) + 1;
+    });
+    document.getElementById("btn-restar").addEventListener("click", () => {
+        if (parseInt(inputCantidad.value) > 1) inputCantidad.value = parseInt(inputCantidad.value) - 1;
+    });
+
+    // Formulario
+    setTimeout(() => {
+
+        document.getElementById("btn-confirmar").addEventListener("click", e => {
+            e.preventDefault();
+
+            const productos = {
+                macarrones: {
+                    titulo: "Macarrones",
+                    nombres: [
+                        "Macarrón de fresa",
+                        "Macarrón de chocolate",
+                        "Macarrón de maracuyá",
+                        "Macarrón de lavanda",
+                        "Macarrón de vainilla",
+                        "Macarrón de expreso"
+                    ],
+                    precios: ["1.50", "1.50", "1.50", "1.50", "1.50", "1.50"],
+                    descripcion:["Galleta tradicional de la gastronomía francesa hecha con clara de huevo, harina de almendra, azúcar y azúcar glas; con un relleno de crema de matequilla, jalea o ganache."]
+                },
+                shots: {
+                    titulo: "Shots",
+                    nombres: [
+                        "Mousse de maracuyá",
+                        "Mousse de chocolate blanco o negro",
+                        "Mousse de oreo",
+                        "Mousse de frutos del bosque",
+                        "Mousse de Nutella",
+                        "Pie de limón",
+                        "Tres leches",
+                        "Tiramisú",
+                        "Cheesecake de maracuyá",
+                        "Cheesecake Ferrero"
+                    ],
+                    precios: ["2.30", "2.30", "2.50", "2.50", "2.80", "2.30", "2.30", "2.30", "2.80", "3.00"],
+                    descripcion:["Vaso relleno de una crema a elección, con una base de galletas trituradas y decarado con crema en la parte superior"]
+                },
+                bombones: {
+                    titulo: "Bombones",
+                    nombres: [
+                        "Bombones (rellenos de crema de maracuyá, fresa, café, licor, menta)",
+                        "Trufas (relleno de crema de maracuyá, fresa, café, licor, menta)"
+                    ],
+                    precios: ["0.60", "0.60"],
+                    descripcion:["Pequeña porción de chocolate que puede ser rellena con una cierta cantidad de crema con licor, o algún otro tipo de relleno dulce"]
+                },
+                alfajores: {
+                    titulo: "Alfajores",
+                    nombres: ["Alfajor relleno de dulce de leche"],
+                    precios: ["0.80"],
+                    descripcion:["Dos galletas redondas unidas en el centro por un dulce de leche, llevando azúcar en polvo en la parte superior"]
+                },
+                tartaletas: {
+                    titulo: "Tartaletas",
+                    nombres: [
+                        "Mini tartaleta Cheesecake NY",
+                        "Mini tartaleta Pie de limón",
+                        "Mini tartaleta Cheesecake oreo",
+                        "Mini tartaleta Frutos del bosque",
+                        "Mini tartaleta de maracuyá",
+                        "Mini tartaleta de frutas (crema pastelera, fresas, duraznos, kiwi)"
+                    ],
+                    precios: ["1.20", "1.00", "1.20", "1.00", "0.85", "0.85"],
+                    descripcion:["Pequeña tarta con una base de ojaldre la cual puede ser rellena con diversos sabores"]
+                },
+                brigadeiro:{
+                    titulo: "Brigadeiro",
+                    nombres: ["Brigadeiro"],
+                    precios: ["0.70"],
+                    descripcion: ["Dulce de chocolate típico brasileño parecido a una trufa de chocolate, hecho de leche condensada cacao y amntequilla"],
+                },
+                pinchosFrutas:{
+                    titulo: "Pinchos",
+                    nombres: [
+                        "Pincho de fresas 15cm",
+                        "Pincho de fresas cubiertas de chocolate 15cm",
+                        "Pinchos de frutas (manzana, fresa, uvilla y uva) medianos 20cm",
+                        "Pinchos de frutas cubiertos de chocolate (manzana fresa, uvilla y uva) medianos 20cm",
+                        "Pinchos de frutas (manzana, fresa, uvilla y uva) grande 30cm",
+                        "Pinchos de frutas cubiertos de chocolate (manzana, fresa, uvilla y uva) grande 30cm"
+                    ],
+                    precios: ["0.60", "1.00", "1.60", "2.50", "2.50", "3.00"],
+                    descripcion: ["Pincho que puede venir en diferentes tamaños y con una variedad de frutas"]
+                },
+
+            };
+
+            const productoId = document.getElementById("selectProducto").value;
+            const cantidad = parseInt(inputCantidad.value);
+
+            if (!productoId) {
+                alert("Por favor selecciona un producto.");
+                return;
+            }
+
+            const [categoria, numero] = productoId.split(" ");
+            const index = parseInt(numero) - 1;
+            const data = productos[categoria];
+            const nombre = data.nombres[index];
+            const precioUnitario = parseFloat(data.precios[index]);
+            const precioTotal = (precioUnitario * cantidad).toFixed(2);
+
+            // Guardar en carrito
+            carrito.push({ productoId, cantidad });
+
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+
+            console.log("Carrito:", carrito);
+
+            // Mostrar resumen en consola
+            let total = 0;
+            console.log("Productos:");
+            carrito.forEach(item => {
+                const [categoria, numero] = item.productoId.split(" ");
+                const index = parseInt(numero) - 1;
+                const data = productos[categoria];
+                const nombre = data.nombres[index];
+                const precioUnitario = parseFloat(data.precios[index]);
+
+                total += precioUnitario * item.cantidad;
+                console.log(`${nombre} - cantidad ${item.cantidad} - precio unitario $${precioUnitario.toFixed(2)}`);
+            });
+            console.log(`Precio total: $${total.toFixed(2)} `);
+
+
+            // Cerrar modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById("modalCompra"));
+            modal.hide();
+
+            // Notificar
+            alert(`${cantidad} unidad(es) de "${nombre}" agregado(s) al carrito. Por un total de ${precioTotal} a cada uno por ${precioUnitario}`);
+            document.getElementById("formCompra").reset();
+            inputCantidad.value = 1;
+        });
+
+    }, 3000);
+</script>
+
+</body>
+</html>
+
+<script src="/js/funciones/Funciones.js"></script>
+<!--<script src="/js/paginas/IngresoSesion.js"></script>
+<script>
+    const botonComprar = document.getElementById('btn-comprar');
+
+    botonComprar.addEventListener('click', function(boton) {
+        boton.preventDefault();
+        if (IngresoSesion.SesionIniciada()) {
+            alert("¡Compra realizada con éxito!");
+        } else {
+            alert("Debes iniciar sesión primero.");
+            const next = encodeURIComponent(location.href);
+            location.href = `ingreso.html?next=${next}`;
+        }
+    });
+</script>-->
+</body>
+</html>
