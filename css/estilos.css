@@ -12,6 +12,7 @@
     --shadow-soft: 0 2px 10px rgba(0,0,0,.06);
     --max: 1100px;
     --black:0px;
+    --navbar: #b484b5;
 }
 
 *{box-sizing:border-box}
@@ -22,6 +23,69 @@ body{
     color:var(--text);
     background:var(--bg);
     line-height:1.5;
+}
+/* Navegador / Barras*/
+.custom-navbar {
+    background-color: var(--navbar); /* Rosa pastel */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    height: 100px;
+}
+
+.custom-navbar .navbar-brand {
+    color: #7a1f4b; /* Vino oscuro */
+    font-family: 'Pacifico', cursive;
+}
+
+.custom-navbar .navbar-brand:hover {
+    color: #4b0f35;
+}
+
+
+.sub-navbar {
+    background-color: rgba(199, 146, 200, 0.75);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-top: 1px solid #f5c3d1;
+    border-bottom: 1px solid #f5c3d1;
+}
+
+.sub-navbar-separacion{
+    background-color: var(--bg);
+    height: 100px;
+}
+
+.sub-navbar h2 {
+    color: #ffffff; /* Vino oscuro */
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+}
+
+.sub-navbar-servicios img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.sub-navbar-servicios img:hover {
+    transform: scale(1.05);
+}
+
+.sub-navbar-servicios p {
+    color: #fff;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+}
+
+/* Grid card*/
+.card-img-top {
+    width: 100%;              /* Ocupa todo el ancho del card */
+    height: 200px;            /* Fija una altura constante */
+    object-fit: cover;        /* Recorta la imagen sin deformarla */
+    object-position: center;  /* Centra el recorte */
+    border-radius: 0.5rem 0.5rem 0 0; /* opcional: esquinas redondeadas arriba */
 }
 
 /* Externo */
@@ -277,11 +341,16 @@ footer{background:#fff2f6; border-top:1px solid var(--b); text-align:center; pad
     --carousel-control-icon-width: 2rem;
 
     /* Flechas prev/next personalizadas */
-    --carousel-control-prev-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0'/></svg>");
-    --carousel-control-next-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708'/></svg>");
 
     --carousel-transition-duration: 0.6s;
     --carousel-transition: transform var(--carousel-transition-duration) ease-in-out;
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        background: none !important; /* elimina cualquier fondo */
+        border: none;
+    }
+
 
     /*Imagenes*/
     .carousel-item img {
