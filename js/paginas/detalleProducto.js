@@ -64,9 +64,9 @@ function Carrito() {
 
             // Cerrar modal
             const modal = bootstrap.Modal.getInstance(document.getElementById("modalCompra"));
-            modal.hide();
+            if (modal) modal.hide();
 
-            // Notificar
+          // Notificar
             alert(`${cantidad} unidad(es) de "${nombre}" agregado(s) al carrito. Por un total de ${precioTotal} a cada uno por ${precioUnitario}`);
             document.getElementById("formCompra").reset();
             inputCantidad.value = 1;
@@ -89,8 +89,6 @@ function cambiarImagenDesdeURL() {
     const listaPrecios = document.getElementById('lista-precios');
     const TextoCabecera = document.getElementById('Texto-detalle');
     const TextoDescripcion = document.getElementById('Texto-detalle-producto');
-
-    const selectProducto = document.getElementById('selectProducto');
 
     // Actualizar imagen si existe el parámetro
     if (imagen && img) {
