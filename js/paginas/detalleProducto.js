@@ -90,8 +90,6 @@ function cambiarImagenDesdeURL() {
     const TextoCabecera = document.getElementById('Texto-detalle');
     const TextoDescripcion = document.getElementById('Texto-detalle-producto');
 
-    const selectProducto = document.getElementById('selectProducto');
-
     // Actualizar imagen si existe el parámetro
     if (imagen && img) {
         img.src = imagen;
