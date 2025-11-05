@@ -24,18 +24,8 @@
   </div>
 </nav>
 
-<div id="carouselExample" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="/assets/img/gatoGordo.jpg" class="d-block w-100" alt="#">
-    </div>
-    <div class="carousel-item">
-      <img src="/assets/img/caja-12-fresas.jpg" class="d-block w-100" alt="#">
-    </div>
-    <div class="carousel-item">
-      <img src="/assets/img/camarones-tempurados.jpg" class="d-block w-100" alt="#">
-    </div>
-  </div>
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner" id="ContenedorCarrusel"></div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
@@ -54,44 +44,7 @@
 <section class="sub-navbar-separacion"> </section>
 
 <div class="container">
-  <div class="row row-cols-1 row-cols-md-2 g-4">
-    <div class="col">
-      <div class="card">
-        <img src="/assets/img/gatoGordo.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="/assets/img/bombones-surtidos.jpg" class="card-img-top" alt="#">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="/assets/img/brigadeiro.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="/assets/img/amelie.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div id="ProductosFavoritos" class="row row-cols-1 row-cols-md-3 g-4"></div>
 </div>
 <section class="sub-navbar-separacion"> </section>
 <section class="sub-navbar sub-navbar-servicios text-center py-4">
@@ -116,10 +69,36 @@
 </section>
 
 <section class="sub-navbar-separacion"> </section>
-<script src="js/informacion/productos.js"></script>
+
+<nav class="sub-navbar">
+  <div class="container text-center py-2">
+    <h2 class="m-0">Información</h2>
+  </div>
+</nav>
+
+<section class="container-fluid">
+  <div class="row g-0">
+    <!-- Lado izquierdo -->
+    <div class="col-md-6 d-flex align-items-center justify-content-center bg-final text-black-50 p-5">
+      <div class="text-center">
+        <h2 class="fw-bold">Sobre Nosotros</h2>
+        <p class="lead">Brúlée Catering & Event Design combina elegancia, sabor y creatividad en cada evento.</p>
+        <p class="lead">2025 Brúlée Catering & Event Desing — Pedido y retiro en tienda.</p>
+      </div>
+    </div>
+
+    <!-- Lado derecho -->
+    <div class="col-md-6 d-flex align-items-center justify-content-center bg-light p-5">
+      <img src="/assets/img/Logo.png" alt="Evento" class="img-fluid rounded shadow">
+    </div>
+  </div>
+</section>
+
+<script src="js/funciones/Funciones.js"></script>
+<script src="js/informacion/Info.js"></script>
+<script src="js/informacion/InfoCompleta.js"></script>
 <!--<script src="js/paginas/IngresoSesion.js"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
     const myCarouselElement = document.querySelector('#carouselExample')
 

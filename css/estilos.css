@@ -13,6 +13,7 @@
     --max: 1100px;
     --black:0px;
     --navbar: #b484b5;
+    --final: #f4ddd4;
 }
 
 *{box-sizing:border-box}
@@ -36,6 +37,9 @@ body{
     font-family: 'Pacifico', cursive;
 }
 
+.bg-final{
+    background-color: var(--final);
+}
 .custom-navbar .navbar-brand:hover {
     color: #4b0f35;
 }
