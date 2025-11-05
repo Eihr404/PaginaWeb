@@ -2,7 +2,7 @@
 
 const productos = {
     macarrones: {
-        titulo: "Macarrones",
+        titulo: "macarrones",
         nombres: [
             "Macarrón de fresa",
             "Macarrón de chocolate",
@@ -16,7 +16,7 @@ const productos = {
         imagen:["assets/img/macarron-de-fresa.jpg"]
     },
     shots: {
-        titulo: "Shots",
+        titulo: "shots",
         nombres: [
             "Mousse de maracuyá",
             "Mousse de chocolate blanco o negro",
@@ -34,7 +34,7 @@ const productos = {
         imagen:["assets/img/shot-mousse-de-maracuya.jpg"]
     },
     bombones: {
-        titulo: "Bombones",
+        titulo: "bombones",
         nombres: [
             "Bombones (rellenos de crema de maracuyá, fresa, café, licor, menta)",
             "Trufas (relleno de crema de maracuyá, fresa, café, licor, menta)"
@@ -44,14 +44,14 @@ const productos = {
         imagen:["assets/img/bombones-surtidos.jpg"]
     },
     alfajores: {
-        titulo: "Alfajores",
+        titulo: "alfajores",
         nombres: ["Alfajor relleno de dulce de leche"],
         precios: ["0.80"],
         descripcion:["Dos galletas redondas unidas en el centro por un dulce de leche, llevando azúcar en polvo en la parte superior"],
         imagen:["assets/img/alfajor.jpg"]
     },
     tartaletas: {
-        titulo: "Tartaletas",
+        titulo: "tartaletas",
         nombres: [
             "Mini tartaleta Cheesecake NY",
             "Mini tartaleta Pie de limón",
@@ -65,14 +65,14 @@ const productos = {
         imagen:["assets/img/mini-tartaleta-de-frutas.jpg"]
     },
     brigadeiro:{
-        titulo: "Brigadeiro",
+        titulo: "brigadeiro",
         nombres: ["Brigadeiro"],
         precios: ["0.70"],
         descripcion: ["Dulce de chocolate típico brasileño parecido a una trufa de chocolate, hecho de leche condensada cacao y amntequilla"],
         imagen:["assets/img/brigadeiro.jpg"]
     },
     pinchosFrutas:{
-        titulo: "Pinchos",
+        titulo: "pinchosFrutas",
         nombres: [
             "Pincho de fresas 15cm",
             "Pincho de fresas cubiertas de chocolate 15cm",
