@@ -1,3 +1,31 @@
+
+
+/**
+ * prerequisitos
+ * boton de mostrar carrito
+ * dentro del boton, debe de existir el boton confirmar
+ * procesos
+ * se preciona el boton confirmar
+ * aparece un cuadro con un mensaje de loading
+ * despues de 2 segundos aparece un mensaje de error o exito, esto dependiendo si se realizo la operacion
+ */
+
+/**
+ * prerequisitos
+ * formulario (id= form)
+ * boton
+ * set time out
+ * cuadro de error, exito y de carga (clase)
+ * Proceso
+ * 1. USR ingresa a su carrito mediante el boton mostrar carrito
+ * 2. USR presiona en comprar dentro del carrito
+ * 3. el sistema verifica si los campos estan llenos
+ * 4. el sistema muestra cartel de carga (2 segundo)
+ * 5. el sistema oculta el formulario
+ * 6. recibe una respuesta del servidor
+ * 6.1 si 6. es true, se muestra mensaje de exitos
+ * 6.2 si 6. es false. se muestra mensaje de error
+ */
 // detalleProducto.html?categoria=macarrones&imagen=assets/img/macarron-de-fresa.jpg
 
 const producto_cat = document.getElementById("Producto-Catalogo"); // Se obtiene el objeto de div por medio del id Producto-Catalogo para agregar los productos
@@ -80,6 +108,31 @@ function mostrarProductos(){
     btn.textContent = "Comprar";
 
     contenedorBotones.appendChild(btn);
+
+    btn.addEventListener("click", function () {
+      let Operacion = true;
+      const modalLoading = new bootstrap.Modal(document.getElementById('Loading'));
+      const modalExito = new bootstrap.Modal(document.getElementById('Exito'));
+      const modalError = new bootstrap.Modal(document.getElementById('Error'));
+      const modalCarrito = bootstrap.Modal.getInstance(document.getElementById("modalCarrito"));
+
+      if (modal) modalCarrito.hide();
+      // Mostrar modal de carga
+      modalLoading.show();
+
+      setTimeout(() => {
+        modalLoading.hide();
+
+        if (Operacion) {
+          modalExito.show();
+        } else {
+          modalError.show();
+
+        }
+      }, 3000);
+
+    });
+
   }
   else{
 
