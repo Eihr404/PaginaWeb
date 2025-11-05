@@ -64,9 +64,9 @@ function Carrito() {
 
             // Cerrar modal
             const modal = bootstrap.Modal.getInstance(document.getElementById("modalCompra"));
-            modal.hide();
+            if (modal) modal.hide();
 
-            // Notificar
+          // Notificar
             alert(`${cantidad} unidad(es) de "${nombre}" agregado(s) al carrito. Por un total de ${precioTotal} a cada uno por ${precioUnitario}`);
             document.getElementById("formCompra").reset();
             inputCantidad.value = 1;
