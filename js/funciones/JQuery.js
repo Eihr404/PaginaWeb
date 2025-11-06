@@ -11,3 +11,9 @@ $(document).ready(function(){
     }, 2000);
   });
 });
+
+$(document).ready(function(){
+  $("#form-datos".on("submit", function(){
+    this.preventDefault();
+  }))
+})
