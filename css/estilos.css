@@ -531,3 +531,64 @@ footer{background:#fff2f6; border-top:1px solid var(--b); text-align:center; pad
         font-size: 1.4rem;
     }
 }
+
+
+/* Login final final este si */
+
+.login-page {
+    min-height: calc(100vh - 100px);
+    display: flex;
+    align-items: center;
+}
+
+
+.login-card {
+    background: #fff7fb;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.07);
+    margin: 40px;
+}
+
+.circle-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: var(--brand);
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: 24px;
+    margin: 0 auto 0.5rem;
+}
+
+
+
+.decor-col img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 6px 25px rgba(0,0,0,.08);
+    transition: transform 0.3s ease;
+}
+
+.decor-col img:hover {
+    transform: scale(1.05);
+}
+
+
+@media (min-width: 1200px) {
+    .decor-col img {
+        max-width: 260px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .decor-col {
+        display: none;
+    }
+    .login-page {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+}
