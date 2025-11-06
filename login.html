@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brúlée — Inicio de Sesión</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <nav class="navbar sticky-top custom-navbar">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+      <a href="index.html" class="btn btn-outline-primary btn-sm me-2">
+        Inicio
+      </a>
+      <a class="navbar-brand position-absolute top-50 start-50 translate-middle" href="index.html">
+        <img src="/assets/img/Logo.png" alt="Logo" width="100" height="100" class="d-block mx-auto">
+      </a>
+      <div class="d-flex gap-2 ms-auto">
+        <a href="productos.html" class="btn btn-outline-success">
+          Iniciar a comprar
+        </a>
+        <a href="ingreso.html" class="btn btn-outline-secondary btn-sm">
+          Usuario
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+  <main class="container-fluid login-page">
+    <div class="row w-100 justify-content-center g-4">
+
+      <div class="col-lg-6 d-flex justify-content-center align-items-center gap-4 decor-col">
+        <div class="d-flex flex-column gap-4">
+          <img src="assets/img/gatoGordo.jpg" alt="Gato Gordo Roll" class="img-fluid rounded shadow-sm">
+          <img src="assets/img/julieta.jpg" alt="Detalle con flores" class="img-fluid rounded shadow-sm">
+        </div>
+        <img src="assets/img/macarron-de-fresa.jpg" alt="Macarron" class="img-fluid rounded shadow-sm">
+      </div>
+
+
+
+      <div class="col-lg-4 col-md-8">
+        <div class="login-card p-4">
+          <div class="text-center mb-4">
+            <div class="circle-icon">
+              D:
+            </div>
+            <h5 class="fw-bold mb-0">
+              Login
+            </h5>
+          </div>
+
+          <form class="mb-4">
+            <div class="mb-3">
+              <label class="form-label small">
+                Nombre
+              </label>
+              <input type="text" class="form-control" placeholder="Nombre">
+            </div>
+            <div class="mb-3">
+              <label class="form-label small">
+                Gmail
+              </label>
+              <input type="email" class="form-control" placeholder="correo@gmail.com">
+            </div>
+            <div class="mb-3">
+              <label class="form-label small">
+                Contraseña
+              </label>
+              <input type="password" class="form-control" placeholder="**************">
+            </div>
+          </form>
+
+          <div class="text-center mb-3">
+            <div class="circle-icon">
+              :D
+            </div>
+            <h6 class="fw-semibold mb-0">
+              Datos de tarjeta
+            </h6>
+          </div>
+
+          <form>
+            <div class="mb-3">
+              <label class="form-label small">Titular</label>
+              <input type="text" class="form-control" placeholder="Nombre">
+            </div>
+            <div class="mb-3">
+              <label class="form-label small">Número de tarjeta</label>
+              <input type="text" class="form-control" placeholder="0000 0000 0000 0000">
+            </div>
+            <div class="row g-2 mb-4">
+              <div class="col">
+                <label class="form-label small">Fecha</label>
+                <input type="text" class="form-control" placeholder="MM/AA">
+              </div>
+              <div class="col-4">
+                <label class="form-label small">CVV</label>
+                <input type="text" class="form-control" placeholder="123">
+              </div>
+            </div>
+            <div class="text-end">
+              <button type="submit" class="btn btn-login px-4">Iniciar</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
