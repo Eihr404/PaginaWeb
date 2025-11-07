@@ -47,9 +47,8 @@ function agregarProducto(){
     }
 
 }
-agregarProducto();
 
-}
+agregarProducto();
 
 function mostrarProductos(){
   //carrito
