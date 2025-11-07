@@ -27,30 +27,27 @@
  * 6.2 si 6. es false. se muestra mensaje de error
  */
 
-$(document).ready(function() {
-    function agregarProducto() {
-        $.each(productos, function(producto, data) {
-            const titulo = data.titulo;
-            const imagen = data.imagen[0]; // Primer elemento del array de imagen
+const producto_cat = document.getElementById("Producto-Catalogo"); // Se obtiene el objeto de div por medio del id Producto-Catalogo para agregar los productos
 
-            const elemento = $(`
-                <div class="col-12 col-sm-6 col-md-3 mb-4">
-                    <a href="detalleProducto.html?categoria=${titulo}&imagen=${imagen}">
-                        <img class="Imagen-producto" src="${imagen}" alt="${titulo}">
-                    </a>
-                    <h2 class="Titulo-producto">${titulo}</h2>
-                </div>
-            `);
+function agregarProducto(){
+    for (const producto in productos) {
+        const data = productos[producto];
+        const titulo = data.titulo;
+        const imagen = data.imagen[0]; // Usamos el primer elemento del array de imagen
 
-            // Añadir el elemento al contenedor con el id Producto-Catalogo
-            $('#Producto-Catalogo').append(elemento);
-        });
+        const elemento = document.createElement("div");
+        elemento.className = "col-12 col-sm-6 col-md-3 mb-4";
+        elemento.innerHTML = `
+      <a href="detalleProducto.html?categoria=${titulo}&imagen=${imagen}">
+        <img class="Imagen-producto" src="${imagen}" alt="${titulo}">
+      </a>
+      <h2 class="Titulo-producto">${titulo}</h2>
+    `;
+        producto_cat.appendChild(elemento);
     }
-    // Llamar a la función para agregar los productos
-    agregarProducto();
-});
 
-function removerProducto(){
+}
+agregarProducto();
 
 }
 
@@ -142,5 +139,6 @@ function mostrarProductos(){
   const modal = bootstrap.Modal.getInstance(document.getElementById("modalCarrito"));
   if (modal) modal.hide();
 }
+
 
 
