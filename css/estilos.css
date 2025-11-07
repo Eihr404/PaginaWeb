@@ -32,6 +32,8 @@ body{
     height: 100px;
 }
 
+
+
 .custom-navbar .navbar-brand {
     color: #7a1f4b; /* Vino oscuro */
     font-family: 'Pacifico', cursive;
@@ -63,6 +65,11 @@ body{
     font-weight: 600;
 }
 
+.sub-navbar-servicios {
+    margin-left: 40px;
+    margin-right: 40px;
+    border-radius: 20px 20px 20px 20px;
+}
 .sub-navbar-servicios img {
     width: 100px;
     height: 100px;
