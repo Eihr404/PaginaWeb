@@ -3,7 +3,6 @@
 /* Poner imagenes en el grid*/
 document.addEventListener("DOMContentLoaded", ()=>{
 
-
   /* Funcion e ID para los productos de las Grid Cards*/
   const contenedorGrid = document.getElementById("ProductosFavoritos")
 
@@ -12,9 +11,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
   for(let i=0;i<4;i++){
     const categoria = productosCompletos[CadenaCategorias[i]];
 
-    const nombre=categoria.nombres[0];
-    const descripcion=categoria.descripciones[0];
-    const imagen= categoria.imagenes[0];
+    const nombre=categoria.nombre[0];
+    const descripcion=categoria.descripcion[0];
+    const imagen= categoria.imagen[0];
     const precio= categoria.precios[0];
 
     const card= document.createElement("div");
