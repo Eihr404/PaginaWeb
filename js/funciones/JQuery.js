@@ -9,12 +9,6 @@ $(document).ready(function(){
     setTimeout(() => {
       cuadro.html("<p>Información de contacto: <br> Tel: 0999999999</p>");
     }, 2000);
-
-    setTimeout(()=>{
-      cuadro.fadeOut(500)
-    },6000);
-
-
   });
 });
 
