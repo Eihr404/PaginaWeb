@@ -56,18 +56,3 @@ window.IngresoSesion = {
         }
     }
 };
-
-// Botón para salir
-document.addEventListener("click", function (e) {
-    if (e.target.matches("[data-salir-sesion]")) {
-        e.preventDefault();
-        IngresoSesion.CerrarSesion();
-        IngresoSesion.ActualizarDatos();
-        alert("Sesión cerrada correctamente");
-    }
-});
-
-// Al cargar la página
-window.addEventListener("DOMContentLoaded", function () {
-    IngresoSesion.ActualizarDatos();
-});
