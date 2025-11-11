@@ -16,6 +16,14 @@
     --final: #f4ddd4;
 }
 
+.btn:focus,
+.btn:active {
+    transform: translateY(-3px); /* Eleva ligeramente el botón */
+    color: #6F4E37 !important;   /* Cambia el color del texto a café */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para efecto flotante */
+    transition: all 0.2s ease; /* Transición suave */
+}
+
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
@@ -31,6 +39,8 @@ body{
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     height: 100px;
 }
+
+
 
 .custom-navbar .navbar-brand {
     color: #7a1f4b; /* Vino oscuro */
@@ -63,6 +73,11 @@ body{
     font-weight: 600;
 }
 
+.sub-navbar-servicios {
+    margin-left: 40px;
+    margin-right: 40px;
+    border-radius: 20px 20px 20px 20px;
+}
 .sub-navbar-servicios img {
     width: 100px;
     height: 100px;
