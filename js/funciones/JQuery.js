@@ -108,3 +108,35 @@ $(document).on("click", "[data-salir-sesion]", function(e) {
 $(document).ready(function() {
     IngresoSesion.ActualizarDatos();
 });
+
+
+$(document).ready(function () {
+    $("#btnIniciar").click(function (e) {
+        e.preventDefault(); // Evita que el botón recargue la página
+
+        let usuario = $("#usuario").val().trim();
+        let clave = $("#clave").val().trim();
+
+        
+        $("#error").text("");
+
+        
+        if (usuario === "" || clave === "") {
+            $("#error").text("Por favor, completa todos los campos.");
+            return;
+        }
+
+        if (usuario.length < 3) {
+            $("#error").text("El usuario debe tener al menos 3 caracteres.");
+            return;
+        }
+
+        if (clave.length < 4) {
+            $("#error").text("La contraseña debe tener mínimo 4 caracteres.");
+            return;
+        }
+
+        
+        IngresoSesion.IniciarSesion(usuario, clave);
+    });
+});
