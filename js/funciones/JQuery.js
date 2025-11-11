@@ -112,7 +112,7 @@ $(document).ready(function() {
 
 $(document).ready(function () {
     $("#btnIniciar").click(function (e) {
-        e.preventDefault(); // Evita que el botón recargue la página
+        e.preventDefault(); 
 
         let usuario = $("#usuario").val().trim();
         let clave = $("#clave").val().trim();
