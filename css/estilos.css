@@ -16,6 +16,14 @@
     --final: #f4ddd4;
 }
 
+.btn:focus,
+.btn:active {
+    transform: translateY(-3px); /* Eleva ligeramente el botón */
+    color: #6F4E37 !important;   /* Cambia el color del texto a café */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para efecto flotante */
+    transition: all 0.2s ease; /* Transición suave */
+}
+
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
