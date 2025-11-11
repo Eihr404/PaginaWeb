@@ -27,11 +27,13 @@
  * 6.2 si 6. es false. se muestra mensaje de error
  */
 
+const producto_cat = document.getElementById("Producto-Catalogo"); // Se obtiene el objeto de div por medio del id Producto-Catalogo para agregar los productos
+
 $(document).ready(function() {
     function agregarProducto() {
         $.each(productos, function(producto, data) {
             const titulo = data.titulo;
-            const imagen = data.imagen[0]; // Primer elemento del array de imagen
+            const imagen = data.imagen[0]; // Usamos el primer elemento del array de imagen
 
             const elemento = $(`
                 <div class="col-12 col-sm-6 col-md-3 mb-4">
@@ -42,17 +44,14 @@ $(document).ready(function() {
                 </div>
             `);
 
-            // Añadir el elemento al contenedor con el id Producto-Catalogo
-            $('#Producto-Catalogo').append(elemento);
+            // Añadimos el elemento al contenedor con el id Producto-Catalogo
+            $('#Producto-Catalogo').append(elemento); // Corregir el id aquí
         });
     }
+
     // Llamar a la función para agregar los productos
     agregarProducto();
 });
-
-function removerProducto(){
-
-}
 
 function mostrarProductos(){
   //carrito
@@ -142,5 +141,7 @@ function mostrarProductos(){
   const modal = bootstrap.Modal.getInstance(document.getElementById("modalCarrito"));
   if (modal) modal.hide();
 }
+
+
 
 
