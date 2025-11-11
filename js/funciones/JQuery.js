@@ -93,3 +93,18 @@ $(document).ready(function(b){
     $contenedorCarrusel.append($item);
   }
 });
+
+
+
+//Para salir
+$(document).on("click", "[data-salir-sesion]", function(e) {
+    e.preventDefault();
+    IngresoSesion.CerrarSesion();
+    IngresoSesion.ActualizarDatos();
+    alert("Sesión cerrada correctamente");
+});
+
+//al cargar la página
+$(document).ready(function() {
+    IngresoSesion.ActualizarDatos();
+});
