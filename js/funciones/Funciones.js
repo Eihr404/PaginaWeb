@@ -1,36 +1,36 @@
 
 
 /* Poner imagenes en el grid*/
-document.addEventListener("DOMContentLoaded", ()=>{
+/*
+$(document).ready(function(){
 
   /* Funcion e ID para los productos de las Grid Cards*/
-  const contenedorGrid = document.getElementById("ProductosFavoritos")
+/*
+const $contenedorGrid = $("ProductosFavoritos");
 
-  const CadenaCategorias = Object.keys(productosCompletos);
+const CadenaCategorias = Object.keys(productosCompletos);
 
-  for(let i=0;i<4;i++){
-    const categoria = productosCompletos[CadenaCategorias[i]];
+for(let i=0;i<4;i++){
+  const categoria = productosCompletos[CadenaCategorias[i]];
 
-    const nombre=categoria.nombre[0];
-    const descripcion=categoria.descripcion[0];
-    const imagen= categoria.imagen[0];
-    const card= document.createElement("div");
-    card.classList.add("col-md-3","mb-4");
-
-    card.innerHTML =`
-      <div class="card h-100 shadow-sm">
-        <img src="${imagen}" class="card-img-top" alt="${nombre}">
-        <div class="card-body">
-          <h5 class="card-title">${nombre}</h5>
-          <p class="card-text">${descripcion}</p>       
-        </div>
+  const nombre=categoria.nombre[0];
+  const descripcion=categoria.descripcion[0];
+  const imagen= categoria.imagen[0];
+  const $card= $(`<div class="col-md-3" "mb-4">
+    <div class="card h-100 shadow-sm">
+      <img src="${imagen}" class="card-img-top" alt="${nombre}">
+      <div class="card-body">
+        <h5 class="card-title">${nombre}</h5>
+        <p class="card-text">${descripcion}</p>
       </div>
-    `;
-    contenedorGrid.appendChild(card);
-  }
+    </div>
+  </div>
+  `);
+  $contenedorGrid.appendChild($card);
+}
 
-});
-
+});*/
+/*
 document.addEventListener("DOMContentLoaded", ()=>{
   const contenedorCarrusel = document.getElementById("ContenedorCarrusel");
   const cadenaCategorias = Object.keys(productosCompletos);
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     item.innerHTML = `
     <img src="${imagen}" class="d-block w-100" alt="${nombre}">
-    <div class="carousel-caption d-none d-md-block">        
+    <div class="carousel-caption d-none d-md-block">
     </div>
   `;
 
@@ -62,4 +62,4 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
   }
 
-})
+})*/
