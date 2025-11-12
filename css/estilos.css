@@ -576,7 +576,11 @@ footer{background:#fff2f6; border-top:1px solid var(--b); text-align:center; pad
     margin: 0 auto 0.5rem;
 }
 
-
+[data-cuenta] {
+    font-weight: 600;
+    color: #444;
+    font-size: 0.95rem;
+}
 
 .decor-col img {
     max-width: 300px;
