@@ -6,18 +6,6 @@ $(document).ready(function() {
       cuadro.fadeOut(500);
     }, 6000);
   });
-  $("#btnInicio").on("click", function(e) {
-    e.preventDefault();
-
-    const cuadro2 = $("#cuadro2");
-    cuadro2.html("<p><strong>Cargando...</strong></p>").fadeIn(300);
-    setTimeout(() => {
-      cuadro2.html("<p>Inicio Exitoso <br> Puede agregar productos al carrito</p>");
-    }, 2000);
-    setTimeout(() => {
-      cuadro.fadeOut(500);
-    }, 6000);
-  });
 
 
   $("#btnInicio").on("click", function(e) {
@@ -41,7 +29,7 @@ $(document).ready(function(a){
 
   const CadenaCategorias = Object.keys(productosCompletos);
 
-  for(let i=0;i<4;i++){
+    for(let i=0;i<4;i++){
     const categoria = productosCompletos[CadenaCategorias[i]];
 
     const nombre=categoria.nombre[0];
@@ -67,7 +55,7 @@ $(document).ready(function(b){
   const $contenedorCarrusel = $("#ContenedorCarrusel");
   const cadenaCategorias = Object.keys(productosCompletos);
 
-  for(let i=0;i<3;i++){
+    for(let i=0;i<3;i++){
     let categoria;
 
     if(i === 0){
@@ -95,48 +83,94 @@ $(document).ready(function(b){
 });
 
 
-
-//Para salir
-$(document).on("click", "[data-salir-sesion]", function(e) {
+//login
+$(document).on("click", "[data-requiere-sesion]", function (e) {
+  if (window.IngresoSesion && !IngresoSesion.SesionIniciada()) {
     e.preventDefault();
+    window.location.href = "login.html";
+  }
+});
+
+//cerrar sesión
+$(document).on("click", "[data-salir-sesion]", function (e) {
+  e.preventDefault();
+  if (window.IngresoSesion) {
     IngresoSesion.CerrarSesion();
     IngresoSesion.ActualizarDatos();
-    alert("Sesión cerrada correctamente");
+  }
+  alert("Has cerrado sesión correctamente 🩵");
+  window.location.href = "index.html";
 });
 
-//al cargar la página
-$(document).ready(function() {
-    IngresoSesion.ActualizarDatos();
-});
 
 
 $(document).ready(function () {
-    $("#btnIniciar").click(function (e) {
-        e.preventDefault(); 
+  if (!$("#btnInicioS").length) return;
+  $("#btnInicioS").click(function (e) {
+    e.preventDefault();
 
-        let usuario = $("#usuario").val().trim();
-        let clave = $("#clave").val().trim();
+    const nombre = $("#usuario").val().trim();
+    const correo = $("#correo").val().trim();
+    const clave = $("#clave").val().trim();
+    const $msg = $("#msg");
 
-        
-        $("#error").text("");
+    function mostrarMensaje(texto, tipo = "error") {
+      const colores = {
+        error: "background:#ffe7e7; border:1px solid #ff8a8a; color:#a30000;",
+        ok: "background:#e6ffef; border:1px solid #7ddc9c; color:#075828;"
+      };
+      $msg.attr("style", `display:block; padding:8px 12px; border-radius:6px; font-size:0.9rem; ${colores[tipo]}`).text(texto);}
 
-        
-        if (usuario === "" || clave === "") {
-            $("#error").text("Por favor, completa todos los campos.");
-            return;
-        }
+    if (!nombre || !correo || !clave) {
+      mostrarMensaje("Todos los campos deben estar llenos.");
+      return;
+    }
 
-        if (usuario.length < 3) {
-            $("#error").text("El usuario debe tener al menos 3 caracteres.");
-            return;
-        }
+    const patronEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!patronEmail.test(correo)) {
+      mostrarMensaje('Escribe un correo válido "usuario@gmail.com"');
+      return;
+    }
 
-        if (clave.length < 4) {
-            $("#error").text("La contraseña debe tener mínimo 4 caracteres.");
-            return;
-        }
+    const dominio = correo.split("@")[1].toLowerCase();
+    const dominiosPermitidos = ["gmail.com", "outlook.com", "hotmail.com", "yahoo.com"];
+    if (!dominiosPermitidos.includes(dominio)) {
+      mostrarMensaje(`El dominio "${dominio}" no está permitido. Usa gmail, outlook, hotmail o yahoo.`);
+      return;
+    }
 
-        
-        IngresoSesion.IniciarSesion(usuario, clave);
-    });
+    if (nombre.length < 3) {
+      mostrarMensaje("El nombre debe tener al menos 3 caracteres.");
+      return;
+    }
+
+    if (clave.length < 6) {
+      mostrarMensaje("La contraseña debe tener mínimo 6 caracteres.");
+      return;
+    }
+
+    if (window.IngresoSesion) {
+      IngresoSesion.IniciarSesion(correo, nombre);
+      IngresoSesion.ActualizarDatos();
+    }
+
+    mostrarMensaje("Se pudo iniciar sesión", "ok");
+
+    setTimeout(function () {
+      const referrer = document.referrer;
+      if (referrer && referrer.includes(window.location.origin)) {
+        window.location.href = referrer;
+      } else {
+        window.location.href = "index.html";
+      }
+    }, 1200);
+  });
 });
+// Fin login
+
+$(window).on("load", function () {
+  if (window.IngresoSesion) {
+    IngresoSesion.ActualizarDatos();
+  }
+});
+

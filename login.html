@@ -23,9 +23,6 @@
         <a href="productos.html" class="btn btn-outline-success">
           Iniciar a comprar
         </a>
-        <a href="ingreso.html" class="btn btn-outline-secondary btn-sm">
-          Usuario
-        </a>
       </div>
     </div>
   </nav>
@@ -60,33 +57,25 @@
               <label class="form-label small">
                 Nombre
               </label>
-              <input type="text" class="form-control" placeholder="Nombre">
+              <input id="usuario" type="text" class="form-control" placeholder="Nombre">
             </div>
             <div class="mb-3">
               <label class="form-label small">
                 Gmail
               </label>
-              <input type="email" class="form-control" placeholder="correo@gmail.com">
+              <input id="correo" type="email" class="form-control" placeholder="correo@gmail.com">
             </div>
             <div class="mb-3">
               <label class="form-label small">
                 Contraseña
               </label>
-              <input type="password" class="form-control" placeholder="**************">
+              <input id="clave" type="password" class="form-control" placeholder="**************">
             </div>
 
-            <div class="text-end">
-              <button id="btnInicio" class="btn btn-primary">Iniciar</button>
-              <div id="cuadro2" style="
-                display:none;
-                border:1px solid #ccc;
-                padding:20px;
-                margin-top:10px;
-                width:250px;
-                text-align:center;
-                border-radius:10px;
-              ">
-            </div>
+            <div id="msg" class="mt-2" style="display:none;"></div>
+            <br>
+            <div class="text-end row">
+              <button id="btnInicioS" class="btn btn-primary">Iniciar</button>
             </div>
           </form>
 
@@ -108,3 +97,15 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+
+<!--Scripts por si se agrega en otra página:
+<script src="/js/funciones/IngresoSesion.js"></script>
+<script>
+  $(function () {
+    if (!IngresoSesion.SesionIniciada()) {
+      window.location.href = "ingreso.html";
+    }
+  });
+</script>
+ -->
