@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brúlée — Contactos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <nav class="navbar sticky-top custom-navbar">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+    <a href="index.html" class="btn btn-outline-primary btn-sm me-2">
+      Inicio
+    </a>
+    <a class="navbar-brand position-absolute top-50 start-50 translate-middle" href="index.html">
+      <img src="/assets/img/Logo.png" alt="Logo" width="100" height="100" class="d-block mx-auto">
+    </a>
+    <div class="d-flex gap-2 ms-auto">
+      <a href="productos.html" class="btn btn-outline-success">
+        Iniciar a comprar
+      </a>
+    </div>
+  </div>
+</nav>
+
+  <main class="container-fluid login-page">
+    <div class="row w-100 justify-content-center g-4">
+
+      <div class="col-lg-6 d-flex justify-content-center align-items-center gap-4 decor-col">
+        <div class="d-flex flex-column gap-4">
+          <img src="assets/img/gatoGordo.jpg" alt="Gato Gordo Roll" class="img-fluid rounded shadow-sm">
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-8">
+        <div class="login-card p-4">
+          <img src="assets/img/julieta.jpg" alt="Detalle con flores" class="img-fluid rounded shadow-sm">
+        </div>
+      </div>
+
+
+      <div class="col-lg-4 col-md-8">
+        <div class="login-card p-4">
+          <img src="assets/img/macarron-de-fresa.jpg" alt="Macarron" class="img-fluid rounded shadow-sm">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row w-100 justify-content-center g-4">
+      <div class="col-lg-6 d-flex justify-content-center align-items-center gap-4 decor-col">
+        <div class="text-center mb-8">
+          <h5>
+            Contáctanos
+          </h5>
+          <div class="circle-icon">
+            D:
+          </div>
+
+        </div>
+
+        <form id="form-datos" class="mb-4">
+          <div class="mb-3">
+            <label class="form-label small">
+              Nombre
+            </label>
+            <input id="contacto-nombre" type="text" class="form-control" placeholder="Nombre">
+          </div>
+          <div class="mb-3">
+            <label class="form-label small">
+              Correo
+            </label>
+            <input id="contacto-correo" type="email" class="form-control" placeholder="correo@gmail.com">
+          </div>
+          <div class="mb-3">
+            <label class="form-label small">
+              Teléfono
+            </label>
+            <input id="contacto-telefono" type="text" class="form-control" placeholder="00 000 000 00">
+          </div>
+          <div class="mb-3">
+            <label class="form-label small">
+              Asunto
+            </label>
+            <input id="contacto-asunto" type="text" class="form-control" placeholder="Escribe aquí...">
+          </div>
+
+          <div id="msg" class="mt-2" style="display:none;"></div>
+          <br>
+          <div class="text-end row">
+            <button id="btnEnviarContacto" class="btn btn-primary">Enviar</button>
+          </div>
+        </form>
+
+        <div class="text-center mb-3">
+          <div class="circle-icon">
+            :D
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="/assets/varios/jquery-3.7.1.min.js"></script>
+  <script src="/js/funciones/IngresoSesion.js"></script>
+  <script src="/js/funciones/JQuery.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
