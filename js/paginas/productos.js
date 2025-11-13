@@ -1,147 +1,40 @@
+// =============================
+// CATALOGO DE PRODUCTOS
+// =============================
 
+$(document).ready(function () {
+  const $productoCat = $("#Producto-Catalogo");
 
-/**
- * prerequisitos
- * boton de mostrar carrito
- * dentro del boton, debe de existir el boton confirmar
- * procesos
- * se preciona el boton confirmar
- * aparece un cuadro con un mensaje de loading
- * despues de 2 segundos aparece un mensaje de error o exito, esto dependiendo si se realizo la operacion
- */
+  function agregarProductos() {
+    // Agrupamos productos por categoría
+    const categoriasUnicas = [...new Set(productos.map(p => p.CAT_Codigo))];
 
-/**
- * prerequisitos
- * formulario (id= form)
- * boton
- * set time out
- * cuadro de error, exito y de carga (clase)
- * Proceso
- * 1. USR ingresa a su carrito mediante el boton mostrar carrito
- * 2. USR presiona en comprar dentro del carrito
- * 3. el sistema verifica si los campos estan llenos
- * 4. el sistema muestra cartel de carga (2 segundo)
- * 5. el sistema oculta el formulario
- * 6. recibe una respuesta del servidor
- * 6.1 si 6. es true, se muestra mensaje de exitos
- * 6.2 si 6. es false. se muestra mensaje de error
- */
+    categoriasUnicas.forEach(codigoCat => {
+      const categoria = categorias.find(c => c.CAT_Codigo === codigoCat);
+      const productosCat = productos.filter(p => p.CAT_Codigo === codigoCat);
 
-const producto_cat = document.getElementById("Producto-Catalogo"); // Se obtiene el objeto de div por medio del id Producto-Catalogo para agregar los productos
+      // Título de categoría
+      const $titulo = $(`<h2 class="mt-5 mb-3 text-center">${categoria.CAT_Nombre}</h2>`);
+      $productoCat.append($titulo);
 
-$(document).ready(function() {
-    function agregarProducto() {
-        $.each(productos, function(producto, data) {
-            const titulo = data.titulo;
-            const imagen = data.imagen[0]; // Usamos el primer elemento del array de imagen
+      const $fila = $('<div class="row"></div>');
 
-            const elemento = $(`
-                <div class="col-12 col-sm-6 col-md-3 mb-4">
-                    <a href="detalleProducto.html?categoria=${titulo}&imagen=${imagen}">
-                        <img class="Imagen-producto" src="${imagen}" alt="${titulo}">
-                    </a>
-                    <h2 class="Titulo-producto">${titulo}</h2>
-                </div>
-            `);
+      productosCat.forEach(prod => {
+        const $col = $(`
+                    <div class="col-12 col-sm-6 col-md-3 mb-4 text-center">
+                        <a href="detalleProducto.html?PRD_Codigo=${prod.PRD_Codigo}&CAT_Codigo=${prod.CAT_Codigo}">
+                            <img class="Imagen-producto" src="${prod.PRD_Imagen}" alt="${prod.PRD_Nombre}">
+                        </a>
+                        <h5 class="Titulo-producto mt-2">${prod.PRD_Nombre}</h5>
+                        <p>$${prod.PRD_Precio}</p>
+                    </div>
+                `);
+        $fila.append($col);
+      });
 
-            // Añadimos el elemento al contenedor con el id Producto-Catalogo
-            $('#Producto-Catalogo').append(elemento); // Corregir el id aquí
-        });
-    }
-
-    // Llamar a la función para agregar los productos
-    agregarProducto();
-});
-
-function mostrarProductos(){
-  //carrito
-  let carrito = [];
-  const carritoGuardado = localStorage.getItem("carrito");
-
-  if (carritoGuardado) {
-    carrito = JSON.parse(carritoGuardado);
-  }
-
-  let total = 0;
-  const contenedorCarrito = document.getElementById("contenedor-carrito");
-  contenedorCarrito.innerHTML = "";
-
-  const lista = document.createElement("ul");
-  lista.classList.add("list-group");
-
-  const botonExistente = document.getElementById("btn-comprar");
-  if (botonExistente) {
-    botonExistente.remove();
-  }
-
-  if (carrito.length > 0) {
-    const contenedorBotones = document.getElementById("contenedor-botones");
-    for (let i = 0; i < carrito.length; i++) {
-      const item = carrito[i];
-      const [categoria, numero] = item.productoId.split(" ");
-      const index = parseInt(numero) - 1;
-      const data = productos[categoria];
-      const nombre = data.nombres[index];
-      const precioUnitario = parseFloat(data.precios[index]);
-      const cantidad = item.cantidad;
-      const precioTotal = precioUnitario * cantidad;
-      total += precioTotal;
-
-      const li = document.createElement("li");
-      li.classList.add("list-group-item");
-      li.textContent = `${nombre} - cantidad: ${item.cantidad} - precio unitario: $${precioUnitario.toFixed(2)}`;
-      lista.appendChild(li);
-    }
-
-    contenedorCarrito.appendChild(lista);
-
-    const totalTexto = document.createElement("p");
-    totalTexto.classList.add("mt-3", "fw-bold");
-    totalTexto.textContent = `Precio total: $${total.toFixed(2)}`;
-    contenedorCarrito.appendChild(totalTexto);
-
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "btn btn-primary";
-    btn.id = "btn-comprar";
-    btn.textContent = "Comprar";
-
-    contenedorBotones.appendChild(btn);
-
-    btn.addEventListener("click", function () {
-      let Operacion = true;
-      const modalLoading = new bootstrap.Modal(document.getElementById('Loading'));
-      const modalExito = new bootstrap.Modal(document.getElementById('Exito'));
-      const modalError = new bootstrap.Modal(document.getElementById('Error'));
-      const modalCarrito = bootstrap.Modal.getInstance(document.getElementById("modalCarrito"));
-
-      if (modal) modalCarrito.hide();
-      // Mostrar modal de carga
-      modalLoading.show();
-
-      setTimeout(() => {
-        modalLoading.hide();
-
-        if (Operacion) {
-          modalExito.show();
-        } else {
-          modalError.show();
-
-        }
-      }, 3000);
-
+      $productoCat.append($fila);
     });
-
   }
-  else{
 
-    contenedorCarrito.innerHTML = `<p>Tu carrito está vacío.</p>`;
-  }
-  // Cerrar modal
-  const modal = bootstrap.Modal.getInstance(document.getElementById("modalCarrito"));
-  if (modal) modal.hide();
-}
-
-
-
-
+  agregarProductos();
+});
