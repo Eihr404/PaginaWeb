@@ -15,25 +15,32 @@
 
 <nav class="navbar sticky-top custom-navbar">
   <div class="container-fluid d-flex align-items-center justify-content-between">
+
+    <div class="d-flex gap-2 ms-auto">
+      <a href="contact.html" class="btn btn-sm" >
+        Contáctanos
+      </a>
+    </div>
+
     <a class="navbar-brand position-absolute top-50 start-50 translate-middle" href="#">
       <img src="/assets/img/Logo.png" alt="Logo" width="100" height="100" class="d-block mx-auto">
     </a>
 
 
-    <div class="d-flex gap-2 ms-auto align-items-center">
+    <div class="d-flex gap-2 ms-auto">
       <a href="productos.html" data-requiere-sesion class="btn btn-outline-success">
         Iniciar a comprar
       </a>
 
-      <span data-cuenta class="text-muted small me-2">Invitado</span>
+      <span data-cuenta class="text-muted small me-2 align-content-center">Invitado</span>
 
       <a href="login.html" data-inicio-sesion class="btn btn-outline-secondary btn-sm">
         Iniciar sesión
       </a>
 
-      <button data-salir-sesion class="btn btn-outline-danger btn-sm" style="display:none;">
+      <a data-salir-sesion class="btn btn-outline-danger btn-sm" style="display:none;">
         Cerrar sesión
-      </button>
+      </a>
     </div>
   </div>
 </nav>
