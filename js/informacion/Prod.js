@@ -41,19 +41,19 @@ const productos = [
   { PRD_Codigo: 22, CAT_Codigo: 8, PRD_Nombre: "Manzanas personalizadas", PRD_Precio: 3.50, PRD_Imagen: "assets/img/manzanas-personalizadas.jpg", PRD_Descripcion: "Manzanas cubiertas y decoradas." },
 
   // --- Fresas Individuales ---
-  { PRD_Codigo: 23, CAT_Codigo: 9, PRD_Nombre: "Fresa clásica chocolate", PRD_Precio: 0.45, PRD_Imagen: "assets/img/fresa-clasica-chocolate.jpg", PRD_Descripcion: "Bañada en chocolate clásico." },
-  { PRD_Codigo: 24, CAT_Codigo: 9, PRD_Nombre: "Fresa con toppings", PRD_Precio: 0.65, PRD_Imagen: "assets/img/fresa-con-toppings.jpg", PRD_Descripcion: "Decoraciones variadas." },
+  { PRD_Codigo: 23, CAT_Codigo: 9, PRD_Nombre: "Fresa clásica chocolate", PRD_Precio: 0.45, PRD_Imagen: "assets/img/manzanas-personalizadas.jpg", PRD_Descripcion: "Bañada en chocolate clásico." },
+  { PRD_Codigo: 24, CAT_Codigo: 9, PRD_Nombre: "Fresa con toppings", PRD_Precio: 0.65, PRD_Imagen: "assets/img/manzanas-personalizadas.jpg", PRD_Descripcion: "Decoraciones variadas." },
 
   // --- Dulces ---
   { PRD_Codigo: 25, CAT_Codigo: 10, PRD_Nombre: "Alfajor", PRD_Precio: 0.80, PRD_Imagen: "assets/img/alfajor.jpg", PRD_Descripcion: "Clásico alfajor relleno de dulce de leche." },
 
   // --- Tartaletas ---
   { PRD_Codigo: 26, CAT_Codigo: 11, PRD_Nombre: "Mini tartaleta de frutas", PRD_Precio: 0.85, PRD_Imagen: "assets/img/mini-tartaleta-de-frutas.jpg", PRD_Descripcion: "Base crocante y frutas." },
-  { PRD_Codigo: 27, CAT_Codigo: 11, PRD_Nombre: "Mini tartaleta Cheesecake NY", PRD_Precio: 1.20, PRD_Imagen: "assets/img/mini-tartaleta-cheesecake-ny.jpg", PRD_Descripcion: "Estilo New York." },
-  { PRD_Codigo: 28, CAT_Codigo: 11, PRD_Nombre: "Mini tartaleta Pie de limón", PRD_Precio: 1.00, PRD_Imagen: "assets/img/mini-tartaleta-pie-de-limon.jpg", PRD_Descripcion: "Toque cítrico." },
-  { PRD_Codigo: 29, CAT_Codigo: 11, PRD_Nombre: "Mini tartaleta Cheesecake oreo", PRD_Precio: 1.20, PRD_Imagen: "assets/img/mini-tartaleta-cheesecake-oreo.jpg", PRD_Descripcion: "Con galleta oreo." },
-  { PRD_Codigo: 30, CAT_Codigo: 11, PRD_Nombre: "Mini tartaleta Frutos del bosque", PRD_Precio: 1.00, PRD_Imagen: "assets/img/mini-tartaleta-frutos-del-bosque.jpg", PRD_Descripcion: "Frutos diversos." },
-  { PRD_Codigo: 31, CAT_Codigo: 11, PRD_Nombre: "Mini tartaleta de maracuyá", PRD_Precio: 0.85, PRD_Imagen: "assets/img/mini-tartaleta-de-maracuya.jpg", PRD_Descripcion: "Aromática y fresca." },
+  { PRD_Codigo: 27, CAT_Codigo: 11, PRD_Nombre: "Mini tartaleta Cheesecake NY", PRD_Precio: 1.20, PRD_Imagen: "assets/img/mini-tartaleta-de-frutas.jpg", PRD_Descripcion: "Estilo New York." },
+  { PRD_Codigo: 28, CAT_Codigo: 11, PRD_Nombre: "Mini tartaleta Pie de limón", PRD_Precio: 1.00, PRD_Imagen: "assets/img/mini-tartaleta-de-frutas.jpg", PRD_Descripcion: "Toque cítrico." },
+  { PRD_Codigo: 29, CAT_Codigo: 11, PRD_Nombre: "Mini tartaleta Cheesecake oreo", PRD_Precio: 1.20, PRD_Imagen: "assets/img/mini-tartaleta-de-frutas.jpg", PRD_Descripcion: "Con galleta oreo." },
+  { PRD_Codigo: 30, CAT_Codigo: 11, PRD_Nombre: "Mini tartaleta Frutos del bosque", PRD_Precio: 1.00, PRD_Imagen: "assets/img/mini-tartaleta-de-frutas.jpg", PRD_Descripcion: "Frutos diversos." },
+  { PRD_Codigo: 31, CAT_Codigo: 11, PRD_Nombre: "Mini tartaleta de maracuyá", PRD_Precio: 0.85, PRD_Imagen: "assets/img/mini-tartaleta-de-frutas.jpg", PRD_Descripcion: "Aromática y fresca." },
 
   // --- Macarrones ---
   { PRD_Codigo: 32, CAT_Codigo: 12, PRD_Nombre: "Macarrón de fresa", PRD_Precio: 1.50, PRD_Imagen: "assets/img/macarron-de-fresa.jpg", PRD_Descripcion: "Delicado macarrón relleno de crema de fresa natural, con un toque de vainilla." },

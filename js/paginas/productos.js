@@ -38,3 +38,131 @@ $(document).ready(function () {
 
   agregarProductos();
 });
+// =============================
+// MOSTRAR CARRITO EN EL MODAL
+// =============================
+window.mostrarProductos = function () {
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const contenedorCarrito = document.getElementById("contenedor-carrito");
+  const contenedorBotones = document.getElementById("contenedor-botones");
+
+  contenedorCarrito.innerHTML = "";
+  contenedorBotones.innerHTML = "";
+
+  let total = 0;
+
+  // =============================
+  // SI EL CARRITO ESTÁ VACÍO
+  // =============================
+  if (carrito.length === 0) {
+    contenedorCarrito.innerHTML = `<p>Tu carrito está vacío.</p>`;
+    contenedorBotones.innerHTML = `
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        Cerrar
+      </button>
+    `;
+    return;
+  }
+
+  // =============================
+  // MOSTRAR PRODUCTOS DEL CARRITO
+  // =============================
+  const lista = document.createElement("ul");
+  lista.classList.add("list-group");
+
+  carrito.forEach((item, index) => {
+    const prod = productos.find(p => p.PRD_Codigo === item.PRD_Codigo);
+
+    const nombre = prod?.PRD_Nombre ?? "Producto";
+    const precioUnitario = parseFloat(prod?.PRD_Precio ?? 0);
+    const cantidad = item.cantidad;
+    const precioTotal = precioUnitario * cantidad;
+
+    total += precioTotal;
+
+    const li = document.createElement("li");
+    li.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+
+    li.innerHTML = `
+      <div>
+        ${nombre} - Cantidad: ${cantidad} - Precio unitario: $${precioUnitario.toFixed(2)}
+      </div>
+      <button class="btn btn-sm btn-danger btn-eliminar" data-index="${index}">
+        X
+      </button>
+    `;
+
+    lista.appendChild(li);
+  });
+
+  contenedorCarrito.appendChild(lista);
+
+  // =============================
+  // EVENTO PARA ELIMINAR PRODUCTO
+  // =============================
+  contenedorCarrito.querySelectorAll(".btn-eliminar").forEach(btn => {
+    btn.addEventListener("click", function () {
+      const i = this.dataset.index;
+      carrito.splice(i, 1);
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      mostrarProductos(); // refrescar modal
+    });
+  });
+
+  // =============================
+  // MOSTRAR TOTAL
+  // =============================
+  const totalTexto = document.createElement("p");
+  totalTexto.classList.add("mt-3", "fw-bold");
+  totalTexto.textContent = `Precio total: $${total.toFixed(2)}`;
+  contenedorCarrito.appendChild(totalTexto);
+
+  // =============================
+  // BOTÓN COMPRAR
+  // =============================
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "btn btn-primary";
+  btn.id = "btn-comprar";
+  btn.textContent = "Comprar";
+
+  contenedorBotones.appendChild(btn);
+
+  // =============================
+  // EVENTO DEL BOTÓN COMPRAR
+  // =============================
+  btn.addEventListener("click", function () {
+    const modalLoading = new bootstrap.Modal(document.getElementById('Loading'));
+    const modalExito = new bootstrap.Modal(document.getElementById('Exito'));
+    const modalError = new bootstrap.Modal(document.getElementById('Error'));
+    const modalCarrito = bootstrap.Modal.getInstance(document.getElementById("modalCarrito"));
+
+    if (modalCarrito) modalCarrito.hide();
+
+    modalLoading.show();
+
+    setTimeout(() => {
+      modalLoading.hide();
+
+      const Operacion = Math.random() > 0.2; // 80% éxito
+
+      if (Operacion) {
+        modalExito.show();
+      } else {
+        modalError.show();
+      }
+    }, 3000);
+  });
+
+  // =============================
+  // BOTÓN CERRAR
+  // =============================
+  contenedorBotones.appendChild(
+    Object.assign(document.createElement("button"), {
+      type: "button",
+      className: "btn btn-secondary",
+      textContent: "Cerrar",
+      dataset: { bsDismiss: "modal" }
+    })
+  );
+};

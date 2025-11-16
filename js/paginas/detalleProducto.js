@@ -11,21 +11,45 @@ $(document).ready(function () {
     const CAT_Codigo = parseInt(params.get('CAT_Codigo'));
 
     const producto = productos.find(p => p.PRD_Codigo === PRD_Codigo);
-    const categoria = categorias.find(c => c.CAT_Codigo === CAT_Codigo);
     const productosCat = productos.filter(p => p.CAT_Codigo === CAT_Codigo);
 
-    if (!producto || !categoria) return;
+    if (!producto) {
+      console.error("Producto no encontrado en la lista.");
+      return;
+    }
 
-    // Actualizar detalles
+    // ==========================
+    // MOSTRAR INFORMACIÓN DEL PRODUCTO
+    // ==========================
     $("#Imagen-detalle").attr("src", producto.PRD_Imagen);
-    $("#titulo-producto, #Texto-detalle").text(producto.PRD_Nombre);
+    $("#titulo-producto").text(producto.PRD_Nombre);
     $("#Texto-detalle-producto").text(producto.PRD_Descripcion);
 
-    // Llenar select con todos los productos de la categoría
+    // Mostrar precio
+    $("#Precio-producto").text(`$${producto.PRD_Precio}`);
+
+    // ==========================
+    // LLENAR SELECT DE PRODUCTOS DE LA CATEGORÍA
+    // ==========================
     const $select = $("#selectProducto");
     $select.empty();
+
     productosCat.forEach(p => {
-      $select.append(`<option value="${p.PRD_Codigo}">${p.PRD_Nombre}</option>`);
+      const selected = p.PRD_Codigo === producto.PRD_Codigo ? "selected" : "";
+      $select.append(`<option value="${p.PRD_Codigo}" ${selected}>${p.PRD_Nombre}</option>`);
+    });
+
+    // Cuando cambien el select → actualizar el detalle
+    $select.on("change", function () {
+      const nuevoID = parseInt($(this).val());
+      const nuevoProducto = productos.find(p => p.PRD_Codigo === nuevoID);
+
+      if (!nuevoProducto) return;
+
+      $("#Imagen-detalle").attr("src", nuevoProducto.PRD_Imagen);
+      $("#titulo-producto").text(nuevoProducto.PRD_Nombre);
+      $("#Texto-detalle-producto").text(nuevoProducto.PRD_Descripcion);
+      $("#Precio-producto").text(`$${nuevoProducto.PRD_Precio}`);
     });
   }
 
@@ -60,10 +84,10 @@ $(document).ready(function () {
       localStorage.setItem("carrito", JSON.stringify(carrito));
 
       // Modal de carga y resultado
-      const modalLoading = new bootstrap.Modal($('#Loading'));
-      const modalExito = new bootstrap.Modal($('#Exito'));
-      const modalError = new bootstrap.Modal($('#Error'));
-      const modalCompra = bootstrap.Modal.getInstance($('#modalCompra')[0]);
+      const modalCompra = bootstrap.Modal.getInstance(document.getElementById('modalCompra'));
+      const modalLoading = new bootstrap.Modal(document.getElementById('Loading'));
+      const modalExito = new bootstrap.Modal(document.getElementById('Exito'));
+      const modalError = new bootstrap.Modal(document.getElementById('Error'));
 
       if (modalCompra) modalCompra.hide();
       modalLoading.show();
