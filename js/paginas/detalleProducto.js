@@ -83,25 +83,6 @@ $(document).ready(function () {
       carrito.push({ PRD_Codigo, cantidad });
       localStorage.setItem("carrito", JSON.stringify(carrito));
 
-      // Modal de carga y resultado
-      const modalCompra = bootstrap.Modal.getInstance(document.getElementById('modalCompra'));
-      const modalLoading = new bootstrap.Modal(document.getElementById('Loading'));
-      const modalExito = new bootstrap.Modal(document.getElementById('Exito'));
-      const modalError = new bootstrap.Modal(document.getElementById('Error'));
-
-      if (modalCompra) modalCompra.hide();
-      modalLoading.show();
-
-      setTimeout(() => {
-        modalLoading.hide();
-        const operacionExitosa = Math.random() > 0.2; // 80% éxito simulado
-        if (operacionExitosa) {
-          modalExito.show();
-        } else {
-          modalError.show();
-        }
-      }, 2000);
-
       console.log("Carrito:", carrito);
 
       alert(`${cantidad} unidad(es) de "${producto.PRD_Nombre}" agregado(s) al carrito. 
@@ -114,4 +95,5 @@ Precio unitario: $${producto.PRD_Precio} — Total: $${(producto.PRD_Precio * ca
 
   cambiarImagenDesdeURL();
   Carrito();
+
 });
