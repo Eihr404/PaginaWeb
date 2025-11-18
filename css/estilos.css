@@ -262,8 +262,8 @@ footer{background:#fff2f6; border-top:1px solid var(--b); text-align:center; pad
     position: absolute;
     inset: 0;
     margin: auto;
-    width: 100vw;
-    height: 100vh;
+    width: 70%;
+    height: 200%;
     overflow: hidden;
     transform: scale(0.4);
 }

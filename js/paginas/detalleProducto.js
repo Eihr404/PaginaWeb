@@ -1,138 +1,117 @@
-//funcion que se utiliza para agregar productos al carrito
-function Carrito() {
-//carrito
-    let carrito = [];
+// =============================
+// DETALLE DE PRODUCTO + CARRITO
+// =============================
 
-    const carritoGuardado = localStorage.getItem("carrito");
-    if (carritoGuardado) {
-        carrito = JSON.parse(carritoGuardado);
-    }
+$(document).ready(function () {
 
-
-    // Controles de cantidad
-    const inputCantidad = document.getElementById("cantidad");
-    document.getElementById("btn-sumar").addEventListener("click", () => {
-        inputCantidad.value = parseInt(inputCantidad.value) + 1;
-    });
-    document.getElementById("btn-restar").addEventListener("click", () => {
-        if (parseInt(inputCantidad.value) > 1) inputCantidad.value = parseInt(inputCantidad.value) - 1;
-    });
-
-    // Formulario
-    setTimeout(() => {
-
-        document.getElementById("btn-confirmar").addEventListener("click", e => {
-            e.preventDefault();
-
-            const productoId = document.getElementById("selectProducto").value;
-            const cantidad = parseInt(inputCantidad.value);
-
-            if (!productoId) {
-                alert("Por favor selecciona un producto.");
-                return;
-            }
-
-            const [categoria, numero] = productoId.split(" ");
-            const index = parseInt(numero) - 1;
-            const data = productos[categoria];
-            const nombre = data.nombres[index];
-            const precioUnitario = parseFloat(data.precios[index]);
-            const precioTotal = (precioUnitario * cantidad).toFixed(2);
-
-            // Guardar en carrito
-            carrito.push({productoId, cantidad});
-
-            localStorage.setItem("carrito", JSON.stringify(carrito));
-
-            console.log("Carrito:", carrito);
-
-            // Mostrar resumen en consola
-            let total = 0;
-            console.log("Productos:");
-            carrito.forEach(item => {
-                const [categoria, numero] = item.productoId.split(" ");
-                const index = parseInt(numero) - 1;
-                const data = productos[categoria];
-                const nombre = data.nombres[index];
-                const precioUnitario = parseFloat(data.precios[index]);
-
-                total += precioUnitario * item.cantidad;
-                console.log(`${nombre} - cantidad ${item.cantidad} - precio unitario $${precioUnitario.toFixed(2)}`);
-            });
-            console.log(`Precio total: $${total.toFixed(2)} `);
-
-
-            // Cerrar modal
-            const modal = bootstrap.Modal.getInstance(document.getElementById("modalCompra"));
-            if (modal) modal.hide();
-
-          // Notificar
-            alert(`${cantidad} unidad(es) de "${nombre}" agregado(s) al carrito. Por un total de ${precioTotal} a cada uno por ${precioUnitario}`);
-            document.getElementById("formCompra").reset();
-            inputCantidad.value = 1;
-        });
-
-    }, 3000);
-}
-//funcion para cambiar la informacion que aparezca en la pagina de detalle, esta informacion proviene de dar clic
-//a la imagen en la pagina de producto
-function cambiarImagenDesdeURL() {
-    // Obtener los parámetros de la URL
+  // Cargar info del producto según la URL
+  function cambiarImagenDesdeURL() {
     const params = new URLSearchParams(window.location.search);
-    const categoria = params.get('categoria');
-    const imagen = params.get('imagen');
+    const PRD_Codigo = parseInt(params.get('PRD_Codigo'));
+    const CAT_Codigo = parseInt(params.get('CAT_Codigo'));
 
-    // Referencias a los elementos del DOM
-    const img = document.getElementById('Imagen-detalle');
-    const titulo = document.getElementById('titulo-producto');
-    const listaNombres = document.getElementById('lista-nombres');
-    const listaPrecios = document.getElementById('lista-precios');
-    const TextoCabecera = document.getElementById('Texto-detalle');
-    const TextoDescripcion = document.getElementById('Texto-detalle-producto');
+    const producto = productos.find(p => p.PRD_Codigo === PRD_Codigo);
+    const productosCat = productos.filter(p => p.CAT_Codigo === CAT_Codigo);
 
-    // Actualizar imagen si existe el parámetro
-    if (imagen && img) {
-        img.src = imagen;
+    if (!producto) {
+      console.error("Producto no encontrado en la lista.");
+      return;
     }
 
-    // Mostrar información según categoría
-    const data = productos[categoria];
-    if (data) {
-        titulo.textContent = data.titulo;
-        TextoCabecera.textContent = data.titulo;
-        // Crear listas vacías
-        let nombresHTML = "";
-        let preciosHTML = "";
+    // ==========================
+    // MOSTRAR INFORMACIÓN DEL PRODUCTO
+    // ==========================
+    $("#Imagen-detalle").attr("src", producto.PRD_Imagen);
+    $("#titulo-producto").text(producto.PRD_Nombre);
+    $("#Texto-detalle-producto").text(producto.PRD_Descripcion);
 
-        // Recorrer el array de nombres
-        for (let i = 0; i < data.nombres.length; i++) {
-            nombresHTML += `<li>${data.nombres[i]}</li>`;
+    // Mostrar precio
+    $("#Precio-producto").text(`$${producto.PRD_Precio}`);
+
+    // ==========================
+    // LLENAR SELECT DE PRODUCTOS DE LA CATEGORÍA
+    // ==========================
+    const $select = $("#selectProducto");
+    $select.empty();
+
+    productosCat.forEach(p => {
+      const selected = p.PRD_Codigo === producto.PRD_Codigo ? "selected" : "";
+      $select.append(`<option value="${p.PRD_Codigo}" ${selected}>${p.PRD_Nombre}</option>`);
+    });
+
+    // Cuando cambien el select → actualizar el detalle
+    $select.on("change", function () {
+      const nuevoID = parseInt($(this).val());
+      const nuevoProducto = productos.find(p => p.PRD_Codigo === nuevoID);
+
+      if (!nuevoProducto) return;
+
+      $("#Imagen-detalle").attr("src", nuevoProducto.PRD_Imagen);
+      $("#titulo-producto").text(nuevoProducto.PRD_Nombre);
+      $("#Texto-detalle-producto").text(nuevoProducto.PRD_Descripcion);
+      $("#Precio-producto").text(`$${nuevoProducto.PRD_Precio}`);
+    });
+  }
+
+  // Control de carrito
+  function Carrito() {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    const $inputCantidad = $("#cantidad");
+
+    $("#btn-sumar").click(() => {
+      $inputCantidad.val(parseInt($inputCantidad.val()) + 1);
+    });
+
+    $("#btn-restar").click(() => {
+      if (parseInt($inputCantidad.val()) > 1)
+        $inputCantidad.val(parseInt($inputCantidad.val()) - 1);
+    });
+
+    $("#btn-confirmar").click(function (e) {
+      e.preventDefault();
+
+      const PRD_Codigo = parseInt($("#selectProducto").val());
+      const cantidad = parseInt($inputCantidad.val());
+      const producto = productos.find(p => p.PRD_Codigo === PRD_Codigo);
+
+      if (!producto) {
+        alert("Por favor selecciona un producto válido.");
+        return;
+      }
+
+      carrito.push({ PRD_Codigo, cantidad });
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+
+      // Modal de carga y resultado
+      const modalCompra = bootstrap.Modal.getInstance(document.getElementById('modalCompra'));
+      const modalLoading = new bootstrap.Modal(document.getElementById('Loading'));
+      const modalExito = new bootstrap.Modal(document.getElementById('Exito'));
+      const modalError = new bootstrap.Modal(document.getElementById('Error'));
+
+      if (modalCompra) modalCompra.hide();
+      modalLoading.show();
+
+      setTimeout(() => {
+        modalLoading.hide();
+        const operacionExitosa = Math.random() > 0.2; // 80% éxito simulado
+        if (operacionExitosa) {
+          modalExito.show();
+        } else {
+          modalError.show();
         }
+      }, 2000);
 
-        // Recorrer el array de precios
-        for (let i = 0; i < data.precios.length; i++) {
-            preciosHTML += `<li>${data.precios[i]}</li>`;
-        }
-        TextoDescripcion.textContent = data.descripcion;
-        // Insertar el HTML en las listas
-        listaNombres.innerHTML = nombresHTML;
-        listaPrecios.innerHTML = preciosHTML;
-        // Actualizar el formulario de compra
-        const selectProducto = document.getElementById("selectProducto");
-        selectProducto.innerHTML = ""; // Limpiar opciones anteriores
+      console.log("Carrito:", carrito);
 
-        for (let i = 0; i < data.nombres.length; i++) {
-            const option = document.createElement("option");
-            option.value = `${categoria} ${i + 1}`; // Ej: "macarrones 1"
-            option.textContent = data.nombres[i];
-            selectProducto.appendChild(option);
-        }
+      alert(`${cantidad} unidad(es) de "${producto.PRD_Nombre}" agregado(s) al carrito. 
+Precio unitario: $${producto.PRD_Precio} — Total: $${(producto.PRD_Precio * cantidad).toFixed(2)}`);
 
-    }
-}
+      $("#formCompra")[0].reset();
+      $inputCantidad.val(1);
+    });
+  }
 
-// Ejecutar automáticamente al cargar la página
-window.addEventListener('DOMContentLoaded', () => {
-    cambiarImagenDesdeURL();
-    Carrito(); // ← Esta línea es necesaria
+  cambiarImagenDesdeURL();
+  Carrito();
 });
