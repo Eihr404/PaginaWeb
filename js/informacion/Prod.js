@@ -115,3 +115,37 @@ const categorias = [
   { CAT_Codigo: 16, CAT_Nombre: "Shots", CAT_Descripcion: "Vasos con postres en capas y cremas variadas.", CAT_Imagen_Dest: "assets/img/shot-mousse-de-maracuya.jpg" },
   { CAT_Codigo: 17, CAT_Nombre: "Gatos Gordos", CAT_Descripcion: "Categoría especial y adorable.", CAT_Imagen_Dest: "assets/img/gatoGordo.jpg" }
 ];
+
+class Products {
+  constructor() {
+    this.productos = productos;
+    this.categorias = categorias;
+
+    // Recuperar carrito del localStorage si existe
+    this.carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  }
+
+  getProductos() {
+    return this.productos;
+  }
+
+  getCategorias() {
+    return this.categorias;
+  }
+
+  getCarrito() {
+    return this.carrito;
+  }
+
+  eliminarDelCarrito(index) {
+    this.carrito.splice(index, 1);
+    localStorage.setItem("carrito", JSON.stringify(this.carrito));
+  }
+
+  calcularTotal() {
+    return this.carrito.reduce((total, item) => {
+      const prod = this.productos.find(p => p.PRD_Codigo === item.PRD_Codigo);
+      return total + prod.PRD_Precio * item.cantidad;
+    }, 0);
+  }
+}

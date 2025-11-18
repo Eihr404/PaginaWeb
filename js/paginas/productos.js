@@ -157,12 +157,11 @@ window.mostrarProductos = function () {
   // =============================
   // BOTÓN CERRAR
   // =============================
-  contenedorBotones.appendChild(
-    Object.assign(document.createElement("button"), {
-      type: "button",
-      className: "btn btn-secondary",
-      textContent: "Cerrar",
-      dataset: { bsDismiss: "modal" }
-    })
-  );
+  const btnCerrar = document.createElement("button");
+  btnCerrar.type = "button";
+  btnCerrar.className = "btn btn-secondary";
+  btnCerrar.textContent = "Cerrar";
+  btnCerrar.dataset.bsDismiss = "modal";
+
+  contenedorBotones.appendChild(btnCerrar);
 };
