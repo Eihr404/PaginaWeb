@@ -1,13 +1,13 @@
-class ProductoView{
+class ProductoView {
   constructor() {
-    this.catalogo = $("#Producto-Catalogo");
-    this.contenedorCarrito = $("#contenedor-carrito");
-    this.contenedorBotones = $("#contenedor-botones");
+    this.catalogo = $('#Producto-Catalogo');
+    this.contenedorCarrito = $('#contenedor-carrito');
+    this.contenedorBotones = $('#contenedor-botones');
   }
 
   // ==== mostrar catálogo ====
   renderCatalogo(productos, categorias) {
-    this.catalogo.html("");
+    this.catalogo.html('');
 
     const categoriasUnicas = [...new Set(productos.map(p => p.CAT_Codigo))];
 
@@ -15,21 +15,24 @@ class ProductoView{
       const categoria = categorias.find(c => c.CAT_Codigo === codCat);
       const productosCat = productos.filter(p => p.CAT_Codigo === codCat);
 
-      this.catalogo.append(
-        `<h2 class="mt-5 mb-3 text-center">${categoria.CAT_Nombre}</h2>`
-      );
+      this.catalogo.append(`<h2 class="Pagina mt-5 mb-3 text-center p-2">${categoria.CAT_Nombre}</h2>`);
 
       const fila = $('<div class="row"></div>');
 
       productosCat.forEach(prod => {
-        fila.append(`
+        fila.append(`          
           <div class="col-12 col-sm-6 col-md-3 mb-4 text-center">
-            <a href="detalleProducto.html?PRD_Codigo=${prod.PRD_Codigo}&CAT_Codigo=${prod.CAT_Codigo}">
-              <img class="Imagen-producto" src="${prod.PRD_Imagen}">
+            <a href="detalleProducto.html?PRD_Codigo=${prod.PRD_Codigo}&CAT_Codigo=${prod.CAT_Codigo}" class="text-decoration-none text-reset">
+            <div class="card shadow-sm">
+                <img class="Imagen-producto img-fluid card-img-top" style="max-height: 350px;" src="${prod.PRD_Imagen}">
+              
+              <div class="card-body h-100">
+                <h5 class="Titulo-producto mt-2">${prod.PRD_Nombre}</h5>
+              <p>$${prod.PRD_Precio}</p>     
+              </div>
             </a>
-            <h5 class="Titulo-producto mt-2">${prod.PRD_Nombre}</h5>
-            <p>$${prod.PRD_Precio}</p>
           </div>
+          
         `);
       });
 
@@ -39,11 +42,11 @@ class ProductoView{
 
   // ==== mostrar carrito ====
   renderCarrito(carrito, productos, total) {
-    this.contenedorCarrito.html("");
-    this.contenedorBotones.html("");
+    this.contenedorCarrito.html('');
+    this.contenedorBotones.html('');
 
     if (carrito.length === 0) {
-      this.contenedorCarrito.html("<p>Tu carrito está vacío.</p>");
+      this.contenedorCarrito.html('<p>Tu carrito está vacío.</p>');
       this.contenedorBotones.html(`
         <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
       `);
@@ -65,12 +68,10 @@ class ProductoView{
 
     this.contenedorCarrito.append(lista);
 
-    this.contenedorCarrito.append(
-      `<p class="mt-3 fw-bold">Total: $${total.toFixed(2)}</p>`
-    );
+    this.contenedorCarrito.append(`<p class="mt-3 fw-bold">Total: $${total.toFixed(2)}</p>`);
 
     const btnComprar = $(`<button class="btn btn-primary">Comprar</button>`);
-    btnComprar.attr("id", "btn-comprar");
+    btnComprar.attr('id', 'btn-comprar');
     this.contenedorBotones.append(btnComprar);
 
     this.contenedorBotones.append(`
