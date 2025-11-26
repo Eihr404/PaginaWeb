@@ -148,4 +148,23 @@ class Products {
       return total + prod.PRD_Precio * item.cantidad;
     }, 0);
   }
+  getProductoPorCodigo(codigo) {
+    return this.productos.find(p => p.PRD_Codigo === codigo);
+  }
+
+  getProductosPorCategoria(catCodigo) {
+    return this.productos.filter(p => p.CAT_Codigo === catCodigo);
+  }
+
+  agregarAlCarrito(PRD_Codigo, cantidad) {
+    const itemExistente = this.carrito.find(i => i.PRD_Codigo === PRD_Codigo);
+
+    if (itemExistente) {
+      itemExistente.cantidad += cantidad;
+    } else {
+      this.carrito.push({ PRD_Codigo, cantidad });
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(this.carrito));
+  }
 }

@@ -79,3 +79,41 @@ class ProductoView {
     `);
   }
 }
+
+class DetalleProductoView {
+  constructor() {
+    this.img = $("#Imagen-detalle");
+    this.titulo = $("#titulo-producto");
+    this.descripcion = $("#Texto-detalle-producto");
+    this.precio = $("#Precio-producto");
+    this.select = $("#selectProducto");
+    this.inputCantidad = $("#cantidad");
+  }
+
+  renderDetalle(producto, productosCat) {
+    this.actualizarDetalle(producto);
+
+    // Llenar select
+    this.select.html("");
+    productosCat.forEach(p => {
+      this.select.append(`
+        <option value="${p.PRD_Codigo}" ${p.PRD_Codigo === producto.PRD_Codigo ? "selected" : ""}>
+          ${p.PRD_Nombre}
+        </option>
+      `);
+    });
+  }
+
+  actualizarDetalle(producto) {
+    this.img.attr("src", producto.PRD_Imagen);
+    this.titulo.text(producto.PRD_Nombre);
+    this.descripcion.text(producto.PRD_Descripcion);
+    this.precio.text(`$${producto.PRD_Precio}`);
+  }
+
+  cambiarCantidad(valor) {
+    let actual = parseInt(this.inputCantidad.val());
+    actual = Math.max(1, actual + valor);
+    this.inputCantidad.val(actual);
+  }
+}

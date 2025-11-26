@@ -9,7 +9,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/varios/jquery-3.7.1.min.js"></script>
   <script src="js/informacion/Prod.js"></script>
-  <script src="js/paginas/detalleProducto.js"></script>
+  <script src="js/funciones/VistaProductos.js"></script>
+  <script src="js/funciones/Controlador.js"></script>
 </head>
 <body>
 <div class="contenedor">
@@ -86,24 +87,10 @@
     <br>
     © <span id="y"></span> Brúlée Catering & Event Desing — Pedido y retiro en tienda.
   </footer>
-
 </div>
-
+<script>
+  const app = new ControladorDetalleProducto();
+  app.init();
+</script>
 </body>
 </html>
-
-<!--<script src="/js/paginas/IngresoSesion.js"></script>
-<script>
-    const botonComprar = document.getElementById('btn-comprar');
-
-    botonComprar.addEventListener('click', function(boton) {
-        boton.preventDefault();
-        if (IngresoSesion.SesionIniciada()) {
-            alert("¡Compra realizada con éxito!");
-        } else {
-            alert("Debes iniciar sesión primero.");
-            const next = encodeURIComponent(location.href);
-            location.href = `ingreso.html?next=${next}`;
-        }
-    });
-</script>-->
