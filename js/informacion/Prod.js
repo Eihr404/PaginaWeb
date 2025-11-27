@@ -167,4 +167,19 @@ class Products {
 
     localStorage.setItem("carrito", JSON.stringify(this.carrito));
   }
+
+  getCategoriasAgrupadas(){
+    const agrupado={};
+
+    this.categorias.forEach(categoria => {
+      agrupado[categoria.CAT_Codigo] = {
+        codigo: categoria.CAT_Codigo,
+        nombre: categoria.CAT_Nombre,
+        descripcion: categoria.CAT_Descripcion,
+        imagen: categoria.CAT_Imagen_Dest,
+      };
+    });
+
+    return Object.values(agrupado);
+  }
 }
