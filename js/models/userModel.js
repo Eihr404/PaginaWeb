@@ -22,7 +22,6 @@ window.UserModel = {
   create({ nombre, correo, clave, rol = "cliente" }) {
     const lista = this._leerLista();
 
-    // opcional: primer usuario registrado es admin
     if (lista.length === 0 && !rol) {
       rol = "admin";
     }

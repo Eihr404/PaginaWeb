@@ -1,4 +1,3 @@
-// js/controllers/contactController.js
 $(document).ready(function () {
   if (!$("#btnEnviarContacto").length) return;
 
@@ -31,7 +30,6 @@ $(document).ready(function () {
       mensaje
     } = datos;
 
-    // ===== Validar campos vacíos =====
     if (
       !nombre || !correo || !telefono || !tipoEvento ||
       !invitados || !fechaEvento || !asunto || !mensaje
@@ -40,7 +38,6 @@ $(document).ready(function () {
       return;
     }
 
-    // ===== Validar correo (igual que login) =====
     const patronEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!patronEmail.test(correo)) {
       ContactView.showMessage('Escribe un correo válido "usuario@gmail.com".');
@@ -56,20 +53,17 @@ $(document).ready(function () {
       return;
     }
 
-    // ===== Validar teléfono (solo números y 10 dígitos) =====
     if (telefono.length !== 10) {
       ContactView.showMessage("El teléfono debe tener exactamente 10 dígitos.");
       return;
     }
 
-    // ===== Validar número de invitados =====
     const invitadosNum = parseInt(invitados, 10);
     if (isNaN(invitadosNum) || invitadosNum <= 0) {
       ContactView.showMessage("El número de invitados debe ser mayor a 0.");
       return;
     }
 
-    // ===== Validar que la fecha no sea pasada =====
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0);
 
