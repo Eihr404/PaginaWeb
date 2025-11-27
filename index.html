@@ -130,20 +130,28 @@
   </div>
 </section>
 
-<script src="js/funciones/Funciones.js"></script>
-<script src="js/informacion/Info.js"></script>
-<script src="js/informacion/InfoCompleta.js"></script>
-<script>
-    const myCarouselElement = document.querySelector('#carouselExample')
 
-    const carousel = new bootstrap.Carousel(myCarouselElement, {
-        interval: 2000,
-        touch: false
-    })
+<script src="js/models/sessionModel.js"></script>
+<script src="js/seguridadRoutes.js"></script>
+<script>
+  $(function () {
+    SessionModel.actualizarHeader();
+  });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
 <script src="/assets/varios/jquery-3.7.1.min.js"></script>
+
+<script src="js/models/sessionModel.js"></script>
+<script src="js/seguridadRoutes.js"></script>
+<script>
+  $(function () {
+    SessionModel.actualizarHeader();
+  });
+</script>
+
 <script src="/js/funciones/IngresoSesion.js"></script>
 <script src="/js/funciones/JQuery.js"></script>
+
 </body>
 </html>
