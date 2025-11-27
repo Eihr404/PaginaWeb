@@ -78,6 +78,76 @@ class ProductoView {
       <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
     `);
   }
+
+
+}
+
+class IndexView{
+  constructor() {
+    this.contenedorCarrusel = document.getElementById("ContenedorCarrusel");
+    this.contenedorGrid= document.getElementById("ProductosFavoritos");
+  }
+
+
+  renderCarrusel(categorias){
+    this.contenedorCarrusel.innerHTML = "";
+    for(let i=0;i <3;i++){
+      let categoria;
+      if(i===2){
+        categoria = categorias[16];
+      }
+      else{
+        categoria= categorias[i];
+      }
+      const nombre = categoria.nombre;
+      const imagen = categoria.imagen;
+
+      const slide = document.createElement('div');
+      if(i===0){
+        slide.className="carousel-item active";
+      }
+      else{
+        slide.className="carousel-item";
+      }
+
+      slide.innerHTML=`
+            <img src="${imagen}" class="d-block w-100" alt="${nombre}">
+            <div class="carousel-caption d-none d-md-block">        
+            </div>    
+      `;
+      this.contenedorCarrusel.append(slide);
+    }
+  }
+  renderGridChard(categorias) {
+    this.contenedorGrid.innerHTML = "";
+    for(let i=0;i <4;i++){
+      let categoria;
+      if(i===2){
+        categoria = categorias[16];
+      }
+      else{
+        categoria= categorias[i];
+      }
+      const nombre = categoria.nombre;
+      const imagen = categoria.imagen;
+      const descripcion = categoria.descripcion;
+
+      const card=document.createElement("div");
+      card.className="col-md-3 mb-4";
+      card.innerHTML=`      
+      <div class="card h-100 shadow-sm">
+        <img src="${imagen}" class="card-img-top" alt="${nombre}">
+        <div class="card-body">
+          <h5 class="card-title">${nombre}</h5>
+          <p class="card-text">${descripcion}</p>
+        </div>
+      </div>
+    
+      `;
+
+      this.contenedorGrid.appendChild(card);
+    }
+  }
 }
 
 class DetalleProductoView {
