@@ -21,10 +21,10 @@ $(document).ready(function() {
     }, 4000);
   });
 });
-
+/*
 $(document).ready(function(a){
 
-  /* Funcion e ID para los productos de las Grid Cards*/
+  /* Funcion e ID para los productos de las Grid Cards
   const $contenedorGrid = $("#ProductosFavoritos");
 
   const CadenaCategorias = Object.keys(productosCompletos);
@@ -41,10 +41,10 @@ $(document).ready(function(a){
         <img src="${imagen}" class="card-img-top" alt="${nombre}">
         <div class="card-body">
           <h5 class="card-title">${nombre}</h5>
-          <p class="card-text">${descripcion}</p>       
+          <p class="card-text">${descripcion}</p>
         </div>
       </div>
-    </div> 
+    </div>
     `);
     $contenedorGrid.append($card);
   }
@@ -65,12 +65,12 @@ $(document).ready(function(b){
     else{
       categoria=productosCompletos[cadenaCategorias[i]];
     }
-    const nombre=categoria.nombre[0];
-    const imagen=categoria.imagen[0];
+      const nombre=categoria.nombre[0];
+      const imagen=categoria.imagen[0];
 
-    let claseItem="carousel-item";
-    if(i===0){claseItem+=" active";}
-    const $item = $( `
+      let claseItem="carousel-item";
+      if(i===0){claseItem+=" active";}
+      const $item = $( `
     <div class="${claseItem}">
        <img src="${imagen}" class="d-block w-100" alt="${nombre}">
       <div class="carousel-caption d-none d-md-block">        
@@ -78,10 +78,10 @@ $(document).ready(function(b){
     </div>   
   `);
 
-    $contenedorCarrusel.append($item);
-  }
+      $contenedorCarrusel.append($item);
+    }
 });
-
+*/
 
 //login
 $(document).on("click", "[data-requiere-sesion]", function (e) {

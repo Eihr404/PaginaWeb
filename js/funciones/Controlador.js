@@ -103,3 +103,17 @@ class ControladorDetalleProducto {
     });
   }
 }
+
+class IndexController {
+  constructor(){
+    this.model=new Products();
+    this.view=new IndexView();
+  }
+
+  init(){
+      const categorias=this.model.getCategoriasAgrupadas();
+      console.log("CATEGORIAS → ", categorias);
+      this.view.renderCarrusel(categorias);
+      this.view.renderGridChard(categorias);
+  }
+}
