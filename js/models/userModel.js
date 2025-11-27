@@ -22,7 +22,7 @@ window.UserModel = {
   create({ nombre, correo, clave, rol = "cliente" }) {
     const lista = this._leerLista();
 
-    if (lista.length === 0 && !rol) {
+    if (lista.length === 0) {
       rol = "admin";
     }
 

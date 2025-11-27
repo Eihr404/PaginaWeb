@@ -5,26 +5,25 @@ $(document).on("click", "[data-requiere-sesion]", function (e) {
   }
 });
 
-//Cerrar sesión
 $(document).on("click", "[data-salir-sesion]", function (e) {
   e.preventDefault();
   if (window.SessionModel) {
     SessionModel.logout();
     SessionModel.actualizarHeader();
   }
-  alert("Has cerrado sesión correctamente 🩵");
   window.location.href = "index.html";
 });
 
 $(document).on("click", "[data-rol-requerido]", function (e) {
   const rolNecesario = $(this).attr("data-rol-requerido");
+
   if (!window.SessionModel || !SessionModel.isLoggedIn()) {
     e.preventDefault();
     window.location.href = "login.html";
     return;
   }
 
-  const rolActual = SessionModel.getRol();
+  const rolActual = SessionModel.getRol ? SessionModel.getRol() : null;
   if (rolActual !== rolNecesario) {
     e.preventDefault();
     alert("No tienes permisos para acceder a esta sección.");

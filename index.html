@@ -41,6 +41,15 @@
       <a data-salir-sesion class="btn btn-outline-danger btn-sm" style="display:none;">
         Cerrar sesión
       </a>
+
+      <a href="usuarios-admin.html"
+         class="btn btn-outline-warning btn-sm"
+         data-requiere-sesion
+         data-rol-requerido="admin"
+         data-solo-admin-visible>
+        Panel Admin
+      </a>
+
     </div>
   </div>
 </nav>
@@ -117,47 +126,43 @@
   </div>
 </section>
 
-
-
+<script src="assets/varios/jquery-3.7.1.min.js"></script>
 <script src="js/models/sessionModel.js"></script>
 <script src="js/seguridadRoutes.js"></script>
-<script>
-  $(function () {
-    SessionModel.actualizarHeader();
-  });
-</script>
-
-
-<script src="/assets/varios/jquery-3.7.1.min.js"></script>
-<script src="js/models/sessionModel.js"></script>
-<script src="js/seguridadRoutes.js"></script>
-<script>
-  $(function () {
-    SessionModel.actualizarHeader();
-  });
-</script>
-
-<script src="/js/funciones/IngresoSesion.js"></script>
-<script src="/js/funciones/JQuery.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/assets/varios/jquery-3.7.1.min.js"></script>
-<script src="/js/funciones/JQuery.js"></script>
 <script src="js/informacion/Prod.js"></script>
-<script src="js/funciones/Controlador.js"></script>
 <script src="js/funciones/VistaProductos.js"></script>
+<script src="js/funciones/Controlador.js"></script>
+<script src="js/funciones/IngresoSesion.js"></script>
+<script src="js/funciones/JQuery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  const index = new IndexController();
-  index.init();
-</script>
-<script>
-  const myCarouselElement = document.querySelector('#carouselExample')
+  $(function () {
+    if (window.SessionModel && SessionModel.actualizarHeader) {
+      SessionModel.actualizarHeader();
+    }
 
-  const carousel = new bootstrap.Carousel(myCarouselElement, {
-    interval: 2000,
-    touch: false
-  })
+    const rol = (window.SessionModel && SessionModel.getRol)
+      ? SessionModel.getRol()
+      : "invitado";
+
+    if (rol !== "admin") {
+      $("[data-solo-admin-visible]").hide();
+    }
+
+    if (window.IndexController) {
+      const index = new IndexController();
+      index.init();
+    }
+  });
+
+  const myCarouselElement = document.querySelector('#carouselExample');
+  if (myCarouselElement && window.bootstrap && bootstrap.Carousel) {
+    const carousel = new bootstrap.Carousel(myCarouselElement, {
+      interval: 2000,
+      touch: false
+    });
+  }
 </script>
 
 </body>
