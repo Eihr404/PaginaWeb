@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Brúlée — Inicio de Sesión</title>
+  <title>Brúlée — Registro</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,67 +34,66 @@
 
       <div class="col-lg-6 d-flex justify-content-center align-items-center gap-4 decor-col">
         <div class="d-flex flex-column gap-4">
-          <img src="assets/img/gatoGordo.jpg" alt="Postre Gato Gordo Roll" class="img-fluid rounded shadow-sm">
-          <img src="assets/img/julieta.jpg" alt="Arreglo floral junto a postres" class="img-fluid rounded shadow-sm">
+          <img src="assets/img/macarron-de-fresa.jpg" alt="Macarrón de fresa" class="img-fluid rounded shadow-sm">
         </div>
-        <img src="assets/img/macarron-de-fresa.jpg" alt="Macarrón de fresa" class="img-fluid rounded shadow-sm">
       </div>
 
       <div class="col-lg-4 col-md-8">
         <div class="login-card p-4">
-          <div class="text-center mb-8">
-            <h5>Login</h5>
-            <div class="circle-icon">D:</div>
+          <div class="text-center mb-4">
+            <h5>Crear cuenta</h5>
+            <div class="circle-icon">★</div>
+            <p class="small mb-0">
+              Crea tu cuenta para reservar tus catering y hacer tus pedidos.
+            </p>
           </div>
 
-          <form id="form-login" class="mb-4" novalidate>
+          <form id="form-registro" class="mb-4" novalidate>
             <div class="mb-3">
-              <label class="form-label small" for="usuario">Nombre</label>
-              <input id="usuario" type="text" class="form-control" placeholder="Nombre">
-            </div>
-            <div class="mb-3">
-              <label class="form-label small" for="correo">Gmail</label>
-              <input id="correo" type="email" class="form-control" placeholder="correo@gmail.com">
-            </div>
-            <div class="mb-3">
-              <label class="form-label small" for="clave">Contraseña</label>
-              <input id="clave" type="password" class="form-control" placeholder="**************">
+              <label class="form-label small" for="reg-nombre">
+                Nombre
+              </label>
+              <input id="reg-nombre" type="text" class="form-control" placeholder="Tu nombre">
             </div>
 
-            <div id="msg" role="alert" aria-live="polite" style="display:none;"></div>
+            <div class="mb-3">
+              <label class="form-label small" for="reg-correo">
+                Correo
+              </label>
+              <input id="reg-correo" type="email" class="form-control" placeholder="ejemplo@gmail.com">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label small" for="reg-clave">
+                Contraseña
+              </label>
+              <input id="reg-clave" type="password" class="form-control" placeholder="******">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label small" for="reg-clave2">
+                Confirmar contraseña
+              </label>
+              <input id="reg-clave2" type="password" class="form-control" placeholder="Repite la contraseña">
+            </div>
+
+            <div id="msg-registro" role="alert" aria-live="polite" style="display:none;"></div>
 
             <div class="text-end row mt-3">
-              <button id="btnInicioS" class="btn btn-primary">
-                Iniciar
+              <button id="btnRegistro" class="btn btn-primary">
+                Registrarme
               </button>
             </div>
           </form>
 
-          <div class="text-center mb-3">
-            <a href="recuperar-clave.html" class="small">
-              ¿Olvidaste tu contraseña?
-            </a>
-          </div>
-
-          <div class="text-center mb-3">
-            <span class="small">¿No tienes cuenta?</span>
-            <a href="registro.html" class="small fw-semibold">Regístrate</a>
-          </div>
-
-          <div class="text-center mb-3">
-            <div class="circle-icon">:D</div>
+          <div class="text-center mb-3 small">
+            ¿Ya tienes cuenta?
+            <a href="login.html" class="fw-semibold">Inicia sesión</a>
           </div>
         </div>
       </div>
     </div>
   </main>
-
-  <div id="login-overlay" class="login-overlay" aria-hidden="true">
-    <div class="login-overlay__box">
-      <div class="spinner-border" role="status" aria-hidden="true"></div>
-      <p>Validando tus datos, por favor espera…</p>
-    </div>
-  </div>
 
   <script src="assets/varios/jquery-3.7.1.min.js"></script>
   <script src="js/models/sessionModel.js"></script>

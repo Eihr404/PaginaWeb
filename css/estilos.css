@@ -572,3 +572,38 @@ footer{background:#fff2f6; border-top:1px solid var(--b); text-align:center; pad
         padding: 2rem 0;
     }
 }
+
+.login-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+}
+
+.login-overlay__box {
+    background: #fff7fb;
+    padding: 1.5rem 2rem;
+    border-radius: 18px;
+    box-shadow: 0 10px 40px rgba(0,0,0,.25);
+    text-align: center;
+}
+
+.login-overlay__box p {
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+
+/*contactos*/
+.contact-page h2 {
+    font-family: "Quicksand", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.contact-page .login-card {
+    margin: 0;
+}
+/*fin login*/
