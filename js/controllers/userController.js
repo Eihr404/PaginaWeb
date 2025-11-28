@@ -34,7 +34,6 @@ $(document).ready(function () {
         return;
       }
 
-      //Buscar usuario
       const usuario = UserModel.findByCorreo(correo);
 
       if (!usuario) {

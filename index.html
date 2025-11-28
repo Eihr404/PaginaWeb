@@ -41,6 +41,15 @@
       <a data-salir-sesion class="btn btn-outline-danger btn-sm" style="display:none;">
         Cerrar sesión
       </a>
+
+      <a href="usuarios-admin.html"
+         class="btn btn-outline-warning btn-sm"
+         data-requiere-sesion
+         data-rol-requerido="admin"
+         data-solo-admin-visible>
+        Panel Admin
+      </a>
+
     </div>
   </div>
 </nav>
@@ -117,8 +126,6 @@
   </div>
 </section>
 
-
-
 <script src="js/models/sessionModel.js"></script>
 <script src="js/seguridadRoutes.js"></script>
 <script>
@@ -158,6 +165,16 @@
     interval: 2000,
     touch: false
   })
+</script>
+<script>
+  $(function () {
+    SessionModel.actualizarHeader();
+
+    const rol = SessionModel.getRol ? SessionModel.getRol() : "invitado";
+    if (rol !== "admin") {
+      $("[data-solo-admin-visible]").hide();
+    }
+  });
 </script>
 
 </body>

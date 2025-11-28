@@ -22,7 +22,8 @@ window.UserModel = {
   create({ nombre, correo, clave, rol = "cliente" }) {
     const lista = this._leerLista();
 
-    if (lista.length === 0 && !rol) {
+    // Si no hay usuarios, el primero es admin
+    if (lista.length === 0) {
       rol = "admin";
     }
 
@@ -36,7 +37,7 @@ window.UserModel = {
       nombre,
       correo,
       clave,
-      rol: rol || "cliente",
+      rol,
       activo: true
     };
 
@@ -56,7 +57,19 @@ window.UserModel = {
     return { ok: true, usuario: lista[idx] };
   },
 
+  cambiarClavePorCorreo(correo, nuevaClave) {
+    const lista = this._leerLista();
+    const idx = lista.findIndex(u => u.correo.toLowerCase() === correo.toLowerCase());
+    if (idx === -1) {
+      return { ok: false, mensaje: "No existe un usuario con ese correo." };
+    }
+    lista[idx].clave = nuevaClave;
+    this._guardarLista(lista);
+    return { ok: true };
+  },
   bloquear(id) {
-    return this.update(id, { activo: false });
+      return this.update(id, { activo: false });
   }
 };
+
+

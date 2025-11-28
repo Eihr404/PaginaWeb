@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brúlée — Administración de Usuarios</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<nav class="navbar sticky-top custom-navbar">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+    <a href="index.html" class="btn btn-outline-primary btn-sm me-2">
+      Inicio
+    </a>
+
+    <a class="navbar-brand position-absolute top-50 start-50 translate-middle" href="index.html">
+      <img src="assets/img/Logo.png" alt="Logo de Brúlée" width="100" height="100" class="d-block mx-auto">
+    </a>
+
+    <div class="d-flex gap-2 ms-auto">
+      <span data-cuenta class="text-muted small me-2 align-content-center">Invitado</span>
+
+      <a href="login.html" data-inicio-sesion class="btn btn-outline-secondary btn-sm">
+        Iniciar sesión
+      </a>
+
+      <a data-salir-sesion class="btn btn-outline-danger btn-sm" style="display:none;">
+        Cerrar sesión
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main class="container py-4">
+  <div class="row mb-3">
+    <div class="col-12">
+      <h2 class="fw-bold">Administración de Usuarios</h2>
+      <p class="text-muted mb-0">
+        Solo disponible para el rol <strong>Administrador</strong>. Desde aquí puedes crear, editar y bloquear usuarios.
+      </p>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <!-- Formulario -->
+    <div class="col-lg-4">
+      <div class="login-card p-4 h-100">
+        <h5 class="mb-3" id="titulo-form-usuario">Crear usuario</h5>
+
+        <form id="form-admin-usuario" novalidate>
+          <!-- Campo oculto para ID al editar -->
+          <input type="hidden" id="admin-usuario-id">
+
+          <div class="mb-3">
+            <label class="form-label small" for="admin-usuario-nombre">Nombre *</label>
+            <input id="admin-usuario-nombre" type="text" class="form-control" placeholder="Nombre completo">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small" for="admin-usuario-correo">Correo *</label>
+            <input id="admin-usuario-correo" type="email" class="form-control" placeholder="correo@gmail.com">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small" for="admin-usuario-clave">Contraseña *</label>
+            <input id="admin-usuario-clave" type="password" class="form-control" placeholder="Mínimo 6 caracteres">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small" for="admin-usuario-rol">Rol *</label>
+            <select id="admin-usuario-rol" class="form-select">
+              <option value="">Selecciona un rol</option>
+              <option value="admin">Administrador</option>
+              <option value="vendedor">Vendedor</option>
+              <option value="cliente">Cliente</option>
+            </select>
+          </div>
+
+          <div id="msg-admin-usuario" role="alert" aria-live="polite" style="display:none;"></div>
+
+          <div class="d-flex justify-content-between mt-3">
+            <button id="btnAdminGuardar" class="btn btn-primary">
+              Crear usuario
+            </button>
+            <button id="btnAdminCancelarEdicion" type="button" class="btn btn-outline-secondary" style="display:none;">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Tabla de usuarios -->
+    <div class="col-lg-8">
+      <div class="login-card p-4 h-100">
+        <h5 class="mb-3">Listado de usuarios registrados</h5>
+        <div class="table-responsive">
+          <table class="table table-sm align-middle">
+            <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Rol</th>
+              <th>Estado</th>
+              <th class="text-end">Acciones</th>
+            </tr>
+            </thead>
+            <tbody id="tabla-usuarios-body">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="assets/varios/jquery-3.7.1.min.js"></script>
+<script src="js/models/sessionModel.js"></script>
+<script src="js/models/userModel.js"></script>
+<script src="js/seguridadRoutes.js"></script>
+<script src="js/views/userAdminView.js"></script>
+<script src="js/controllers/userAdminController.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  $(function () {
+    SessionModel.actualizarHeader();
+  });
+</script>
+</body>
+</html>
