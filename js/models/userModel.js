@@ -1,4 +1,3 @@
-// js/models/userModel.js
 window.UserModel = {
   keyUsuarios: "usuarios_app",
 
@@ -20,7 +19,6 @@ window.UserModel = {
     return lista.find(u => u.correo.toLowerCase() === correo.toLowerCase()) || null;
   },
 
-  // Crear usuario (primer usuario se vuelve admin)
   create({ nombre, correo, clave, rol = "cliente" }) {
     const lista = this._leerLista();
 
@@ -49,7 +47,6 @@ window.UserModel = {
     return { ok: true, usuario: nuevo };
   },
 
-  // Actualizar datos (nombre, correo, rol, clave, activo...)
   update(id, cambios) {
     const lista = this._leerLista();
     const idx = lista.findIndex(u => u.id === id);
@@ -60,7 +57,6 @@ window.UserModel = {
     return { ok: true, usuario: lista[idx] };
   },
 
-  // Cambiar clave por correo (para recuperación de contraseña)
   cambiarClavePorCorreo(correo, nuevaClave) {
     const lista = this._leerLista();
     const idx = lista.findIndex(u => u.correo.toLowerCase() === correo.toLowerCase());

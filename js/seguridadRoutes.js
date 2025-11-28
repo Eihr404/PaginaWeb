@@ -14,18 +14,23 @@ $(document).on("click", "[data-salir-sesion]", function (e) {
   window.location.href = "index.html";
 });
 
+// Rutas que requieren un rol específico (admin, vendedor, etc.)
 $(document).on("click", "[data-rol-requerido]", function (e) {
   const rolNecesario = $(this).attr("data-rol-requerido");
 
-  if (!window.SessionModel || !SessionModel.isLoggedIn()) {
+  if (!SessionModel.isLoggedIn()) {
     e.preventDefault();
     window.location.href = "login.html";
     return;
   }
 
-  const rolActual = SessionModel.getRol ? SessionModel.getRol() : null;
+  const rolActual = SessionModel.getRol(); // el rol que guardaste al iniciar sesión
+
   if (rolActual !== rolNecesario) {
     e.preventDefault();
     alert("No tienes permisos para acceder a esta sección.");
   }
 });
+
+
+

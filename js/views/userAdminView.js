@@ -1,4 +1,3 @@
-// js/views/userAdminView.js
 window.UserAdminView = {
   renderTabla(usuarios) {
     const $tbody = $("#tabla-usuarios-body");

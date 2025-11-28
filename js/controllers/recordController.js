@@ -1,4 +1,3 @@
-// js/controllers/recoverController.js
 $(document).ready(function () {
 
   $("#btnRecuperarClave").on("click", function (e) {
@@ -17,7 +16,6 @@ $(document).ready(function () {
       return;
     }
 
-    // 🔐 Simulación real
     UserModel.cambiarClavePorCorreo(correo, clave);
 
     RecoverView.showMessage(
@@ -25,7 +23,6 @@ $(document).ready(function () {
       "ok"
     );
 
-    // Redirigir después de unos segundos
     setTimeout(() => {
       window.location.href = "login.html";
     }, 2000);
