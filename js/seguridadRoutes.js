@@ -14,7 +14,7 @@ $(document).on("click", "[data-salir-sesion]", function (e) {
   window.location.href = "index.html";
 });
 
-// Rutas que requieren un rol específico (admin, vendedor, etc.)
+//Rutas que requieren un rol
 $(document).on("click", "[data-rol-requerido]", function (e) {
   const rolNecesario = $(this).attr("data-rol-requerido");
 
@@ -24,7 +24,7 @@ $(document).on("click", "[data-rol-requerido]", function (e) {
     return;
   }
 
-  const rolActual = SessionModel.getRol(); // el rol que guardaste al iniciar sesión
+  const rolActual = SessionModel.getRol();
 
   if (rolActual !== rolNecesario) {
     e.preventDefault();
