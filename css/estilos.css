@@ -244,13 +244,13 @@ footer{background:#fff2f6; border-top:1px solid var(--b); text-align:center; pad
     position: relative;
     background-size: cover;
     background-position: center;
-    height: 275px;
+    height: 200px;
 }
 #Cabecera-logo{
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 275px;
+    height: 200px;
     transform: translate(-50%, -50%);
 }
 .Texto-cabecera {
@@ -283,6 +283,13 @@ footer{background:#fff2f6; border-top:1px solid var(--b); text-align:center; pad
     height: 400px;
 }
 
+.Estilo-offcanvas{
+    width:75px !important;
+    height:300px;
+    align-items: center;
+    margin-top: 18%;
+    .Pagina;
+}
 /* Estilo base: móviles (menos de 768px) */
 .Productos {
     display: flex;
