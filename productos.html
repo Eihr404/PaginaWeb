@@ -15,31 +15,42 @@
 <body>
 <div class="contenedor">
   <div>
+    <!-- Contenedor para el la cabecera -->
     <div id="Cabecera" class="Pagina">
       <img id="Cabecera-logo" src="assets/img/Logo.png" alt="Logo brûlée ">
       <h1 class="Texto-cabecera m-3">Catalogo</h1>
     </div>
-
-    <div class="text-end p-3 sticky-top" style="background:var(--brand-2);">
-      <button class="btn" id="btn-mostrar-carrito" data-bs-toggle="modal" data-bs-target="#modalCarrito">
-        Mostrar carrito
-      </button>
-      <button class="btn" id="btn-borrar-carrito">
-        Vaciar Carrito
-      </button>
-      <button class="btn">
-        <a href="index.html">
-          Regresar
-        </a>
-      </button>
-    </div>
-
-    <br>
-    <div class="container text-center">
-      <div id="Producto-Catalogo" class="row justify-content-center g-3">
+    <!-- Contenedor para el los botones del menu, el contenedor es sticky -->
+    <div class="sticky-top d-flex justify-content-between align-items-center p-1" style="background:var(--brand-2);">
+      <div>
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
+                aria-controls="offcanvasScrolling">
+          Accesibilidad
+        </button>
+      </div>
+      <div class="text-end p-3 sticky-top">
+        <button class="btn" id="btn-mostrar-carrito" data-bs-toggle="modal" data-bs-target="#modalCarrito">
+          Mostrar carrito
+        </button>
+        <button class="btn" id="btn-borrar-carrito">
+          Vaciar Carrito
+        </button>
+        <button class="btn">
+          <a href="index.html" class="text-decoration-none text-reset">
+            Regresar
+          </a>
+        </button>
       </div>
     </div>
-
+    <!-- Contenedor para mostrar los productos -->
+    <br>
+    <div>
+      <div class="container text-center">
+        <div id="Producto-Catalogo" class="row justify-content-center g-3">
+        </div>
+      </div>
+    </div>
+    <!-- Footer para el contacto de la organización  -->
     <footer id="contacto" class="Pagina">
       <br>
       <h2 class="Texto-Footer">Términos y condiciones</h2>
@@ -53,6 +64,16 @@
 
   </div>
 </div>
+<!-- Barra de accesibilidad -->
+<div class="offcanvas offcanvas-start Pagina Estilo-offcanvas" data-bs-scroll="true" data-bs-backdrop="false"
+     id="offcanvasScrolling">
+  <div class="offcanvas-header">
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas">X</button>
+  </div>
+  <div class="offcanvas-body"></div>
+</div>
+
+<!-- Carrito -->
 <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
