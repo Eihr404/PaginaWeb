@@ -157,8 +157,18 @@ $(document).ready(function () {
 
 /*Adminsitrador usuarios manejo*/
 $(document).ready(function () {
+  //aquí solo si no es admin
+  if (!$("#tabla-usuarios-body").length && !$("#form-admin-usuario").length) return;
+
+  //control de sesión para regresar a login.html
   if (!SessionModel.isLoggedIn || !SessionModel.isLoggedIn()) {
     window.location.href = "login.html";
+    return;
+  }
+
+  if (SessionModel.getRol && SessionModel.getRol() !== "admin") {
+    alert("No tienes permisos para acceder a esta sección.");
+    window.location.href = "index.html";
     return;
   }
 
