@@ -15,6 +15,30 @@
     --navbar: #b484b5;
     --final: #f4ddd4;
 }
+/* Esto afectará a TODO: divs, botones, inputs, p, h1, etc. */
+body.alto-contraste,
+body.alto-contraste * {
+    background-color: #000000 !important; /* Fondo negro */
+    color: #FFFFFF !important;           /* Texto blanco (o #FFFF00 amarillo para más contraste) */
+    border-color: #FFFFFF !important;    /* Bordes blancos para que se vean los botones */
+    background-image: none !important;    /* Quita gradientes o imágenes de fondo */
+}
+
+/* Opcional: Si quieres que las imágenes se vean más claras o en blanco y negro */
+body.alto-contraste img {
+    filter: grayscale(100%) contrast(120%);
+}
+
+/* Estilo para resaltar cualquier elemento cuando tiene el foco del teclado */
+:focus {
+    outline: 3px solid #0d6efd !important; /* Un azul de Bootstrap o el color de tu marca */
+    outline-offset: 2px;
+}
+
+/* Si quieres que solo se vea al usar el teclado y no al hacer clic (opcional) */
+:focus:not(:focus-visible) {
+    outline: none !important;
+}
 
 .btn:focus,
 .btn:active {
@@ -282,13 +306,15 @@ footer{background:#fff2f6; border-top:1px solid var(--b); text-align:center; pad
     width: 500px;
     height: 400px;
 }
-
-.Estilo-offcanvas{
-    width:75px !important;
-    height:300px;
-    align-items: center;
-    margin-top: 18%;
-    .Pagina;
+.Imagen-botones {
+    width: 1.5em;
+    height: 1.5em;
+}
+.offcanvas-body {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    gap: 10px;
 }
 /* Estilo base: móviles (menos de 768px) */
 .Productos {
@@ -385,7 +411,6 @@ footer{background:#fff2f6; border-top:1px solid var(--b); text-align:center; pad
         gap: 10px;
     }
 }
-
 
 .Descripcion-producto{
     width: 100%;

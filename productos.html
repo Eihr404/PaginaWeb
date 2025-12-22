@@ -20,26 +20,17 @@
       <img id="Cabecera-logo" src="assets/img/Logo.png" alt="Logo brûlée ">
       <h1 class="Texto-cabecera m-3">Catalogo</h1>
     </div>
-    <!-- Contenedor para el los botones del menu, el contenedor es sticky -->
+    <!-- Contenedor para los botones del menu, el contenedor es sticky -->
     <div class="sticky-top d-flex justify-content-between align-items-center p-1" style="background:var(--brand-2);">
       <div>
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
-                aria-controls="offcanvasScrolling">
-          Accesibilidad
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+            <img class="Imagen-botones" src="assets/icons/iconoPersona.png" alt="Accesibilidad">
         </button>
       </div>
       <div class="text-end p-3 sticky-top">
-        <button class="btn" id="btn-mostrar-carrito" data-bs-toggle="modal" data-bs-target="#modalCarrito">
-          Mostrar carrito
-        </button>
-        <button class="btn" id="btn-borrar-carrito">
-          Vaciar Carrito
-        </button>
-        <button class="btn">
-          <a href="index.html" class="text-decoration-none text-reset">
-            Regresar
-          </a>
-        </button>
+        <button class="btn" id="btn-mostrar-carrito" data-bs-toggle="modal" data-bs-target="#modalCarrito">Mostrar carrito</button>
+        <button class="btn" id="btn-borrar-carrito">Vaciar Carrito</button>
+        <a href="index.html" class="btn btn-outline-dark" role="button">Regresar</a>
       </div>
     </div>
     <!-- Contenedor para mostrar los productos -->
@@ -65,12 +56,19 @@
   </div>
 </div>
 <!-- Barra de accesibilidad -->
-<div class="offcanvas offcanvas-start Pagina Estilo-offcanvas" data-bs-scroll="true" data-bs-backdrop="false"
-     id="offcanvasScrolling">
-  <div class="offcanvas-header">
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas">X</button>
-  </div>
-  <div class="offcanvas-body"></div>
+<div class="offcanvas Pagina" data-bs-scroll="true" data-bs-backdrop="false" id="offcanvasScrolling">
+    <div class="offcanvas-body text-center">
+        <!-- Botón para el alto contraste -->
+        <button type="button" id="btn-contraste" class="btn btn-outline-dark">AC</button>
+        <!-- Botón para aumentar el tamaño de letra -->
+        <button type="button" id="btn-aumentar" class="btn btn-outline-dark">+</button>
+        <!-- Botón para disminuir el tamaño de letra -->
+        <button type="button" id="btn-disminuir" class="btn btn-outline-dark">-</button>
+        <!-- Botón para reestablecer los ajustes -->
+        <button type="button" id="btn-restablecer" class="btn btn-danger">R</button>
+    </div>
+
+    <div class="offcanvas-body"></div>
 </div>
 
 <!-- Carrito -->

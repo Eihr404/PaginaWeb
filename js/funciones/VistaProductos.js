@@ -7,34 +7,34 @@ class ProductoView {
 
   // ==== mostrar catálogo ====
   renderCatalogo(productos, categorias) {
-    this.catalogo.html('');
+     this.catalogo.html('');
+     const categoriasUnicas = [...new Set(productos.map(p => p.CAT_Codigo))];
 
-    const categoriasUnicas = [...new Set(productos.map(p => p.CAT_Codigo))];
+     categoriasUnicas.forEach(codCat => {
+        const categoria = categorias.find(c => c.CAT_Codigo === codCat);
+        const productosCat = productos.filter(p => p.CAT_Codigo === codCat);
 
-    categoriasUnicas.forEach(codCat => {
-      const categoria = categorias.find(c => c.CAT_Codigo === codCat);
-      const productosCat = productos.filter(p => p.CAT_Codigo === codCat);
+        this.catalogo.append(`<h2 class="Pagina mt-5 mb-3 text-center p-2">${categoria.CAT_Nombre}</h2>`);
 
-      this.catalogo.append(`<h2 class="Pagina mt-5 mb-3 text-center p-2">${categoria.CAT_Nombre}</h2>`);
+        const fila = $('<div class="row"></div>');
 
-      const fila = $('<div class="row"></div>');
-
-      productosCat.forEach(prod => {
-        fila.append(`          
-          <div class="col-12 col-sm-6 col-md-3 mb-4 text-center">
-            <a href="detalleProducto.html?PRD_Codigo=${prod.PRD_Codigo}&CAT_Codigo=${prod.CAT_Codigo}" class="text-decoration-none text-reset">
-            <div class="card shadow-sm">
-                <img class="Imagen-producto img-fluid card-img-top" style="max-height: 350px;" src="${prod.PRD_Imagen}" alt="${prod.PRD_Nombre}">
-              <div class="card-body h-100">
-                <h5 class="Titulo-producto mt-2">${prod.PRD_Nombre}</h5>
-              <p>$${prod.PRD_Precio}</p>     
-              </div>
-            </a>
-          </div>
-        `);
-      });
-      this.catalogo.append(fila);
-    });
+        productosCat.forEach(prod => {
+          fila.append(`          
+            <div class="col-12 col-sm-6 col-md-3 mb-4 text-center">
+              <a href="detalleProducto.html?PRD_Codigo=${prod.PRD_Codigo}&CAT_Codigo=${prod.CAT_Codigo}" class="text-decoration-none text-reset">
+                <div class="card shadow-sm h-100">
+                  <img class="Imagen-producto img-fluid card-img-top" style="max-height: 350px;" src="${prod.PRD_Imagen}" alt="${prod.PRD_Nombre}">
+                  <div class="card-body">
+                    <h5 class="Titulo-producto mt-2">${prod.PRD_Nombre}</h5>
+                    <p>$${prod.PRD_Precio}</p>     
+                  </div>
+                </div>
+              </a> 
+            </div>
+          `);
+        });
+        this.catalogo.append(fila);
+     });
   }
 
   // ==== mostrar carrito ====
