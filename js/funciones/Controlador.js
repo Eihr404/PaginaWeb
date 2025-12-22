@@ -3,6 +3,7 @@ class ControlarProducto{
     this.model = new Products();
     this.view = new ProductoView();
     this.configurarAccesibilidad();
+    this.initCatalogo();
   }
   configurarAccesibilidad() {
       // Cambiamos 'body' por 'documentElement' para afectar al tamaño raíz
@@ -37,18 +38,17 @@ class ControlarProducto{
 
       // 2. Lógica Aumentar Letra
       document.getElementById('btn-aumentar')?.addEventListener('click', () => {
-          if (fontSize < 200){
+          if (fontSize < 200)
               fontSize += 10;
-              // Aplicamos el estilo a la raíz (html)
-              root.style.fontSize = `${fontSize}%`;
-          }
+          // Esto cambia la base de todos los 'rem' de la página
+          document.documentElement.style.setProperty('font-size', `${fontSize}%`, 'important');
       });
 
-      // 3. Lógica Disminuir Letra
+      // 2. Lógica Disminuir Letra
       document.getElementById('btn-disminuir')?.addEventListener('click', () => {
-          if (fontSize > 60) { // Límite para que no desaparezca el texto
+          if (fontSize > 50) {
               fontSize -= 10;
-              root.style.fontSize = `${fontSize}%`;
+              document.documentElement.style.setProperty('font-size', `${fontSize}%`, 'important');
           }
       });
 

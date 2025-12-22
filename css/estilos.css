@@ -15,18 +15,80 @@
     --navbar: #b484b5;
     --final: #f4ddd4;
 }
-/* Esto afectará a TODO: divs, botones, inputs, p, h1, etc. */
+
+/* --- BLOQUE DE ACCESIBILIDAD CORREGIDO --- */
+
+/* 1. General: Fondo negro y texto blanco */
 body.alto-contraste,
-body.alto-contraste * {
-    background-color: #000000 !important; /* Fondo negro */
-    color: #FFFFFF !important;           /* Texto blanco (o #FFFF00 amarillo para más contraste) */
-    border-color: #FFFFFF !important;    /* Bordes blancos para que se vean los botones */
-    background-image: none !important;    /* Quita gradientes o imágenes de fondo */
+body.alto-contraste *:not(button):not(.btn):not(img) {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+    border-color: #FFFFFF !important;
+    background-image: none !important;
 }
 
-/* Opcional: Si quieres que las imágenes se vean más claras o en blanco y negro */
-body.alto-contraste img {
-    filter: grayscale(100%) contrast(120%);
+/* 2. LOGO: Ajustado para que no sea gigante */
+body.alto-contraste #Cabecera-logo {
+    filter: brightness(0) invert(1) !important;
+    background: transparent !important;
+    height: 6rem !important; /* Bajamos de 12rem a 6rem */
+    width: auto !important;
+    max-width: 100% !important;
+    outline: none !important;
+}
+
+/* 3. PRODUCTOS: Imágenes escalables pero con límite */
+body.alto-contraste .Imagen-producto,
+body.alto-contraste .card-img-top,
+body.alto-contraste #Imagen-detalle,
+body.alto-contraste img:not(.Imagen-botones):not(.btn img) {
+    filter: grayscale(100%) contrast(120%) !important;
+    object-fit: cover !important;
+    outline: 2px solid #FFFFFF !important;
+
+    /* Usamos 'vh' o 'rem' pero moderado para evitar el aplastamiento */
+    height: 250px !important;
+    min-height: 200px !important;
+    width: 100% !important;
+}
+
+/* 4. TEXTOS: Eliminamos el font-size fijo para que conserven su tamaño original */
+body.alto-contraste h1,
+body.alto-contraste h2,
+body.alto-contraste h3,
+body.alto-contraste h4,
+body.alto-contraste h5,
+body.alto-contraste p,
+body.alto-contraste span {
+    background-color: transparent !important;
+    color: #FFFFFF !important;
+    /* NO ponemos font-size aquí para que el navegador use el que ya tenían */
+}
+
+/* 5. BOTONES: Blancos y escalables */
+body.alto-contraste button,
+body.alto-contraste .btn {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    border: 3px solid #000000 !important;
+    font-weight: bold !important;
+    padding: 0.5rem 1rem !important;
+    height: auto !important;
+}
+
+/* 6. ICONOS EN BOTONES: Negros */
+body.alto-contraste .btn img,
+body.alto-contraste button img {
+    filter: brightness(0) !important;
+    height: 1.2em !important;
+    width: auto !important;
+}
+
+/* 7. TARJETAS: Que se ajusten al contenido */
+body.alto-contraste .card {
+    background-color: #000000 !important;
+    border: 2px solid #FFFFFF !important;
+    height: auto !important;
 }
 
 /* Estilo para resaltar cualquier elemento cuando tiene el foco del teclado */
@@ -39,6 +101,16 @@ body.alto-contraste img {
 :focus:not(:focus-visible) {
     outline: none !important;
 }
+
+/* Forzar que los títulos y textos específicos usen unidades relativas */
+h1, h2, h3, h4, h5, h6, .fs-1, .fs-2, .fs-3, .fs-4, .fs-5 {
+    font-size: 1rem !important; /* El 1rem será el % que definamos en JS */
+}
+
+/* Si quieres que mantengan su jerarquía (que h1 sea más grande que h2) usa esto: */
+h1 { font-size: 2.5rem !important; }
+h2 { font-size: 2rem !important; }
+h5 { font-size: 1.25rem !important; }
 
 .btn:focus,
 .btn:active {
@@ -290,6 +362,14 @@ footer{background:#fff2f6; border-top:1px solid var(--b); text-align:center; pad
 
 .col-12 .col-sm-6 .col-md-3 {
     padding: 10px; /* espacio interno */
+}
+
+.nav {
+    .d-flex;
+    .justify-content-between;
+    .align-items-center;
+    .p-1;
+    background:var(--brand-2) !important;
 }
 
 .Productos-Catalogo {
