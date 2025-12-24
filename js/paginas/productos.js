@@ -88,7 +88,7 @@ window.mostrarProductos = function () {
         ${nombre} - Cantidad: ${cantidad} - Precio unitario: $${precioUnitario.toFixed(2)}
       </div>
       <button class="btn btn-sm btn-danger btn-eliminar" data-index="${index}">
-        X
+        <i class="bi bi-trash"></i>
       </button>
     `;
 

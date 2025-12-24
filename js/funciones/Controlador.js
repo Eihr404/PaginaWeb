@@ -1,183 +1,128 @@
-class ControlarProducto{
-  constructor() {
-    this.model = new Products();
-    this.view = new ProductoView();
-    this.configurarAccesibilidad();
-    this.initCatalogo();
-  }
-  configurarAccesibilidad() {
-      // Cambiamos 'body' por 'documentElement' para afectar al tamaño raíz
-      const root = document.documentElement;
-      let fontSize = 100;
-      const offcanvasElement = document.getElementById('offcanvasScrolling');
-      const btnCarrito = document.getElementById('btn-mostrar-carrito');
-      const btnRestablecer = document.getElementById('btn-restablecer');
-      // 'shown.bs.offcanvas' se dispara cuando el menú ya es visible para el usuario
-      offcanvasElement.addEventListener('shown.bs.offcanvas', () => {
-          // Buscamos el primer botón dentro del offcanvas para darle el foco
-          const primerBoton = offcanvasElement.querySelector('#btn-contraste');
-          if (primerBoton) {
-              primerBoton.focus();
-          }
-      });
-      // 2. Redirección forzada al salir del último botón
-      btnRestablecer?.addEventListener('keydown', (e) => {
-          // Si presiona TAB y NO está presionando SHIFT (es decir, va hacia adelante)
-          if (e.key === 'Tab' && !e.shiftKey) {
-              e.preventDefault(); // Detenemos el comportamiento normal
+class ControlarProducto {
+    constructor() {
+        this.model = new Products();
+        this.view = new ProductoView();
+        this.initCatalogo();
+    }
 
-              // Cerramos el offcanvas (opcional, tú decides si quieres que siga abierto)
-              const instance = bootstrap.Offcanvas.getInstance(offcanvasElement);
-              instance.hide();
-          }
-      });
-      // 1. Lógica Alto Contraste (Este sí sigue en el body para las clases CSS)
-      document.getElementById('btn-contraste')?.addEventListener('click', () => {
-          document.body.classList.toggle('alto-contraste');
-      });
+    initCatalogo() {
+        this.view.renderCatalogo(
+            this.model.getProductos(),
+            this.model.getCategorias()
+        );
+    }
 
-      // 2. Lógica Aumentar Letra
-      document.getElementById('btn-aumentar')?.addEventListener('click', () => {
-          if (fontSize < 200)
-              fontSize += 10;
-          // Esto cambia la base de todos los 'rem' de la página
-          document.documentElement.style.setProperty('font-size', `${fontSize}%`, 'important');
-      });
+    mostrarCarrito() {
+        this.view.renderCarrito(
+            this.model.getCarrito(),
+            this.model.getProductos(),
+            this.model.calcularTotal()
+        );
+        // ACCESIBILIDAD: Cuando el modal del carrito se termine de mostrar,
+        // llevamos el foco al primer elemento importante (el contenedor del carrito o el botón cerrar)
+        const modalCarritoElem = document.getElementById('modalCarrito');
+        modalCarritoElem.addEventListener('shown.bs.modal', () => {
+            // Intentamos enfocar el primer botón de eliminar, si no hay, el botón de cerrar
+            const primerBoton = modalCarritoElem.querySelector('.btn-eliminar, .btn-secondary');
+            primerBoton?.focus();
+        }, {once: true}); // {once: true} evita que se acumulen eventos cada vez que abres el carrito
 
-      // 2. Lógica Disminuir Letra
-      document.getElementById('btn-disminuir')?.addEventListener('click', () => {
-          if (fontSize > 50) {
-              fontSize -= 10;
-              document.documentElement.style.setProperty('font-size', `${fontSize}%`, 'important');
-          }
-      });
+        // eliminar del carrito
+        $("#contenedor-carrito")
+            .find(".btn-eliminar")
+            .click((e) => {
+                const index = $(e.target).data("index");
+                this.model.eliminarDelCarrito(index);
+                this.mostrarCarrito();
+            });
 
-      // 4. Lógica Restablecer
-      document.getElementById('btn-restablecer')?.addEventListener('click', () => {
-          fontSize = 100;
-          root.style.fontSize = '100%';
-          document.body.classList.remove('alto-contraste');
-      });
-  }
-  initCatalogo() {
-    this.view.renderCatalogo(
-      this.model.getProductos(),
-      this.model.getCategorias()
-    );
-  }
+        // comportamiento del botón comprar
+        $("#btn-comprar").click(() => {
+            const modalLoading = new bootstrap.Modal(document.getElementById('Loading'));
+            const modalExito = new bootstrap.Modal(document.getElementById('Exito'));
+            const modalError = new bootstrap.Modal(document.getElementById('Error'));
+            const modalCarrito = bootstrap.Modal.getInstance(document.getElementById("modalCarrito"));
 
-  mostrarCarrito() {
-    this.view.renderCarrito(
-      this.model.getCarrito(),
-      this.model.getProductos(),
-      this.model.calcularTotal()
+            if (modalCarrito) modalCarrito.hide();
+            modalLoading.show();
 
-    );
-    // ACCESIBILIDAD: Cuando el modal del carrito se termine de mostrar,
-    // llevamos el foco al primer elemento importante (el contenedor del carrito o el botón cerrar)
-    const modalCarritoElem = document.getElementById('modalCarrito');
-    modalCarritoElem.addEventListener('shown.bs.modal', () => {
-    // Intentamos enfocar el primer botón de eliminar, si no hay, el botón de cerrar
-    const primerBoton = modalCarritoElem.querySelector('.btn-eliminar, .btn-secondary');
-    primerBoton?.focus();
-    }, { once: true }); // {once: true} evita que se acumulen eventos cada vez que abres el carrito
-
-    // eliminar del carrito
-    $("#contenedor-carrito")
-      .find(".btn-eliminar")
-      .click((e) => {
-        const index = $(e.target).data("index");
-        this.model.eliminarDelCarrito(index);
-        this.mostrarCarrito();
-      });
-
-    // comportamiento del botón comprar
-    $("#btn-comprar").click(() => {
-      const modalLoading = new bootstrap.Modal(document.getElementById('Loading'));
-      const modalExito = new bootstrap.Modal(document.getElementById('Exito'));
-      const modalError = new bootstrap.Modal(document.getElementById('Error'));
-      const modalCarrito = bootstrap.Modal.getInstance(document.getElementById("modalCarrito"));
-
-      if (modalCarrito) modalCarrito.hide();
-      modalLoading.show();
-
-      setTimeout(() => {
-        modalLoading.hide();
-        Math.random() > 0.2 ? modalExito.show() : modalError.show();
-      }, 3000);
-    });
-  }
+            setTimeout(() => {
+                modalLoading.hide();
+                Math.random() > 0.2 ? modalExito.show() : modalError.show();
+            }, 3000);
+        });
+    }
 }
 
 class ControladorDetalleProducto {
-  constructor() {
-    this.model = new Products();
-    this.view = new DetalleProductoView();
-  }
-
-  init() {
-    const params = new URLSearchParams(window.location.search);
-    const PRD_Codigo = parseInt(params.get("PRD_Codigo"));
-    const CAT_Codigo = parseInt(params.get("CAT_Codigo"));
-
-    const producto = this.model.getProductoPorCodigo(PRD_Codigo);
-    const productosCat = this.model.getProductosPorCategoria(CAT_Codigo);
-
-    if (!producto) {
-      console.error("Producto no encontrado.");
-      return;
+    constructor() {
+        this.model = new Products();
+        this.view = new DetalleProductoView();
     }
 
-    // Render detalle inicial
-    this.view.renderDetalle(producto, productosCat);
+    init() {
+        const params = new URLSearchParams(window.location.search);
+        const PRD_Codigo = parseInt(params.get("PRD_Codigo"));
+        const CAT_Codigo = parseInt(params.get("CAT_Codigo"));
 
-    // Eventos UI
-    this.configurarEventos(productosCat);
-  }
+        const producto = this.model.getProductoPorCodigo(PRD_Codigo);
+        const productosCat = this.model.getProductosPorCategoria(CAT_Codigo);
 
-  configurarEventos(productosCat) {
-    // Cambiar producto desde el select
-    $("#selectProducto").on("change", (e) => {
-      const nuevoID = parseInt($(e.target).val());
-      const nuevoProducto = this.model.getProductoPorCodigo(nuevoID);
+        if (!producto) {
+            console.error("Producto no encontrado.");
+            return;
+        }
 
-      if (nuevoProducto) {
-        this.view.actualizarDetalle(nuevoProducto);
-      }
-    });
+        // Render detalle inicial
+        this.view.renderDetalle(producto, productosCat);
 
-    // Control de cantidad
-    $("#btn-sumar").click(() => this.view.cambiarCantidad(1));
-    $("#btn-restar").click(() => this.view.cambiarCantidad(-1));
+        // Eventos UI
+        this.configurarEventos(productosCat);
+    }
 
-    // Agregar al carrito
-    $("#btn-confirmar").click((e) => {
-      e.preventDefault();
+    configurarEventos(productosCat) {
+        // Cambiar producto desde el select
+        $("#selectProducto").on("change", (e) => {
+            const nuevoID = parseInt($(e.target).val());
+            const nuevoProducto = this.model.getProductoPorCodigo(nuevoID);
 
-      const PRD_Codigo = parseInt($("#selectProducto").val());
-      const cantidad = parseInt($("#cantidad").val());
+            if (nuevoProducto) {
+                this.view.actualizarDetalle(nuevoProducto);
+            }
+        });
 
-      this.model.agregarAlCarrito(PRD_Codigo, cantidad);
+        // Control de cantidad
+        $("#btn-sumar").click(() => this.view.cambiarCantidad(1));
+        $("#btn-restar").click(() => this.view.cambiarCantidad(-1));
 
-      const prod = this.model.getProductoPorCodigo(PRD_Codigo);
+        // Agregar al carrito
+        $("#btn-confirmar").click((e) => {
+            e.preventDefault();
 
-      alert(`${cantidad} unidad(es) de "${prod.PRD_Nombre}" agregada(s) al carrito.\nPrecio unitario: $${prod.PRD_Precio}`);
-      $("#formCompra")[0].reset();
-      $("#cantidad").val(1);
-    });
-  }
+            const PRD_Codigo = parseInt($("#selectProducto").val());
+            const cantidad = parseInt($("#cantidad").val());
+
+            this.model.agregarAlCarrito(PRD_Codigo, cantidad);
+
+            const prod = this.model.getProductoPorCodigo(PRD_Codigo);
+
+            alert(`${cantidad} unidad(es) de "${prod.PRD_Nombre}" agregada(s) al carrito.\nPrecio unitario: $${prod.PRD_Precio}`);
+            $("#formCompra")[0].reset();
+            $("#cantidad").val(1);
+        });
+    }
 }
 
 class IndexController {
-  constructor(){
-    this.model=new Products();
-    this.view=new IndexView();
-  }
+    constructor() {
+        this.model = new Products();
+        this.view = new IndexView();
+    }
 
-  init(){
-      const categorias=this.model.getCategoriasAgrupadas();
-      console.log("CATEGORIAS → ", categorias);
-      this.view.renderCarrusel(categorias);
-      this.view.renderGridChard(categorias);
-  }
+    init() {
+        const categorias = this.model.getCategoriasAgrupadas();
+        console.log("CATEGORIAS → ", categorias);
+        this.view.renderCarrusel(categorias);
+        this.view.renderGridChard(categorias);
+    }
 }
