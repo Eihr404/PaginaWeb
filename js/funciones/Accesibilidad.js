@@ -38,7 +38,7 @@ class controlarAccesibilidad {
         const btnAumentar = document.getElementById('btn-aumentar');
         const btnDisminuir = document.getElementById('btn-disminuir');
         const btnRestablecer = document.getElementById('btn-restablecer');
-        const btnImagenes = document.getElementById('btn-imagenes'); // ID corregido de tu HTML
+        const btnImagenes = document.getElementById('btn-quitar-imagenes');
 
         btnContraste?.addEventListener('click', () => {
             this.altoContraste = !this.altoContraste;

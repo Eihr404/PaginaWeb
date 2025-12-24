@@ -34,6 +34,11 @@ body.alto-contraste #Cabecera-logo {
     max-width: 100% !important;
     outline: none !important;
 }
+body.alto-contraste nav,
+body.alto-contraste .offcanvas-body {
+    border: 2px solid white !important;
+    border-radius: 30px;
+}
 
 /* PRODUCTOS: Imágenes escalables pero con límite */
 body.alto-contraste .Imagen-producto,
@@ -350,7 +355,6 @@ footer{background:#fff2f6; border-top:1px solid var(--b); text-align:center; pad
 }
 .Texto-cabecera {
     position: absolute;
-    bottom: 10px;
     right: 10px;
     color: white;
     font-size: 16px;
