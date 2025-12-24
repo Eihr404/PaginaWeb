@@ -29,10 +29,10 @@
             <div class="container-fluid d-flex justify-content-between">
                 <!-- Lado izquierdo -->
                 <div class="navbar-brand m-0">
-                    <a href="productos.html" class="btn btn-outline-dark" aria-label="Regresar">
+                    <a href="index.html" class="btn btn-outline-dark" aria-label="Regresar">
                         <i class="bi bi-arrow-left"></i>
                     </a>
-                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                    <button class="btn btn-primary" type="button" id="btn-accesibilidad" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasScrolling"
                             aria-controls="offcanvasScrolling" aria-label="Accesibilidad">
                         <i class="bi bi-universal-access"></i>
@@ -68,33 +68,6 @@
             </button>
         </div>
 
-        <!-- Barra de accesibilidad -->
-        <div class="offcanvas Pagina" data-bs-scroll="true" data-bs-backdrop="false" id="offcanvasScrolling">
-            <div class="offcanvas-body text-center">
-                <!-- Botón para el alto contraste -->
-                <button type="button" id="btn-contraste" class="btn btn-outline-dark" aria-label="Alto contraste">
-                    <i class="bi bi-eye"></i>
-                </button>
-                <!-- Quitar imagenes -->
-                <button type="button" id="btn-imagenes" class="btn btn-outline-dark" aria-label="Quitar imagenes">
-                    <i class="bi bi-image-alt"></i>
-                </button>
-                <!-- Botón para aumentar el tamaño de letra -->
-                <button type="button" id="btn-aumentar" class="btn btn-outline-dark" aria-label="Aumentar texto">
-                    <i class="bi bi-zoom-in"></i>
-                </button>
-                <!-- Botón para disminuir el tamaño de letra -->
-                <button type="button" id="btn-disminuir" class="btn btn-outline-dark" aria-label="Disminuir texto">
-                    <i class="bi bi-zoom-out"></i>
-                </button>
-                <!-- Botón para reestablecer los ajustes -->
-                <button type="button" id="btn-restablecer" class="btn btn-danger"
-                        aria-label="Reestablecer configuración">
-                    <i class="bi bi-arrow-counterclockwise"></i>
-                </button>
-            </div>
-        </div>
-
         <!-- Carrito -->
         <div class="modal fade" id="modalCompra" tabindex="-1" aria-labelledby="modalCompraLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -120,7 +93,7 @@
                         </form>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary" id="btn-confirmar">Comprar</button>
+                            <button type="button" class="btn btn-primary" id="btn-confirmar">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -139,6 +112,97 @@
         © <span id="y"></span> Brúlée Catering & Event Desing — Pedido y retiro en tienda.
     </footer>
 </div>
+
+<!-- Barra de accesibilidad -->
+<div class="offcanvas Pagina" data-bs-scroll="true" data-bs-backdrop="false" id="offcanvasScrolling">
+    <div class="offcanvas-body text-center">
+        <!-- Botón para el alto contraste -->
+        <button type="button" id="btn-contraste" class="btn btn-outline-dark" aria-label="Alto contraste">
+            <i class="bi bi-eye"></i>
+        </button>
+        <!-- Quitar imagenes -->
+        <button type="button" id="btn-quitar-imagenes" class="btn btn-outline-dark" aria-label="Quitar imagenes">
+            <i class="bi bi-image-alt"></i>
+        </button>
+        <!-- Botón para aumentar el tamaño de letra -->
+        <button type="button" id="btn-aumentar" class="btn btn-outline-dark" aria-label="Aumentar texto">
+            <i class="bi bi-zoom-in"></i>
+        </button>
+        <!-- Botón para disminuir el tamaño de letra -->
+        <button type="button" id="btn-disminuir" class="btn btn-outline-dark" aria-label="Disminuir texto">
+            <i class="bi bi-zoom-out"></i>
+        </button>
+        <!-- Botón para reestablecer los ajustes -->
+        <button type="button" id="btn-restablecer" class="btn btn-danger" aria-label="Reestablecer configuración">
+            <i class="bi bi-arrow-counterclockwise"></i>
+        </button>
+    </div>
+</div>
+
+<!-- Carrito -->
+<div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header position-relative container-fluid d-flex justify-content-between">
+                <div>
+                    <h1 class="modal-title fs-5" id="modalCarritoLabel">Carrito</h1>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+
+            </div>
+            <div class="modal-body">
+                <form id="formCompra">
+                    <div id="contenedor-carrito" class="mb-3">
+                    </div>
+                </form>
+                <div id="contenedor-botones" class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="Loading" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                Loading...
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="Error" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">;(</h1>
+                <i class="bi bi-x-lg"></i>
+            </div>
+            <div class="modal-body">
+                Error ;(
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="Exito" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">:)</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="modal-body">
+                Éxito
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     const app = new ControladorDetalleProducto();
     app.init();
