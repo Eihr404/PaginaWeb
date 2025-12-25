@@ -18,86 +18,78 @@
 
 /* --- BLOQUE DE ACCESIBILIDAD CORREGIDO --- */
 
-/* 1. General: Fondo negro y texto blanco */
+/* General: Fondo negro y texto blanco */
 body.alto-contraste,
-body.alto-contraste *:not(button):not(.btn):not(img) {
-    background-color: #000000 !important;
-    color: #FFFFFF !important;
-    border-color: #FFFFFF !important;
+body.alto-contraste *:not(button):not(.btn):not(img):not(i) {
+    background-color: black !important;
+    color: white !important;
+    border-color: white !important;
     background-image: none !important;
 }
+body.alto-contraste .Pagina{
+    border: 2px solid white !important;
+}
 
-/* 2. LOGO: Ajustado para que no sea gigante */
+/* LOGO: Ajustado para que no sea gigante */
 body.alto-contraste #Cabecera-logo {
     filter: brightness(0) invert(1) !important;
     background: transparent !important;
-    height: 6rem !important; /* Bajamos de 12rem a 6rem */
-    width: auto !important;
     max-width: 100% !important;
     outline: none !important;
 }
+body.alto-contraste nav{
+    border: 2px solid white !important;
+}
 
-/* 3. PRODUCTOS: Imágenes escalables pero con límite */
+/* PRODUCTOS: Imágenes escalables pero con límite */
 body.alto-contraste .Imagen-producto,
 body.alto-contraste .card-img-top,
 body.alto-contraste #Imagen-detalle,
-body.alto-contraste img:not(.Imagen-botones):not(.btn img) {
-    filter: grayscale(100%) contrast(120%) !important;
-    object-fit: cover !important;
-    outline: 2px solid #FFFFFF !important;
-
-    /* Usamos 'vh' o 'rem' pero moderado para evitar el aplastamiento */
-    height: 250px !important;
-    min-height: 200px !important;
-    width: 100% !important;
+body.alto-contraste img:not(.btn img) {
+    filter: grayscale(100%) contrast(130%) !important;
+    outline: 2px solid white !important;
 }
 
-/* 4. TEXTOS: Eliminamos el font-size fijo para que conserven su tamaño original */
-body.alto-contraste h1,
-body.alto-contraste h2,
-body.alto-contraste h3,
-body.alto-contraste h4,
-body.alto-contraste h5,
-body.alto-contraste p,
-body.alto-contraste span {
-    background-color: transparent !important;
-    color: #FFFFFF !important;
-    /* NO ponemos font-size aquí para que el navegador use el que ya tenían */
-}
-
-/* 5. BOTONES: Blancos y escalables */
+/* BOTONES: Blancos y escalables */
 body.alto-contraste button,
 body.alto-contraste .btn {
-    background: #FFFFFF !important;
-    color: #000000 !important;
-    border: 3px solid #000000 !important;
-    font-weight: bold !important;
-    padding: 0.5rem 1rem !important;
+    background: white !important;
+    color: black !important;
     height: auto !important;
 }
 
-/* 6. ICONOS EN BOTONES: Negros */
-body.alto-contraste .btn img,
-body.alto-contraste button img {
-    filter: brightness(0) !important;
-    height: 1.2em !important;
-    width: auto !important;
-}
-
-/* 7. TARJETAS: Que se ajusten al contenido */
+/* TARJETAS */
 body.alto-contraste .card {
-    background-color: #000000 !important;
-    border: 2px solid #FFFFFF !important;
-    height: auto !important;
+    background-color: black !important;
+    border: 2px solid white !important;
+}
+
+/* Ocultar imágenes */
+body.sin-imagenes img {
+    display: none !important;
+}
+.alt-texto{
+    font-size: 1rem;
+    display: block;
+    color: #000;
+    background: #f2f2f2;
+    padding: 0.5rem;
+    border: 1px dashed #666;
+    margin: 0.5rem 0;
+}
+
+/* Cambiar el focus de color en alto constrate */
+body.alto-contraste :focus {
+    outline: 3px solid hotpink !important;
 }
 
 /* Estilo para resaltar cualquier elemento cuando tiene el foco del teclado */
 :focus {
-    outline: 3px solid #0d6efd !important; /* Un azul de Bootstrap o el color de tu marca */
+    outline: 3px solid mediumpurple !important; /* Un azul de Bootstrap o el color de tu marca */
     outline-offset: 2px;
 }
 
-/* Si quieres que solo se vea al usar el teclado y no al hacer clic (opcional) */
+/* Hacer que solo el focus se vea al usar un teclado */
 :focus:not(:focus-visible) {
     outline: none !important;
 }
@@ -115,7 +107,7 @@ h5 { font-size: 1.25rem !important; }
 .btn:focus,
 .btn:active {
     transform: translateY(-3px); /* Eleva ligeramente el botón */
-    color: #6F4E37 !important;   /* Cambia el color del texto a café */
+    color: #2b1210 !important;   /* Cambia el color del texto a café */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para efecto flotante */
     transition: all 0.2s ease; /* Transición suave */
 }
@@ -337,21 +329,20 @@ footer{background:#fff2f6; border-top:1px solid var(--b); text-align:center; pad
 
 /* Cabecera para el logo de la marca */
 #Cabecera {
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #Cabecera-logo{
-    position: absolute;
     top: 50%;
     left: 50%;
     height: 200px;
-    transform: translate(-50%, -50%);
+}
+#Cabecera .alt-texto {
+    text-align: center;
 }
 .Texto-cabecera {
     position: absolute;
-    bottom: 10px;
     right: 10px;
     color: white;
     font-size: 16px;
