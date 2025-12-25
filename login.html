@@ -12,21 +12,33 @@
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-  <nav class="navbar sticky-top custom-navbar">
-    <div class="container-fluid d-flex align-items-center justify-content-between">
-      <a href="index.html" class="btn btn-outline-primary btn-sm me-2">
-        Inicio
+<div id="Cabecera" class="Pagina">
+  <img id="Cabecera-logo" src="assets/img/Logo.png" alt="Logo brûlée ">
+  <h3 class="Texto-cabecera m-3">Catalogo</h3>
+</div>
+
+<nav class="navbar sticky-top navbar-expand-lg p-1"
+     style="background: var(--brand-2);">
+  <div class="container-fluid d-flex justify-content-between">
+    <!-- Lado izquierdo -->
+    <div class="navbar-brand m-0">
+      <a href="index.html" class="btn btn-outline-dark">
+        <img class="Imagen-botones" src="assets/icons/iconoRegreso.png" alt="Regresar">
       </a>
-      <a class="navbar-brand position-absolute top-50 start-50 translate-middle" href="index.html">
-        <img src="assets/img/Logo.png" alt="Logo de Brúlée" width="100" height="100" class="d-block mx-auto">
-      </a>
-      <div class="d-flex gap-2 ms-auto">
-        <a href="productos.html" class="btn btn-outline-success" data-requiere-sesion>
-          Iniciar a comprar
-        </a>
-      </div>
+      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasScrolling"
+              aria-controls="offcanvasScrolling">
+        <img class="Imagen-botones" src="assets/icons/iconoAccesibilidad.png" alt="Accesibilidad">
+      </button>
     </div>
-  </nav>
+    <!-- Lado derecho -->
+    <div class="d-flex align-items-center gap-2">
+      <button class="btn" id="btn-mostrar-carrito" data-bs-toggle="modal" data-bs-target="#modalCarrito">
+        <img class="Imagen-botones" src="assets/icons/iconoCarrito.png" alt="Carrito">
+      </button>
+    </div>
+  </div>
+</nav>
 
   <main class="container-fluid login-page">
     <div class="row w-100 justify-content-center g-4">
@@ -95,12 +107,37 @@
     </div>
   </div>
 
+
+<footer id="contacto" class="Pagina">
+  <br>
+  <h2 class="Texto-Footer">Términos y condiciones</h2>
+  <p> Nuestros valores incluyen envío dentro del perímetro (Calderón, Carapungo y Carcelén)</p>
+  <p> El servicio a domicilio comienza desde las 9 am hasta las 6 pm</p>
+  <p> Número de contacto 0998539244 / 0998308707 / 0996916918</p>
+  <p> Calderón; calle carapungo oe3-183 y Serange</p>
+  <br>
+  © <span id="y"></span> Brúlée Catering & Event Design — Pedido y retiro en tienda.
+</footer>
+
+
   <script src="assets/varios/jquery-3.7.1.min.js"></script>
   <script src="js/models/userModel.js"></script>
   <script src="js/views/userView.js"></script>
   <script src="js/controllers/userController.js"></script>
   <script src="js/seguridadRoutes.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/funciones/Controlador.js"></script>
+  <script src="js/funciones/VistaProductos.js"></script>
+<div class="offcanvas Pagina" data-bs-scroll="true" data-bs-backdrop="false" id="offcanvasScrolling">
+  <div class="offcanvas-body text-center">
+    <button type="button" id="btn-contraste" class="btn btn-outline-dark">AC</button>
+    <button type="button" id="btn-aumentar" class="btn btn-outline-dark">+</button>
+    <button type="button" id="btn-disminuir" class="btn btn-outline-dark">-</button>
+    <button type="button" id="btn-restablecer" class="btn btn-danger">R</button>
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
