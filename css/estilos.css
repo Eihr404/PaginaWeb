@@ -26,6 +26,9 @@ body.alto-contraste *:not(button):not(.btn):not(img):not(i) {
     border-color: white !important;
     background-image: none !important;
 }
+body.alto-contraste .Pagina{
+    border: 2px solid white !important;
+}
 
 /* LOGO: Ajustado para que no sea gigante */
 body.alto-contraste #Cabecera-logo {
@@ -34,10 +37,8 @@ body.alto-contraste #Cabecera-logo {
     max-width: 100% !important;
     outline: none !important;
 }
-body.alto-contraste nav,
-body.alto-contraste .offcanvas-body {
+body.alto-contraste nav{
     border: 2px solid white !important;
-    border-radius: 30px;
 }
 
 /* PRODUCTOS: Imágenes escalables pero con límite */
@@ -49,19 +50,6 @@ body.alto-contraste img:not(.btn img) {
     outline: 2px solid white !important;
 }
 
-
-/* TEXTOS: Eliminamos el font-size fijo para que conserven su tamaño original */
-body.alto-contraste h1,
-body.alto-contraste h2,
-body.alto-contraste h3,
-body.alto-contraste h4,
-body.alto-contraste h5,
-body.alto-contraste p,
-body.alto-contraste span {
-    background-color: transparent !important;
-    color: white !important;
-}
-
 /* BOTONES: Blancos y escalables */
 body.alto-contraste button,
 body.alto-contraste .btn {
@@ -70,7 +58,7 @@ body.alto-contraste .btn {
     height: auto !important;
 }
 
-/* TARJETAS: Que se ajusten al contenido */
+/* TARJETAS */
 body.alto-contraste .card {
     background-color: black !important;
     border: 2px solid white !important;
