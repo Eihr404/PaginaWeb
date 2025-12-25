@@ -128,7 +128,9 @@ body{
     height: 100px;
 }
 
-
+img[data-alt-reemplazado="true"] {
+    display: none !important;
+}
 
 
 
