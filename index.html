@@ -1,59 +1,61 @@
 <!doctype html>
 <html lang="es">
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"   rel="stylesheet">
-
-  <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Brúlée Catering & Event Desing — Home</title>
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <script src="/js/funciones/JQuery.js"></script>
+    <script src="js/informacion/Prod.js"></script>
+    <script src="js/funciones/Controlador.js"></script>
+    <script src="js/funciones/VistaProductos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/funciones/Accesibilidad.js"></script>
+    <script src="/assets/varios/jquery-3.7.1.min.js"></script>
+    <script src="js/models/userModel.js"></script>
+    <script src="js/seguridadRoutes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
 
-<nav class="navbar sticky-top custom-navbar">
-  <div class="container-fluid d-flex align-items-center justify-content-between">
-
-    <div class="d-flex gap-2 ms-auto">
-      <a href="contact.html" class="btn btn-sm" >
-        Contáctanos
-      </a>
-    </div>
-
-    <a class="navbar-brand position-absolute top-50 start-50 translate-middle" href="#">
-      <img src="assets/img/Logo.png" alt="Logo" width="100" height="100" class="d-block mx-auto">
-    </a>
-
-
-    <div class="d-flex gap-2 ms-auto">
-      <a href="productos.html" class="btn btn-outline-success">
-        Iniciar a comprar
-      </a>
-
-      <span data-cuenta class="text-muted small me-2 align-content-center">Invitado</span>
-
-      <a href="login.html" data-inicio-sesion class="btn btn-outline-secondary btn-sm">
-        Iniciar sesión
-      </a>
-
-      <a data-salir-sesion class="btn btn-outline-danger btn-sm" style="display:none;">
-        Cerrar sesión
-      </a>
-
-      <a href="usuarios-admin.html"
-         class="btn btn-outline-warning btn-sm"
-         data-requiere-sesion
-         data-rol-requerido="admin"
-         data-solo-admin-visible>
-        Panel Admin
-      </a>
-
-    </div>
+  <!-- Contenedor para la cabecera -->
+  <div id="Cabecera" class="Pagina">
+    <img id="Cabecera-logo" src="assets/img/Logo.png" alt="Logo brûlée ">
+    <h3 class="Texto-cabecera m-3">Catalogo</h3>
   </div>
-</nav>
 
+  <!-- Navbar para los botones de la interfaz -->
+  <nav class="navbar sticky-top navbar-expand-lg p-1"
+       style="background: var(--brand-2);">
+    <div class="container-fluid d-flex justify-content-between">
+      <!-- Lado izquierdo -->
+      <div class="navbar-brand m-0">
+        <a href="index.html" class="btn btn-outline-dark" aria-label="Regresar">
+          <i class="bi bi-arrow-left"></i>
+        </a>
+        <button class="btn btn-primary" type="button" id="btn-accesibilidad" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasScrolling"
+                aria-controls="offcanvasScrolling" aria-label="Accesibilidad">
+          <i class="bi bi-universal-access"></i>
+        </button>
+      </div>
+      <!-- Lado derecho -->
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn" id="btn-mostrar-carrito" data-bs-toggle="modal" data-bs-target="#modalCarrito"
+                aria-label="Carrito">
+          <i class="bi bi-cart"></i>
+        </button>
+        <a href="login.html" class="btn btn-primary" type="button" aria-label="Cuenta">Invitado
+          <i class="bi bi-person-circle"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+<!--Carrusel-->
 <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner" id="ContenedorCarrusel"></div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -73,15 +75,15 @@
 </nav>
 <section class="sub-navbar-separacion"> </section>
 
+  <!-- Productos favoritos-->
 <div class="container">
   <div id="ProductosFavoritos" class="row row-cols-1 row-cols-md-3 g-4"></div>
 </div>
 <section class="sub-navbar-separacion"> </section>
 
-
+<!--Servicios-->
 <section class="sub-navbar sub-navbar-servicios text-center py-4">
   <h2 class="mb-3">Nuestros Servicios</h2>
-
   <div class="container">
     <div class="row justify-content-center g-4">
       <div class="col-6 col-md-3">
@@ -102,46 +104,113 @@
 
 <section class="sub-navbar-separacion"> </section>
 
-<nav class="sub-navbar">
-  <div class="container text-center py-2">
-    <h2 class="m-0">Información</h2>
+
+
+  <footer id="contacto" class="Pagina">
+    <br>
+    <h2 class="Texto-Footer">Términos y condiciones</h2>
+    <p> Nuestros valores incluyen envío dentro del perímetro (Calderón, Carapungo y Carcelén)</p>
+    <p> El servicio a domicilio comienza desde las 9 am hasta las 6 pm</p>
+    <p> Número de contacto 0998539244/0998308707/0996916918</p>
+    <p> Calderón; calle carapungo oe3-183 y Serange</p>
+    <br>
+    © <span id="y"></span> Brúlée Catering & Event Desing — Pedido y retiro en tienda.
+  </footer>
+
+  <!-- Barra de accesibilidad -->
+  <div class="offcanvas Pagina" data-bs-scroll="true" data-bs-backdrop="false" id="offcanvasScrolling">
+    <div class="offcanvas-body text-center">
+      <!-- Botón para el alto contraste -->
+      <button type="button" id="btn-contraste" class="btn btn-outline-dark" aria-label="Alto contraste">
+        <i class="bi bi-eye"></i>
+      </button>
+      <!-- Quitar imagenes -->
+      <button type="button" id="btn-quitar-imagenes" class="btn btn-outline-dark" aria-label="Quitar imagenes">
+        <i class="bi bi-image-alt"></i>
+      </button>
+      <!-- Botón para aumentar el tamaño de letra -->
+      <button type="button" id="btn-aumentar" class="btn btn-outline-dark" aria-label="Aumentar texto">
+        <i class="bi bi-zoom-in"></i>
+      </button>
+      <!-- Botón para disminuir el tamaño de letra -->
+      <button type="button" id="btn-disminuir" class="btn btn-outline-dark" aria-label="Disminuir texto">
+        <i class="bi bi-zoom-out"></i>
+      </button>
+      <!-- Botón para reestablecer los ajustes -->
+      <button type="button" id="btn-restablecer" class="btn btn-danger" aria-label="Reestablecer configuración">
+        <i class="bi bi-arrow-counterclockwise"></i>
+      </button>
+    </div>
   </div>
-</nav>
+  <!-- Carrito -->
+  <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header position-relative container-fluid d-flex justify-content-between">
+          <div>
+            <h1 class="modal-title fs-5" id="modalCarritoLabel">Carrito</h1>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+              <i class="bi bi-x-lg"></i>
+            </button>
+          </div>
 
-<section class="container-fluid">
-  <div class="row g-0">
-
-    <div class="col-md-6 d-flex align-items-center justify-content-center bg-final text-black-50 p-5">
-      <div class="text-center">
-        <h2 class="fw-bold">Sobre Nosotros</h2>
-        <p class="lead">Brúlée Catering & Event Design combina elegancia, sabor y creatividad en cada evento.</p>
-        <p class="lead">2025 Brúlée Catering & Event Desing — Pedido y retiro en tienda.</p>
+        </div>
+        <div class="modal-body">
+          <form id="formCompra">
+            <div id="contenedor-carrito" class="mb-3">
+            </div>
+          </form>
+          <div id="contenedor-botones" class="modal-footer"></div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <!-- Lado derecho -->
-    <div class="col-md-6 d-flex align-items-center justify-content-center bg-light p-5">
-      <img src="assets/img/Logo.png" alt="Evento" class="img-fluid rounded shadow">
+  <div class="modal fade" id="Loading" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          Loading...
+        </div>
+      </div>
     </div>
   </div>
-</section>
 
+  <div class="modal fade" id="Error" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">;(</h1>
+          <i class="bi bi-x-lg"></i>
+        </div>
+        <div class="modal-body">
+          Error ;(
+        </div>
+      </div>
+    </div>
+  </div>
 
-<script src="/assets/varios/jquery-3.7.1.min.js"></script>
-<script src="js/models/userModel.js"></script>
-<script src="js/seguridadRoutes.js"></script>
+  <div class="modal fade" id="Exito" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">:)</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+        </div>
+        <div class="modal-body">
+          Éxito
+        </div>
+      </div>
+    </div>
+  </div>
+
 <script>
   $(function () {
     SessionModel.actualizarHeader();
   });
 </script>
-
-<script src="/js/funciones/IngresoSesion.js"></script>
-<script src="/js/funciones/JQuery.js"></script>
-<script src="js/informacion/Prod.js"></script>
-<script src="js/funciones/Controlador.js"></script>
-<script src="js/funciones/VistaProductos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
   const index = new IndexController();
@@ -163,8 +232,31 @@
     if (rol !== "admin") {
       $("[data-solo-admin-visible]").hide();
     }
+
+    $("#ProductosFavoritos").on("click", ".card", function () {
+      window.location.href = "productos.html";
+    });
+
   });
 </script>
+
+    <script>
+    const app = new ControlarProducto();
+    const accesibilidad = new controlarAccesibilidad()
+
+    document.getElementById('btn-mostrar-carrito').addEventListener('click', () => {
+      app.mostrarCarrito();
+    });
+
+    document.getElementById('btn-borrar-carrito').addEventListener('click', () => {
+      app.model.carrito = [];
+      localStorage.removeItem('carrito');
+      alert('Carrito vaciado.');
+    });
+
+    app.initCatalogo();
+  </script>
+
 
 </body>
 </html>

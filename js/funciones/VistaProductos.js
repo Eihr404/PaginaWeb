@@ -135,7 +135,9 @@ class IndexView {
       </div>
     
       `;
-
+          card.addEventListener("click", () => {
+            window.location.href = `detalleCategoria.html?id=${id}`;
+          });
             this.contenedorGrid.appendChild(card);
         }
     }
