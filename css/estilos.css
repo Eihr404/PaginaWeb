@@ -708,7 +708,7 @@ footer{background:#fff2f6; border-top:1px solid var(--b); text-align:center; pad
 .alto-contraste input::placeholder,
 .alto-contraste textarea::placeholder {
     color: #ffffff;
-    opacity: 1; /* importante para que no se vea translúcido */
+    opacity: 1; 
 }
 
 /*contactos*/
