@@ -130,6 +130,10 @@ body{
 
 
 
+
+
+
+
 .custom-navbar .navbar-brand {
     color: #7a1f4b; /* Vino oscuro */
     font-family: 'Pacifico', cursive;
@@ -700,6 +704,12 @@ footer{background:#fff2f6; border-top:1px solid var(--b); text-align:center; pad
     font-size: 0.95rem;
 }
 
+/* Placeholder en alto contraste */
+.alto-contraste input::placeholder,
+.alto-contraste textarea::placeholder {
+    color: #ffffff;
+    opacity: 1; /* importante para que no se vea translúcido */
+}
 
 /*contactos*/
 .contact-page h2 {
