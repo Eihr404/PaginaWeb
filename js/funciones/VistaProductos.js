@@ -25,7 +25,7 @@ class ProductoView {
                 <div class="card shadow-sm h-100">
                   <img class="Imagen-producto img-fluid card-img-top" style="max-height: 350px;" src="${prod.PRD_Imagen}" alt="${prod.PRD_Nombre}">
                   <div class="card-body">
-                    <h5 class="Titulo-producto mt-2">${prod.PRD_Nombre}</h5>
+                    <h2class="Titulo-producto mt-2">${prod.PRD_Nombre}</h2>
                     <p>$${prod.PRD_Precio}</p>     
                   </div>
                 </div>

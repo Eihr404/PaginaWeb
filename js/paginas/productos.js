@@ -25,7 +25,7 @@ $(document).ready(function () {
                         <a href="detalleProducto.html?PRD_Codigo=${prod.PRD_Codigo}&CAT_Codigo=${prod.CAT_Codigo}">
                             <img class="Imagen-producto" src="${prod.PRD_Imagen}" alt="${prod.PRD_Nombre}">
                         </a>
-                        <h5 class="Titulo-producto mt-2">${prod.PRD_Nombre}</h5>
+                        <h2 class="Titulo-producto mt-2">${prod.PRD_Nombre}</h2>
                         <p>$${prod.PRD_Precio}</p>
                     </div>
                 `);
