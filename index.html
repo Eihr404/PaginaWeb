@@ -67,9 +67,23 @@
                 aria-label="Carrito">
           <i class="bi bi-cart"></i>
         </button>
-        <a href="login.html" class="btn btn-primary" type="button" aria-label="Cuenta">Invitado
+        <a href="login.html" class="btn btn-primary" type="button" aria-label="Cuenta" data-inicio-sesion> Invitado
           <i class="bi bi-person-circle"></i>
         </a>
+
+        <!-- Cerrar sesión (visible cuando SÍ hay sesión) -->
+        <a href="#" class="btn btn-outline-danger btn-sm"
+           data-salir-sesion style="display:none;" aria-label="Cerrar sesión">
+          <i class="bi bi-box-arrow-right"></i>
+        </a>
+
+        <!-- Panel admin -->
+        <a href="usuarios-admin.html" class="btn btn-outline-warning btn-sm"
+           data-requiere-sesion data-rol-requerido="admin" data-solo-admin-visible
+           aria-label="Panel Admin">
+          <i class="bi bi-shield-lock"></i>
+        </a>
+
       </div>
     </div>
   </nav>
