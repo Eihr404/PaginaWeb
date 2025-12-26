@@ -110,37 +110,55 @@ class IndexView {
         }
     }
 
-    renderGridChard(categorias) {
-        this.contenedorGrid.innerHTML = "";
-        for (let i = 0; i < 4; i++) {
-            let categoria;
-            if (i === 2) {
-                categoria = categorias[16];
-            } else {
-                categoria = categorias[i];
-            }
-            const nombre = categoria.nombre;
-            const imagen = categoria.imagen;
-            const descripcion = categoria.descripcion;
+  renderGridChard(categorias) {
+    this.contenedorGrid.innerHTML = "";
 
-            const card = document.createElement("div");
-            card.className = "col-md-3 mb-4";
-            card.innerHTML = `      
-      <div class="card h-100 shadow-sm">
+    for (let i = 0; i < 4; i++) {
+      let categoria;
+      let prod_id;
+      if(i===0){
+        prod_id=1;
+      }
+      else if (i===1){
+        prod_id=5;
+      }
+      else if (i===2){
+        prod_id=7;
+      }
+      else{
+        prod_id=11;
+      }
+      categoria = categorias[i];
+
+
+
+      const nombre = categoria.nombre;
+      const imagen = categoria.imagen;
+      const descripcion = categoria.descripcion;
+
+      const col = document.createElement("div");
+      col.className = "col-md-3 mb-4";
+
+      col.innerHTML = `
+      <a href="detalleProducto.html?PRD_Codigo=${prod_id}&CAT_Codigo=${i+1}"
+         class="card h-100 shadow-sm text-decoration-none"
+         aria-label="Ver productos de la categoría ${nombre}">
+        
         <img src="${imagen}" class="card-img-top" alt="${nombre}">
+        
         <div class="card-body">
-          <h5 class="card-title">${nombre}</h5>
+          <h2 class="card-title">${nombre}</h2>
           <p class="card-text">${descripcion}</p>
         </div>
-      </div>
-    
-      `;
-          card.addEventListener("click", () => {
-            window.location.href = `detalleCategoria.html?id=${id}`;
-          });
-            this.contenedorGrid.appendChild(card);
-        }
+      </a>
+    `;
+
+      this.contenedorGrid.appendChild(col);
     }
+  }
+
+
+
 }
 
 class DetalleProductoView {
