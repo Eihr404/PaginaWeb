@@ -1,28 +1,23 @@
 <!doctype html>
 <html lang="es">
 <head>
+  <!-- WCAG 2.4.2: Título de página descriptivo y único -->
   <meta charset="utf-8">
+  <!-- WCAG 1.4.4: Permite zoom/responsive sin perder contenido -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>Brúlée Catering & Event Design — Home</title>
 
   <!-- Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  >
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Bootstrap Icons -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
-    rel="stylesheet"
-  >
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
 
   <!-- Estilos propios -->
   <link rel="stylesheet" href="css/estilos.css">
-
 </head>
-<!-- jQuery (PRIMERO) -->
+
+<!-- jQuery -->
 <script src="assets/varios/jquery-3.7.1.min.js"></script>
 
 <!-- Bootstrap JS -->
@@ -36,96 +31,110 @@
 <script src="js/models/userModel.js"></script>
 <script src="js/seguridadRoutes.js"></script>
 
-
-
 <body>
-
+  <!-- WCAG 1.1.1: Texto alternativo en imagen (alt) -->
   <!-- Contenedor para la cabecera -->
   <div id="Cabecera" class="Pagina">
     <img id="Cabecera-logo" src="assets/img/Logo.png" alt="Logo brûlée ">
+    <!-- WCAG 1.3.1: Encabezado principal para estructura semántica -->
     <h1 class="Texto-cabecera m-3">Catalogo</h1>
   </div>
 
+  <!-- WCAG 1.3.1: Uso de <nav> para identificar navegación -->
   <!-- Navbar para los botones de la interfaz -->
   <nav class="navbar sticky-top navbar-expand-lg p-1"
-       style="background: var(--brand-2);">
+       style="background: var(--brand-2);"
+       aria-label="Navegación principal">
     <div class="container-fluid d-flex justify-content-between">
       <!-- Lado izquierdo -->
       <div class="navbar-brand m-0">
+        <!-- WCAG 2.4.4: Propósito del enlace/botón identificable -->
         <a href="index.html" class="btn btn-outline-dark" aria-label="Regresar">
-          <i class="bi bi-arrow-left"></i>
+          <i class="bi bi-arrow-left" aria-hidden="true"></i>
         </a>
+        <!-- WCAG 4.1.2: Nombre/rol/valor mediante aria-label -->
         <button class="btn btn-primary" type="button" id="btn-accesibilidad" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasScrolling"
                 aria-controls="offcanvasScrolling" aria-label="Accesibilidad">
-          <i class="bi bi-universal-access"></i>
+          <i class="bi bi-universal-access" aria-hidden="true"></i>
         </button>
       </div>
       <!-- Lado derecho -->
       <div class="d-flex align-items-center gap-2">
+        <!-- WCAG 4.1.2: Control con nombre accesible -->
         <button class="btn" id="btn-mostrar-carrito" data-bs-toggle="modal" data-bs-target="#modalCarrito"
                 aria-label="Carrito">
-          <i class="bi bi-cart"></i>
+          <i class="bi bi-cart" aria-hidden="true"></i>
         </button>
+        <!-- WCAG 2.4.4: Propósito del enlace claro -->
         <a href="login.html" class="btn btn-primary" type="button" aria-label="Cuenta" data-inicio-sesion> Invitado
-          <i class="bi bi-person-circle"></i>
+          <i class="bi bi-person-circle" aria-hidden="true"></i>
         </a>
 
         <!-- Cerrar sesión (visible cuando SÍ hay sesión) -->
+        <!-- WCAG 4.1.2: Nombre/rol/valor del control -->
         <a href="#" class="btn btn-outline-danger btn-sm"
            data-salir-sesion style="display:none;" aria-label="Cerrar sesión">
-          <i class="bi bi-box-arrow-right"></i>
+          <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
         </a>
 
         <!-- Panel admin -->
+        <!-- WCAG 2.4.4: Propósito del enlace claro -->
         <a href="usuarios-admin.html" class="btn btn-outline-warning btn-sm"
            data-requiere-sesion data-rol-requerido="admin" data-solo-admin-visible
            aria-label="Panel Admin">
-          <i class="bi bi-shield-lock"></i>
+          <i class="bi bi-shield-lock" aria-hidden="true"></i>
         </a>
 
       </div>
     </div>
   </nav>
 
-<!--Carrusel-->
-<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner" id="ContenedorCarrusel"></div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
-<nav class="sub-navbar">
-  <div class="container text-center py-2">
-    <h2 class="m-0">Nuestros Productos</h2>
+  <!-- WCAG 2.2.2: Contenido en movimiento/auto-actualización (carrusel) debe ser controlable; aquí se proveen controles Prev/Next -->
+  <!--Carrusel-->
+  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" aria-label="Carrusel de promociones">
+    <div class="carousel-inner" id="ContenedorCarrusel"></div>
+    <!-- WCAG 2.1.1: Controles operables por teclado (botones) -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" aria-label="Anterior">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" aria-label="Siguiente">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
-</nav>
-<section class="sub-navbar-separacion"> </section>
+
+  <!-- WCAG 1.3.1: Encabezado para identificar sección -->
+  <nav class="sub-navbar" aria-label="Sección de productos">
+    <div class="container text-center py-2">
+      <h2 class="m-0">Nuestros Productos</h2>
+    </div>
+  </nav>
+  <section class="sub-navbar-separacion" aria-hidden="true"> </section>
 
   <!-- Productos favoritos-->
-<div class="container">
-  <div id="ProductosFavoritos" class="row row-cols-1 row-cols-md-3 g-4"></div>
-</div>
-<section class="sub-navbar-separacion"> </section>
+  <!-- WCAG 1.3.1: Estructura de contenido por secciones -->
+  <div class="container">
+    <div id="ProductosFavoritos" class="row row-cols-1 row-cols-md-3 g-4"></div>
+  </div>
+  <section class="sub-navbar-separacion" aria-hidden="true"> </section>
 
-<!--Servicios-->
-  <section class="sub-navbar sub-navbar-servicios text-center py-4">
+  <!--Servicios-->
+  <!-- WCAG 2.4.6: Encabezados y etiquetas describen tema/propósito -->
+  <section class="sub-navbar sub-navbar-servicios text-center py-4" aria-label="Nuestros servicios">
     <h2 class="mb-3">Nuestros Servicios</h2>
 
     <div class="container">
       <div class="row justify-content-center g-4">
 
         <div class="col-6 col-md-3">
+          <!-- WCAG 2.4.4: Propósito del enlace claro con aria-label -->
           <a href="servicios.html?tipo=eventos"
              class="text-decoration-none d-block"
              aria-label="Ver servicio de organización de eventos">
 
+            <!-- WCAG 1.1.1: Texto alternativo en imágenes -->
             <img src="assets/img/gatoGordo.jpg"
                  alt="Asesor de servicios"
                  class="img-fluid rounded-circle mb-2">
@@ -164,11 +173,12 @@
     </div>
   </section>
 
-<section class="sub-navbar-separacion"> </section>
+  <section class="sub-navbar-separacion" aria-hidden="true"> </section>
 
 
 
-  <footer id="contacto" class="Pagina">
+  <!-- WCAG 1.3.1:uso de <footer> para información final -->
+  <footer id="contacto" class="Pagina" aria-label="Información legal y contacto">
     <br>
     <h2 class="Texto-Footer">Términos y condiciones</h2>
     <p> Nuestros valores incluyen envío dentro del perímetro (Calderón, Carapungo y Carcelén)</p>
@@ -179,33 +189,37 @@
     © <span id="y"></span> Brúlée Catering & Event Desing — Pedido y retiro en tienda.
   </footer>
 
+  <!-- WCAG 2.1.1: Controles accesibles por teclado -->
   <!-- Barra de accesibilidad -->
-  <div class="offcanvas Pagina" data-bs-scroll="true" data-bs-backdrop="false" id="offcanvasScrolling">
+  <div class="offcanvas Pagina" data-bs-scroll="true" data-bs-backdrop="false" id="offcanvasScrolling" aria-label="Opciones de accesibilidad">
     <div class="offcanvas-body text-center">
+      <!-- WCAG 4.1.2: Botones con nombre accesible (aria-label) -->
       <!-- Botón para el alto contraste -->
       <button type="button" id="btn-contraste" class="btn btn-outline-dark" aria-label="Alto contraste">
-        <i class="bi bi-eye"></i>
+        <i class="bi bi-eye" aria-hidden="true"></i>
       </button>
       <!-- Quitar imagenes -->
       <button type="button" id="btn-quitar-imagenes" class="btn btn-outline-dark" aria-label="Quitar imagenes">
-        <i class="bi bi-image-alt"></i>
+        <i class="bi bi-image-alt" aria-hidden="true"></i>
       </button>
       <!-- Botón para aumentar el tamaño de letra -->
       <button type="button" id="btn-aumentar" class="btn btn-outline-dark" aria-label="Aumentar texto">
-        <i class="bi bi-zoom-in"></i>
+        <i class="bi bi-zoom-in" aria-hidden="true"></i>
       </button>
       <!-- Botón para disminuir el tamaño de letra -->
       <button type="button" id="btn-disminuir" class="btn btn-outline-dark" aria-label="Disminuir texto">
-        <i class="bi bi-zoom-out"></i>
+        <i class="bi bi-zoom-out" aria-hidden="true"></i>
       </button>
       <!-- Botón para reestablecer los ajustes -->
       <button type="button" id="btn-restablecer" class="btn btn-danger" aria-label="Reestablecer configuración">
-        <i class="bi bi-arrow-counterclockwise"></i>
+        <i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i>
       </button>
     </div>
   </div>
+
+  <!-- WCAG 4.1.2: Aquí hay componentes (modal) con nombre accesible y atributos ARIA-->
   <!-- Carrito -->
-  <div class="modal fade" id="modalCarrito" tabindex="-1" aria-label="modalCarritoLabel" aria-hidden="true">
+  <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header position-relative container-fluid d-flex justify-content-between">
@@ -213,8 +227,9 @@
             <h1 class="modal-title fs-5" id="modalCarritoLabel">Carrito</h1>
           </div>
           <div class="d-flex align-items-center gap-2">
+            <!-- WCAG 2.4.6: Etiqueta clara del botón -->
             <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
-              <i class="bi bi-x-lg"></i>
+              <i class="bi bi-x-lg" aria-hidden="true"></i>
             </button>
           </div>
 
@@ -230,6 +245,7 @@
     </div>
   </div>
 
+  <!-- WCAG 4.1.3: Mensajes de estado (si se actualizan dinámicamente, ideal usar aria-live; aquí solo comentario) -->
   <div class="modal fade" id="Loading" aria-hidden="true" aria-label="exampleModalToggleLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -245,7 +261,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5">;(</h1>
-          <i class="bi bi-x-lg"></i>
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
         </div>
         <div class="modal-body">
           Error ;(
@@ -268,41 +284,41 @@
     </div>
   </div>
 
-<script>
-  $(function () {
-    SessionModel.actualizarHeader();
-  });
-</script>
-
-<script>
-  const index = new IndexController();
-  index.init();
-</script>
-<script>
-  const myCarouselElement = document.querySelector('#carouselExample')
-
-  const carousel = new bootstrap.Carousel(myCarouselElement, {
-    interval: 2000,
-    touch: false
-  })
-</script>
-<script>
-  $(function () {
-    SessionModel.actualizarHeader();
-
-    const rol = SessionModel.getRol ? SessionModel.getRol() : "invitado";
-    if (rol !== "admin") {
-      $("[data-solo-admin-visible]").hide();
-    }
-
-    $("#ProductosFavoritos").on("click", ".card", function () {
-      window.location.href = "productos.html";
+  <script>
+    $(function () {
+      SessionModel.actualizarHeader();
     });
+  </script>
 
-  });
-</script>
+  <script>
+    const index = new IndexController();
+    index.init();
+  </script>
+  <script>
+    const myCarouselElement = document.querySelector('#carouselExample')
 
-    <script>
+    const carousel = new bootstrap.Carousel(myCarouselElement, {
+      interval: 2000,
+      touch: false
+    })
+  </script>
+  <script>
+    $(function () {
+      SessionModel.actualizarHeader();
+
+      const rol = SessionModel.getRol ? SessionModel.getRol() : "invitado";
+      if (rol !== "admin") {
+        $("[data-solo-admin-visible]").hide();
+      }
+
+      $("#ProductosFavoritos").on("click", ".card", function () {
+        window.location.href = "productos.html";
+      });
+
+    });
+  </script>
+
+  <script>
     const app = new ControlarProducto();
     const accesibilidad = new controlarAccesibilidad()
 
@@ -318,7 +334,5 @@
 
     app.initCatalogo();
   </script>
-
-
 </body>
 </html>
