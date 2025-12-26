@@ -20,7 +20,7 @@
         <!-- Contenedor para la cabecera -->
         <div id="Cabecera" class="Pagina">
             <img id="Cabecera-logo" src="assets/img/Logo.png" alt="Logo brûlée ">
-            <h3 class="Texto-cabecera m-3">Detalle producto</h3>
+            <h1 class="Texto-cabecera m-3">Detalle producto</h1>
         </div>
 
         <!-- Navbar para los botones de la interfaz -->
@@ -66,7 +66,7 @@
         </div>
 
         <!-- Carrito -->
-        <div class="modal fade" id="modalCompra" tabindex="-1" aria-labelledby="modalCompraLabel" aria-hidden="true">
+        <div class="modal fade" id="modalCompra" tabindex="-1" aria-label="modalCompraLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -81,11 +81,14 @@
                                 </select>
                             </div>
                             <div class="mb-3 d-flex align-items-center justify-content-center gap-3">
-                                <button type="button" class="btn btn-outline-secondary" id="btn-restar">−</button>
-                                <input type="number" id="cantidad" class="form-control text-center" style="width: 80px;"
-                                       value="1"
-                                       min="1">
-                                <button type="button" class="btn btn-outline-secondary" id="btn-sumar">+</button>
+                                <label for="cantidad" class="form-label">Cantidad</label>
+                                <div class="d-flex align-items-center justify-content-center gap-3">
+                                  <button type="button" class="btn btn-outline-secondary" id="btn-restar">−</button>
+                                  <input type="number" id="cantidad" class="form-control text-center" style="width: 80px;"
+                                         value="1"
+                                         min="1">
+                                  <button type="button" class="btn btn-outline-secondary" id="btn-sumar">+</button>
+                                </div>
                             </div>
                         </form>
                         <div class="modal-footer">
@@ -137,7 +140,7 @@
 </div>
 
 <!-- Carrito -->
-<div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
+<div class="modal fade" id="modalCarrito" tabindex="-1" aria-label="modalCarritoLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header position-relative container-fluid d-flex justify-content-between">
@@ -162,7 +165,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="Loading" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+<div class="modal fade" id="Loading" aria-hidden="true" aria-label="exampleModalToggleLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body">
@@ -172,7 +175,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="Error" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+<div class="modal fade" id="Error" aria-hidden="true" aria-label="exampleModalToggleLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -186,7 +189,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="Exito" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+<div class="modal fade" id="Exito" aria-hidden="true" aria-label="exampleModalToggleLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
