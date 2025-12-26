@@ -373,6 +373,9 @@ footer{background:#fff2f6; border-top:1px solid var(--b); text-align:center; pad
     text-align: center;
 }
 
+.colorB {
+    color: black;
+}
 .Imagen-producto {
     width: 100%;
     height: 60%;
