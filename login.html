@@ -2,7 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
+  <!-- WCAG 1.4.4: el diseño es adaptable en móviles (zoom/reflow) -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- WCAG 2.4.2: título descriptivo y único -->
   <title>Brúlée — Inicio de Sesión</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,177 +15,197 @@
 </head>
 
 <body>
-  <div class="contenedor">
+<div class="contenedor">
 
-    <!-- CABECERA -->
-    <div id="Cabecera" class="Pagina">
-      <img id="Cabecera-logo" src="assets/img/Logo.png" alt="Logo brûlée ">
-    </div>
-
-
-    <!-- NAVBAR -->
-    <nav class="navbar sticky-top navbar-expand-lg p-1"
-         style="background: var(--brand-2);"
-         aria-label="Navegación principal">
-      <div class="container-fluid d-flex justify-content-between">
-
-        <!-- Lado izquierdo -->
-        <div class="navbar-brand m-0">
-          <a href="index.html" class="btn btn-outline-dark" aria-label="Regresar">
-            <i class="bi bi-arrow-left"></i>
-          </a>
-
-          <button class="btn btn-primary"
-                  type="button"
-                  id="btn-accesibilidad"
-                  data-bs-toggle="offcanvas"
-                  data-bs-target="#offcanvasScrolling"
-                  aria-controls="offcanvasScrolling"
-                  aria-label="Opciones de accesibilidad">
-            <i class="bi bi-universal-access"></i>
-          </button>
-        </div>
-
-        <!-- Lado derecho -->
-        <div class="d-flex align-items-center gap-2">
-          <a href="productos.html" class="btn btn-outline-dark fw-semibold">
-            Iniciar a comprar
-          </a>
-
-          <button class="btn btn-primary" type="button" aria-label="Cuenta de usuario">
-            Invitado <i class="bi bi-person-circle"></i>
-          </button>
-        </div>
-      </div>
-    </nav>
-
-    <!-- MAIN -->
-    <h1 class="Texto-cabecera m-3 ">Iniciar Sesión</h1>
-    <main class="container-fluid login-page" role="main">
-
-      <div class="row w-100 justify-content-center g-4">
-
-        <!-- Sección visual -->
-        <section class="col-lg-6 d-flex justify-content-center align-items-center gap-4 decor-col" aria-label="Galería de imágenes promocionales">
-          <div class="d-flex flex-column gap-4">
-            <img src="assets/img/gatoGordo.jpg" alt="Postre Gato Gordo Roll" class="img-fluid rounded shadow-sm">
-            <img src="assets/img/julieta.jpg" alt="Arreglo floral junto a postres" class="img-fluid rounded shadow-sm">
-          </div>
-          <img src="assets/img/macarron-de-fresa.jpg" alt="Macarrón de fresa" class="img-fluid rounded shadow-sm">
-        </section>
-
-        <!-- Sección Login -->
-        <section class="col-lg-4 col-md-8" aria-labelledby="titulo-login">
-          <div class="login-card p-4">
-            <div class="text-center mb-4">
-              <h2 id="titulo-login">Login</h2>
-              <div class="circle-icon">D:</div>
-            </div>
-
-            <form id="form-login" class="mb-4" novalidate aria-label="Formulario de inicio de sesión">
-              <div class="mb-3">
-                <label for="usuario" class="form-label small">Nombre</label>
-                <input id="usuario" type="text" class="form-control" placeholder="Nombre">
-              </div>
-
-              <div class="mb-3">
-                <label for="correo" class="form-label small">Gmail</label>
-                <input id="correo" type="email" class="form-control" placeholder="correo@gmail.com">
-              </div>
-
-              <div class="mb-3">
-                <label for="clave" class="form-label small">Contraseña</label>
-                <input id="clave" type="password" class="form-control" placeholder="**************">
-              </div>
-
-              <div id="msg" role="alert" aria-live="polite" style="display:none;"></div>
-
-              <div class="text-end mt-3">
-                <button id="btnInicioS" class="btn btn-primary colorB" style="width: 100%;">
-                  Iniciar
-                </button>
-              </div>
-            </form>
-
-            <div class="text-center mb-3">
-              <span class="small">¿No tienes cuenta?</span>
-              <a href="registro.html" class="small colorB">Regístrate</a>
-            </div>
-
-            <div class="text-center">
-              <div class="circle-icon">:D</div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </main>
-
-    <!-- OVERLAY -->
-    <div id="login-overlay" class="login-overlay" aria-hidden="true">
-      <div class="login-overlay__box">
-        <div class="spinner-border" role="status" aria-hidden="true"></div>
-        <p>Validando tus datos, por favor espera…</p>
-      </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer id="contacto" class="Pagina" aria-label="Información legal y contacto">
-      <br>
-      <h2 class="Texto-Footer">Términos y condiciones</h2>
-      <p>Envío dentro del perímetro (Calderón, Carapungo y Carcelén)</p>
-      <p>Servicio a domicilio de 9 am a 6 pm</p>
-      <p>Contacto 0998539244 / 0998308707 / 0996916918</p>
-      <p>Calderón; calle carapungo oe3-183 y Serange</p>
-      <br>
-      © <span id="y"></span> Brúlée Catering & Event Design
-    </footer>
+  <!-- WCAG 1.1.1: texto alternativo para imágenes -->
+  <!-- CABECERA -->
+  <div id="Cabecera" class="Pagina">
+    <img id="Cabecera-logo" src="assets/img/Logo.png" alt="Logo brûlée ">
   </div>
 
-  <!-- OFFCANVAS ACCESIBILIDAD -->
-  <aside class="offcanvas Pagina"
-         id="offcanvasScrolling"
-         data-bs-scroll="true"
-         data-bs-backdrop="false"
-         aria-label="Opciones de accesibilidad">
-    <div class="offcanvas-body text-center">
-      <!-- Botón para el alto contraste -->
-      <button id="btn-contraste" class="btn btn-outline-dark" aria-label="Alto contraste">
-        <i class="bi bi-eye"></i>
-      </button>
-      <!-- Quitar imagenes -->
-      <button id="btn-quitar-imagenes" class="btn btn-outline-dark" aria-label="Quitar imágenes">
-        <i class="bi bi-image-alt"></i>
-      </button>
-      <!-- Botón para aumentar el tamaño de letra -->
-      <button id="btn-aumentar" class="btn btn-outline-dark" aria-label="Aumentar texto">
-        <i class="bi bi-zoom-in"></i>
-      </button>
-      <!-- Botón para disminuir el tamaño de letra -->
-      <button id="btn-disminuir" class="btn btn-outline-dark" aria-label="Disminuir texto">
-        <i class="bi bi-zoom-out"></i>
-      </button>
-      <!-- Botón para reestablecer los ajustes -->
-      <button id="btn-restablecer" class="btn btn-danger" aria-label="Restablecer configuración">
-        <i class="bi bi-arrow-counterclockwise"></i>
-      </button>
+
+  <!-- WCAG 1.3.1: estructura semántica con landmarks (nav) -->
+  <!-- NAVBAR -->
+  <nav class="navbar sticky-top navbar-expand-lg p-1"
+       style="background: var(--brand-2);"
+       aria-label="Navegación principal">
+    <div class="container-fluid d-flex justify-content-between">
+
+      <!-- WCAG 4.1.2: controles con nombre accesible (aria-label) -->
+      <!-- Lado izquierdo -->
+      <div class="navbar-brand m-0">
+        <a href="index.html" class="btn btn-outline-dark" aria-label="Regresar">
+          <i class="bi bi-arrow-left"></i>
+        </a>
+
+        <button class="btn btn-primary"
+                type="button"
+                id="btn-accesibilidad"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasScrolling"
+                aria-controls="offcanvasScrolling"
+                aria-label="Opciones de accesibilidad">
+          <i class="bi bi-universal-access"></i>
+        </button>
+      </div>
+
+      <!-- WCAG 4.1.2: controles con nombre accesible (aria-label) -->
+      <!-- Lado derecho -->
+      <div class="d-flex align-items-center gap-2">
+        <a href="productos.html" class="btn btn-outline-dark fw-semibold">
+          Iniciar a comprar
+        </a>
+
+        <button class="btn btn-primary" type="button" aria-label="Cuenta de usuario">
+          Invitado <i class="bi bi-person-circle"></i>
+        </button>
+      </div>
     </div>
-  </aside>
+  </nav>
+
+  <!-- WCAG 2.4.6: encabezados describen el propósito -->
+  <!-- MAIN -->
+  <h1 class="Texto-cabecera m-3 ">Iniciar Sesión</h1>
+  <!-- WCAG 1.3.1: estructura semántica con landmarks (main) -->
+  <main class="container-fluid login-page" role="main">
+
+    <div class="row w-100 justify-content-center g-4">
+
+      <!-- WCAG 1.1.1: texto alternativo para imágenes -->
+      <!-- Sección visual -->
+      <section class="col-lg-6 d-flex justify-content-center align-items-center gap-4 decor-col" aria-label="Galería de imágenes promocionales">
+        <div class="d-flex flex-column gap-4">
+          <img src="assets/img/gatoGordo.jpg" alt="Postre Gato Gordo Roll" class="img-fluid rounded shadow-sm">
+          <img src="assets/img/julieta.jpg" alt="Arreglo floral junto a postres" class="img-fluid rounded shadow-sm">
+        </div>
+        <img src="assets/img/macarron-de-fresa.jpg" alt="Macarrón de fresa" class="img-fluid rounded shadow-sm">
+      </section>
+
+      <!-- WCAG 1.3.1: estructura semántica con secciones y encabezados -->
+      <!-- Sección Login -->
+      <section class="col-lg-4 col-md-8" aria-labelledby="titulo-login">
+        <div class="login-card p-4">
+          <div class="text-center mb-4">
+            <h2 id="titulo-login">Login</h2>
+            <div class="circle-icon">D:</div>
+          </div>
+
+          <!-- WCAG 3.3.2: etiquetas/instrucciones disponibles (label asociado) -->
+          <form id="form-login" class="mb-4" novalidate aria-label="Formulario de inicio de sesión">
+            <div class="mb-3">
+              <label for="usuario" class="form-label small">Nombre</label>
+              <input id="usuario" type="text" class="form-control" placeholder="Nombre" autocomplete="username">
+            </div>
+
+            <div class="mb-3">
+              <label for="correo" class="form-label small">Gmail</label>
+              <input id="correo" type="email" class="form-control" placeholder="correo@gmail.com" autocomplete="email">
+            </div>
+
+            <div class="mb-3">
+              <label for="clave" class="form-label small">Contraseña</label>
+              <!-- WCAG 3.3.8: Autenticación accesible (mínimo) (AA) permite gestores de contraseñas con autocomplete -->
+              <input id="clave" type="password" class="form-control" placeholder="**************" autocomplete="current-password">
+            </div>
+
+            <!-- WCAG 4.1.3: mensajes de estado anunciados (aria-live) -->
+            <div id="msg" role="alert" aria-live="polite" style="display:none;"></div>
+
+            <div class="text-end mt-3">
+              <!-- WCAG 2.4.4: propósito del enlace/botón claro -->
+              <button id="btnInicioS" class="btn btn-primary colorB" style="width: 100%;">
+                Iniciar
+              </button>
+            </div>
+          </form>
+
+          <div class="text-center mb-3">
+            <span class="small">¿No tienes cuenta?</span>
+            <a href="registro.html" class="small colorB">Regístrate</a>
+          </div>
+
+          <div class="text-center">
+            <div class="circle-icon">:D</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- WCAG 4.1.2: estados expuestos (aria-hidden) -->
+  <!-- OVERLAY -->
+  <div id="login-overlay" class="login-overlay" aria-hidden="true">
+    <div class="login-overlay__box">
+      <div class="spinner-border" role="status" aria-hidden="true"></div>
+      <p>Validando tus datos, por favor espera…</p>
+    </div>
+  </div>
+
+  <!-- WCAG 1.3.1: estructura semántica con landmarks (footer) -->
+  <!-- FOOTER -->
+  <footer id="contacto" class="Pagina" aria-label="Información legal y contacto">
+    <br>
+    <h2 class="Texto-Footer">Términos y condiciones</h2>
+    <p>Envío dentro del perímetro (Calderón, Carapungo y Carcelén)</p>
+    <p>Servicio a domicilio de 9 am a 6 pm</p>
+    <p>Contacto 0998539244 / 0998308707 / 0996916918</p>
+    <p>Calderón; calle carapungo oe3-183 y Serange</p>
+    <br>
+    © <span id="y"></span> Brúlée Catering & Event Design
+  </footer>
+</div>
+
+<!-- WCAG 1.3.1: estructura semántica con landmark complementario (aside) -->
+<!-- OFFCANVAS ACCESIBILIDAD -->
+<aside class="offcanvas Pagina"
+       id="offcanvasScrolling"
+       data-bs-scroll="true"
+       data-bs-backdrop="false"
+       aria-label="Opciones de accesibilidad">
+  <div class="offcanvas-body text-center">
+    <!-- WCAG 4.1.2: controles con nombre accesible (aria-label) -->
+    <!-- Botón para el alto contraste -->
+    <button id="btn-contraste" class="btn btn-outline-dark" aria-label="Alto contraste">
+      <i class="bi bi-eye"></i>
+    </button>
+    <!-- WCAG 4.1.2: controles con nombre accesible (aria-label) -->
+    <!-- Quitar imagenes -->
+    <button id="btn-quitar-imagenes" class="btn btn-outline-dark" aria-label="Quitar imágenes">
+      <i class="bi bi-image-alt"></i>
+    </button>
+    <!-- WCAG 4.1.2: controles con nombre accesible (aria-label) -->
+    <!-- Botón para aumentar el tamaño de letra -->
+    <button id="btn-aumentar" class="btn btn-outline-dark" aria-label="Aumentar texto">
+      <i class="bi bi-zoom-in"></i>
+    </button>
+    <!-- WCAG 4.1.2: controles con nombre accesible (aria-label) -->
+    <!-- Botón para disminuir el tamaño de letra -->
+    <button id="btn-disminuir" class="btn btn-outline-dark" aria-label="Disminuir texto">
+      <i class="bi bi-zoom-out"></i>
+    </button>
+    <!-- WCAG 4.1.2: controles con nombre accesible (aria-label) -->
+    <!-- Botón para reestablecer los ajustes -->
+    <button id="btn-restablecer" class="btn btn-danger" aria-label="Restablecer configuración">
+      <i class="bi bi-arrow-counterclockwise"></i>
+    </button>
+  </div>
+</aside>
 
 
-  <!-- SCRIPTS -->
-  <script src="assets/varios/jquery-3.7.1.min.js"></script>
-  <script src="js/models/userModel.js"></script>
-  <script src="js/views/userView.js"></script>
-  <script src="js/controllers/userController.js"></script>
-  <script src="js/seguridadRoutes.js"></script>
-  <script src="js/funciones/Controlador.js"></script>
-  <script src="js/funciones/VistaProductos.js"></script>
-  <script src="js/funciones/Accesibilidad.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      new controlarAccesibilidad();
-    });
-  </script>
+<!-- SCRIPTS -->
+<script src="assets/varios/jquery-3.7.1.min.js"></script>
+<script src="js/models/userModel.js"></script>
+<script src="js/views/userView.js"></script>
+<script src="js/controllers/userController.js"></script>
+<script src="js/seguridadRoutes.js"></script>
+<script src="js/funciones/Controlador.js"></script>
+<script src="js/funciones/VistaProductos.js"></script>
+<script src="js/funciones/Accesibilidad.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    new controlarAccesibilidad();
+  });
+</script>
 </body>
 </html>
