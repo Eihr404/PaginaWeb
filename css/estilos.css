@@ -3,7 +3,7 @@
     --cream:#fff6e7;      /* fondo de la tarjeta grande */
     --text:#4b3b2b;       /* marrón chocolate */
     --muted:#7a6a58;
-    --brand: #d43b69;      /* botón rosa  */
+    --brand:#ff7aa2;      /* botón rosa  */
     --brand-2:#ffe0ea;    /* hover suave */
     --card:#ffffff;       /* color de las tarjetas */
     --b:#efe6d7;
@@ -98,11 +98,6 @@ body.alto-contraste :focus {
 h1, h2, h3, h4, h5, h6, .fs-1, .fs-2, .fs-3, .fs-4, .fs-5 {
     font-size: 1rem !important; /* El 1rem será el % que definamos en JS */
 }
-
-/* Si quieres que mantengan su jerarquía (que h1 sea más grande que h2) usa esto: */
-h1 { font-size: 2.5rem !important; }
-h2 { font-size: 2rem !important; }
-h5 { font-size: 1.25rem !important; }
 
 .btn:focus,
 .btn:active {
