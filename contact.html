@@ -1,13 +1,18 @@
 <!doctype html>
 <html lang="es">
 <head>
+  <!-- WCAG 3.1.1: idioma de la página definido (lang="es") -->
   <meta charset="utf-8">
+  <!-- WCAG 1.4.4 / 1.4.10: diseño adaptable/zoom sin pérdida (meta viewport) -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- WCAG 2.4.2: título descriptivo y único -->
   <title>Brúlée — Contáctanos</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- WCAG 1.4.4: tipografía legible y escalable (texto renderizado, no imagen) -->
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- WCAG 1.4.3 / 1.4.11: estilos consistentes, contraste manejado por CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="css/estilos.css">
@@ -18,18 +23,22 @@
 
   <!-- CABECERA -->
   <div id="Cabecera" class="Pagina">
+    <!-- WCAG 1.1.1: texto alternativo en imágenes informativas -->
     <img id="Cabecera-logo" src="assets/img/Logo.png" alt="Logo brûlée">
   </div>
 
   <!-- Navbar -->
+  <!-- WCAG 2.4.1: secciones/landmarks (nav) para facilitar navegación -->
   <nav class="navbar sticky-top navbar-expand-lg p-1"
        style="background: var(--brand-2);">
     <div class="container-fluid d-flex justify-content-between">
       <!-- Lado izquierdo -->
       <div class="navbar-brand m-0">
+        <!-- WCAG 2.4.4: propósito del enlace claro (aria-label="Regresar") -->
         <a href="index.html" class="btn btn-outline-dark" aria-label="Regresar">
           <i class="bi bi-arrow-left"></i>
         </a>
+        <!-- WCAG 4.1.2: nombre/rol/valor accesible en controles (aria-controls/label) -->
         <button class="btn btn-primary" type="button" id="btn-accesibilidad" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasScrolling"
                 aria-controls="offcanvasScrolling" aria-label="Accesibilidad">
@@ -38,9 +47,11 @@
       </div>
       <!-- Lado derecho  -->
       <div class="d-flex align-items-center gap-2">
+        <!-- WCAG 2.4.4: propósito del enlace claro (texto del enlace) -->
         <a href="productos.html" class="btn btn-outline-dark fw-semibold">
           Iniciar a comprar
         </a>
+        <!-- WCAG 4.1.2: nombre accesible del botón (aria-label) -->
         <button class="btn btn-primary" type="button" aria-label="Cuenta">Invitado
           <i class="bi bi-person-circle"></i>
         </button>
@@ -48,9 +59,11 @@
     </div>
   </nav>
 
+  <!-- WCAG 2.4.1: uso de main para contenido principal -->
   <main class="container contact-page py-5">
     <div class="row mb-4">
       <div class="col-12">
+        <!-- WCAG 1.3.1: estructura semántica con encabezados -->
         <h1 class="fw-bold mb-1">Contáctanos</h1>
         <p class="text-muted mb-0">
           Escribe sobre tu evento y te ayudamos a hacerlo realidad.
@@ -62,8 +75,10 @@
       <div class="col-md-4">
         <div class="login-card p-4 h-100 text-center">
           <div class="circle-icon mb-2">
+            <!-- WCAG 1.1.1: icono decorativo oculto a lectores (aria-hidden="true") -->
             <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
           </div>
+          <!-- WCAG 1.3.1: jerarquía de encabezados consistente -->
           <h2 class="fw-semibold">Dirección</h2>
           <p class="small mb-0">
             Aquí a lado de la parte en el norte cerquita nomás, Quito
@@ -74,6 +89,7 @@
       <div class="col-md-4">
         <div class="login-card p-4 h-100 text-center">
           <div class="circle-icon mb-2">
+            <!-- WCAG 1.1.1: icono decorativo oculto a lectores (aria-hidden="true") -->
             <i class="bi bi-envelope-fill" aria-hidden="true"></i>
           </div>
           <h2 class="fw-semibold">Email</h2>
@@ -86,6 +102,7 @@
       <div class="col-md-4">
         <div class="login-card p-4 h-100 text-center">
           <div class="circle-icon mb-2">
+            <!-- WCAG 1.1.1: icono decorativo oculto a lectores (aria-hidden="true") -->
             <i class="bi bi-telephone-fill" aria-hidden="true"></i>
           </div>
           <h2 class="fw-semibold">Teléfono</h2>
@@ -100,26 +117,33 @@
 
       <div class="col-lg-6">
         <div class="login-card p-4 h-100">
+          <!-- WCAG 2.4.6: encabezados describen el propósito de la sección -->
           <h3 class="mb-3">Envíanos un mensaje</h3>
 
+          <!-- WCAG 3.3.1 / 3.3.2: etiquetas y campos identificados en formularios -->
           <form id="form-contacto" novalidate>
             <div class="row g-3">
               <div class="col-md-6">
+                <!-- WCAG 3.3.2: label asociado al input (for/id) -->
                 <label class="form-label small" for="contacto-nombre">Nombre *</label>
                 <input id="contacto-nombre" type="text" class="form-control" placeholder="Tu nombre completo">
               </div>
 
               <div class="col-md-6">
+                <!-- WCAG 3.3.2: label asociado al input (for/id) -->
                 <label class="form-label small" for="contacto-correo">Email *</label>
                 <input id="contacto-correo" type="email" class="form-control" placeholder="correo@gmail.com">
               </div>
 
               <div class="col-md-6">
+                <!-- WCAG 3.3.2: label asociado al input (for/id) -->
                 <label class="form-label small" for="contacto-telefono">Teléfono *</label>
+                <!-- WCAG 1.3.5: propósito del campo sugerido (inputmode/numérico) -->
                 <input id="contacto-telefono" type="text" class="form-control" placeholder="09 999 999 99" minlength="10" inputmode="numeric">
               </div>
 
               <div class="col-md-6">
+                <!-- WCAG 3.3.2: label asociado al select (for/id) -->
                 <label class="form-label small" for="contacto-tipo">Tipo de evento *</label>
                 <select id="contacto-tipo" class="form-select">
                   <option value="">Selecciona una opción</option>
@@ -132,29 +156,36 @@
               </div>
 
               <div class="col-md-6">
+                <!-- WCAG 3.3.2: label asociado al input (for/id) -->
                 <label class="form-label small" for="contacto-invitados">Número de invitados *</label>
+                <!-- WCAG 3.3.1: restricciones/validación (min) ayudan a evitar errores -->
                 <input id="contacto-invitados" type="number" min="1" class="form-control" placeholder="Ej: 50">
               </div>
 
               <div class="col-md-6">
+                <!-- WCAG 3.3.2: label asociado al input (for/id) -->
                 <label class="form-label small" for="contacto-fecha">Fecha del evento *</label>
                 <input id="contacto-fecha" type="date" class="form-control">
               </div>
 
               <div class="col-md-6">
+                <!-- WCAG 3.3.2: label asociado al input (for/id) -->
                 <label class="form-label small" for="contacto-asunto">Asunto *</label>
                 <input id="contacto-asunto" type="text" class="form-control" placeholder="Escribe tu asunto">
               </div>
 
               <div class="col-12">
+                <!-- WCAG 3.3.2: label asociado al textarea (for/id) -->
                 <label class="form-label small" for="contacto-mensaje">Mensaje *</label>
                 <textarea id="contacto-mensaje" rows="3" class="form-control" placeholder="Detalla el evento, horarios, estilo, y todo lo que necesites."></textarea>
               </div>
             </div>
 
+            <!-- WCAG 4.1.3: mensajes de estado (role="alert") para notificar cambios -->
             <div id="msg-contacto" role="alert" style="display:none;" class="mt-3"></div>
 
             <div class="text-end mt-3">
+              <!-- WCAG 2.1.1: control operable por teclado (button) -->
               <button id="btnEnviarContacto" class="btn btn-primary colorB">
                 Enviar mensaje
               </button>
@@ -165,6 +196,7 @@
 
       <div class="col-lg-6">
         <div class="login-card p-0 h-100">
+          <!-- WCAG 1.1.1: texto alternativo en imagen informativa -->
           <img src="assets/img/gatoGordo.jpg"
                alt="Mesa de catering con postres y decoración"
                class="img-fluid rounded-end w-100 h-100"
@@ -175,8 +207,10 @@
   </main>
 
   <!-- FOOTER  -->
+  <!-- WCAG 2.4.1: landmark footer para información secundaria -->
   <footer id="contacto" class="Pagina">
     <br>
+    <!-- WCAG 1.3.1: encabezado para agrupar contenido del pie -->
     <h2 class="Texto-Footer">Términos y condiciones</h2>
     <p> Envío dentro del perímetro (Calderón, Carapungo y Carcelén)</p>
     <p> Servicio a domicilio de 9 am a 6 pm</p>
@@ -189,43 +223,49 @@
 </div>
 
 <!-- OFFCANVAS -->
+<!-- WCAG 2.1.1 / 4.1.2: componente interactivo accesible (controles con aria-label) -->
 <div class="offcanvas Pagina" data-bs-scroll="true" data-bs-backdrop="false" id="offcanvasScrolling">
   <div class="offcanvas-body text-center">
     <!-- Botón para el alto contraste -->
+    <!-- WCAG 1.4.3 / 1.4.11: opción de alto contraste -->
     <button type="button" id="btn-contraste" class="btn btn-outline-dark" aria-label="Alto contraste">
       <i class="bi bi-eye"></i>
     </button>
     <!-- Quitar imagenes -->
+    <!-- WCAG 1.1.1: alternativa para usuarios que prefieren reducir contenido visual -->
     <button type="button" id="btn-quitar-imagenes" class="btn btn-outline-dark" aria-label="Quitar imagenes">
       <i class="bi bi-image-alt"></i>
     </button>
     <!-- Botón para aumentar el tamaño de letra -->
+    <!-- WCAG 1.4.4: control para aumentar tamaño de texto -->
     <button type="button" id="btn-aumentar" class="btn btn-outline-dark" aria-label="Aumentar texto">
       <i class="bi bi-zoom-in"></i>
     </button>
     <!-- Botón para disminuir el tamaño de letra -->
+    <!-- WCAG 1.4.4: control para ajustar tamaño de texto -->
     <button type="button" id="btn-disminuir" class="btn btn-outline-dark" aria-label="Disminuir texto">
       <i class="bi bi-zoom-out"></i>
     </button>
     <!-- Botón para reestablecer los ajustes -->
+    <!-- WCAG 3.2.4: consistencia/recuperación de estado mediante restablecer -->
     <button type="button" id="btn-restablecer" class="btn btn-danger" aria-label="Reestablecer configuración">
       <i class="bi bi-arrow-counterclockwise"></i>
     </button>
   </div>
 </div>
 
-  <script src="assets/varios/jquery-3.7.1.min.js"></script>
-  <script src="js/models/userModel.js"></script>
-  <script src="js/seguridadRoutes.js"></script>
-  <script src="js/views/userView.js"></script>
-  <script src="js/controllers/userController.js"></script>
-  <script src="js/funciones/Accesibilidad.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    $(function () {
-      SessionModel.actualizarHeader();
-    });
-  </script>
+<script src="assets/varios/jquery-3.7.1.min.js"></script>
+<script src="js/models/userModel.js"></script>
+<script src="js/seguridadRoutes.js"></script>
+<script src="js/views/userView.js"></script>
+<script src="js/controllers/userController.js"></script>
+<script src="js/funciones/Accesibilidad.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  $(function () {
+    SessionModel.actualizarHeader();
+  });
+</script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     new controlarAccesibilidad();
